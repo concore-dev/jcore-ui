@@ -1,11 +1,19 @@
-@import '../variables.scss';
+@import '../var.scss';
 
-[am-radio] {
+
+$prefix-radio: '#{$prefix}-radio' !default;
+$prefix-radio-input: '#{$prefix}-radio-input' !default;
+$prefix-radio-icon: '#{$prefix}-radio-icon' !default;
+$prefix-radio-wrapper: '#{$prefix}-radio-wrapper' !default;
+$prefix-radio-label: '#{$prefix}-radio-label' !default;
+
+
+.#{$prefix-radio} {
     display: flex;
     position: relative;
 
     &:not([disabled]):hover {
-        [am-radio-icon] {
+        .#{$prefix-radio-icon} {
             border-color: $color-main-blue-dark;
         }
     }
@@ -14,8 +22,7 @@
         margin-right: 6px;
     }
 
-    [am-radio-input],
-    input {
+    .#{$prefix-radio-input} {
         display: block;
         position: absolute;
         z-index: 1;
@@ -27,7 +34,7 @@
         cursor: pointer;
     }
 
-    [am-radio-wrapper] {
+    .#{$prefix-radio-wrapper} {
         display: flex;
         user-select: none;
 
@@ -36,7 +43,7 @@
         }
     }
 
-    [am-radio-icon] {
+    .#{$prefix-radio-icon} {
         display: inline-block;
         border: 1.5px solid $color-main-blue-blur;
         width: 18px;
@@ -51,24 +58,17 @@
         border-radius: 50%;
     }
 
-    [am-radio-label] {
+    .#{$prefix-radio-label} {
         // margin-left: 6px;
         display: inline-block;
     }
 
-    input:checked + div [am-radio-icon],
-    input:checked + label [am-radio-icon],
-    input:checked + [am-radio-icon] {
+    .#{$prefix-radio-input}:checked + .#{$prefix-radio-wrapper} .#{$prefix-radio-icon} {
         border-width: 6px;
         border-color: $color-main-blue-blur;
     }
 
-    input:disabled + div [am-radio-icon],
-    input:disabled + label [am-radio-icon],
-    input:disabled + [am-radio-icon],
-    input:disabled + div [am-radio-label],
-    input:disabled + label [am-radio-label],
-    input:disabled + [am-radio-label] {
+    .#{$prefix-radio-input}:disabled + .#{$prefix-radio-wrapper} .#{$prefix-radio-icon} {
         opacity: 0.4;
     }
 }

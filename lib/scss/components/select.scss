@@ -1,11 +1,19 @@
-@import '../variables.scss';
+@import '../var.scss';
 
-[am-select] {
+
+$prefix-select: '#{prefix}-select' !default;
+$prefix-select-wrapper: '#{prefix}-select-wrapper' !default;
+$prefix-select-value: '#{prefix}-select-value' !default;
+$prefix-select-options: '#{prefix}-select-options' !default;
+$prefix-select-option: '#{prefix}-select-option' !default;
+
+
+.#{$prefix-select} {
     position: relative;
     // user-select: none;
 
-    &[active] {
-        [am-select-wrapper] {
+    &[data-active] {
+        .#{$prefix-select-wrapper} {
             // visibility: visible;
             // pointer-events: auto;
             display: block;
@@ -13,7 +21,7 @@
     }
 
     &[disabled] {
-        [am-select-value] {
+        .#{$prefix-select-value} {
             border: 1px solid $color-main-gray-light;
             background: #f0f0f0;
             cursor: not-allowed;
@@ -25,7 +33,7 @@
     }
 }
 
-[am-select-value] {
+.#{$prefix-select-value} {
     border: 1px solid $color-main-gray-light;
     border-radius: 3px;
     display: flex;
@@ -66,7 +74,7 @@
     }
 }
 
-[am-select-wrapper] {
+.#{$prefix-select-wrapper} {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -77,7 +85,7 @@
     display: none;
 }
 
-[am-select-options] {
+.#{$prefix-select-options} {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -93,13 +101,13 @@
     padding-top: 3px;
     padding-bottom: 3px;
 
-    &[reverse] {
+    &[data-reverse] {
         top: auto;
         bottom: 42px;
     }
 }
 
-[am-select-option] {
+.#{$prefix-select-option} {
     padding-left: 10px;
     min-height: 35px;
     display: flex;
@@ -111,11 +119,11 @@
         background: #FAFAFA;
     }
 
-    &[selected] {
+    &[data-selected] {
         background: #DEEBFF;
     }
 
-    &:not([selected]):focus {
+    &:not([data-selected]):focus {
         background: #FAFAFA;
     }
 }

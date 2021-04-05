@@ -1,13 +1,20 @@
-@import '../variables.scss';
+@import '../var.scss';
 
-[am-progress] {
+
+$prefix-progress: '#{prefix}-progress' !default;
+$prefix-progress-percent: '#{prefix}-progress-percent' !default;
+$prefix-progress-bar: '#{prefix}-progress-bar' !default;
+$prefix-progress-ring: '#{prefix}-progress-ring' !default;
+
+
+.#{$prefix-progress} {
     position: relative;
     height: 3px;
     border-radius: 5px;
     background: #F3F1F0;
 }
 
-[am-progress-percent] {
+.#{$prefix-progress-percent} {
     color: #ADADAD;
     font-size: 14px;
     line-height: 17px;
@@ -17,7 +24,7 @@
     bottom: 5px;
 }
 
-[am-progress-bar] {
+.#{$prefix-progress-bar} {
     position: absolute;
     width: 0;
     left: 0;
@@ -27,7 +34,7 @@
     transition: all .5s ease;
 }
 
-[am-progress-ring] {
+.#{$prefix-progress-ring} {
     position: relative;
 
     circle {

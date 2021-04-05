@@ -49,7 +49,19 @@ $transition_longest: all 0.3s ease-in-out !default;
 $transition_big: all 0.5s ease-in-out !default;
 
 
-// Container
+// Grid
+$lg: 1440px !default;
+$md: 1024px !default;
+$sm: 768px !default;
+$xs: 480px !default;
+
+$breakpoints: (
+    'lg': $lg,
+    'md': $md,
+    'sm': $sm,
+    'xs': $xs
+) !default;
+
 $container-width: 1440px !default;
 $container-width-lg: 1024px !default;
 $container-width-md: 768px !default;
@@ -63,25 +75,20 @@ $containers: (
     'xs': $container-width-xs
 ) !default;
 
-
-// Grid
 $columns: 12 !default;
+$spacings: 4 !default;
 $offset: 104px !default;
 
 $offset-lg: 32px !default;
 $offset-md: 24px !default;
 $offset-sm: 10px !default;
+$offset-xs: 10px !default;
 
-$lg: 1440px !default;
-$md: 1024px !default;
-$sm: 768px !default;
-$xs: 480px !default;
-
-$breakpoints: (
-    'lg': $lg,
-    'md': $md,
-    'sm': $sm,
-    'xs': $xs
+$offsets: (
+    'lg': $offset-lg,
+    'md': $offset-md,
+    'sm': $offset-sm,
+    'xs': $offset-xs
 ) !default;
 
 

@@ -1,0 +1,36 @@
+@import '../var.scss';
+
+
+$prefix-container: '#{$prefix}-container' !default;
+
+
+.#{$prefix-container} {
+    max-width: $container-width;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding-left: $offset;
+    padding-right: $offset;
+    transition: all .3s ease-in-out;
+}
+
+@each $point, $value in $breakpoints {
+    @include j-media($point, 'max') {
+        @each $point_containers, $value in $containers {
+            @if $point == $point_containers {
+                .#{$prefix-container} {
+                    max-width: $value;
+                }
+            }
+        }
+
+        @each $point_offsets, $value in $offsets {
+            @if $point == $point_offsets {
+                .#{$prefix-container} {
+                    padding-left: $value;
+                    padding-right: $value;
+                }
+            }
+        }
+    }
+}

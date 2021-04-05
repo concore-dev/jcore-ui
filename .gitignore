@@ -1,0 +1,25 @@
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# testing
+.nyc_output
+coverage
+tests_output/
+reports/
+tests_output/
+chromedriver.log
+
+# production
+dist
+bin
+
+# misc
+.vscode
+.DS_Store
+.env
+.env.test
+.env.production
+.env.development
+report.**.*

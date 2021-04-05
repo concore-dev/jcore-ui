@@ -1,0 +1,45 @@
+{
+    "ts-node": {
+        "files": true
+    },
+    "compilerOptions": {
+        "target": "esnext",
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
+        "allowJs": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": false,
+        "jsx": "react",
+        "module" : "commonjs",
+        "strictNullChecks": false,
+        "typeRoots": [
+            "node_modules/@types",
+            "typings/**/*"
+        ],
+        "noImplicitThis": false,
+        "baseUrl": "."
+    },
+    "exclude": [
+        "node_modules",
+        "dist",
+        "bin",
+        "coverage",
+        "jest.config.js",
+        "configs"
+    ],
+    "include": [
+        "./typings/**/*.ts",
+        "./lib/**/*.ts",
+        "./tests/**/*.ts"
+    ]
+}

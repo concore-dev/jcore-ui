@@ -38,8 +38,10 @@
         "configs"
     ],
     "include": [
+        "index.js",
         "./typings/**/*.ts",
         "./lib/**/*.ts",
+        "./src/**/*.ts",
         "./tests/**/*.ts"
     ]
 }

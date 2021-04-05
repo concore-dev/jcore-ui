@@ -1,15 +1,13 @@
 {
     "presets": [
         "@babel/preset-env",
-        "@babel/preset-react",
         "@babel/preset-typescript"
     ],
     "plugins": [
         ["module-resolver", {
             "root": ["./src"],
             "alias": {
-                "@ui": "./node_modules/pobeda-ui/src/ui/js",
-                "@utils": "./node_modules/pobeda-ui/src/ui/utils"
+                "@ui": "./ui"
             }
         }],
         "@babel/plugin-proposal-object-rest-spread",

@@ -11,6 +11,10 @@ $red:#D70000 !default;
 $red-dark: #8E1308 !default;
 $red-light: #D13B2D !default;
 
+$green:#00d70b !default;
+$green-dark: #117005 !default;
+$green-light: #87f399 !default;
+
 $blue: #2E71F0 !default;
 $blue-dark: #0D3472 !default;
 $blue-light: #DEEBFF !default;
@@ -32,7 +36,10 @@ $colors:(
     'blue-light': $blue-light,
     'gray': $gray,
     'gray-dark': $gray-dark,
-    'gray-light': $gray-light) !default;
+    'gray-light': $gray-light,
+    'green': $gray,
+    'green-dark': $gray-dark,
+    'green-light': $gray-light) !default;
 
 
 // Transition

@@ -22,19 +22,19 @@ $prefix-select-option: '#{prefix}-select-option' !default;
 
     &[disabled] {
         .#{$prefix-select-value} {
-            border: 1px solid $color-main-gray-light;
+            border: 1px solid $gray-light;
             background: #f0f0f0;
             cursor: not-allowed;
 
             &:hover {
-                border: 1px solid $color-main-gray-light;
+                border: 1px solid $gray-light;
             }
         }
     }
 }
 
 .#{$prefix-select-value} {
-    border: 1px solid $color-main-gray-light;
+    border: 1px solid $gray-light;
     border-radius: 3px;
     display: flex;
     width: 100%;
@@ -52,13 +52,13 @@ $prefix-select-option: '#{prefix}-select-option' !default;
     transition: all .2s ease-in-out;
 
     &[disabled] {
-        border: 1px solid $color-main-gray-light;
+        border: 1px solid $gray-light;
         background: #f0f0f0;
         cursor: not-allowed;
     }
 
     &:not([disabled]):hover {
-        border: 1px solid $color-main-gray;
+        border: 1px solid $gray;
     }
 
     &::after {
@@ -81,7 +81,7 @@ $prefix-select-option: '#{prefix}-select-option' !default;
     width: 100%;
     // visibility: hidden;
     // pointer-events: none;
-    z-index: $zIndex-select;
+    z-index: $index-select;
     display: none;
 }
 

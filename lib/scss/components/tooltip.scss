@@ -19,7 +19,7 @@ $prefix-tooltip-arrow: '#{prefix}-tooltip-arrow' !default;
 
     &[data-active] {
         .#{$prefix-tooltip-header} {
-            z-index: $zIndex-tooltip+1;
+            z-index: $index-tooltip+1;
         }
 
         .#{$prefix-tooltip-content} {
@@ -36,7 +36,7 @@ $prefix-tooltip-arrow: '#{prefix}-tooltip-arrow' !default;
 }
 
 .#{$prefix-tooltip-content} {
-    z-index: $zIndex-tooltip;
+    z-index: $index-tooltip;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -217,7 +217,7 @@ $prefix-tooltip-arrow: '#{prefix}-tooltip-arrow' !default;
         top: -10px;
         width: 24px;
         height: 12px;
-        z-index: $zIndex-tooltip;
+        z-index: $index-tooltip;
 
         &::after {
             content: "";

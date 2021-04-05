@@ -35,7 +35,7 @@ $prefix-dropdown-arrow: '#{prefix}-dropdown-arrow' !default;
     left:50%;
     transform: translateX(-50%);
     width: 100%;
-    z-index: $zIndex-dropdown;
+    z-index: $index-dropdown;
     margin: 5px 0 0 0;
     opacity: 0;
     visibility: hidden;
@@ -163,7 +163,7 @@ $prefix-dropdown-arrow: '#{prefix}-dropdown-arrow' !default;
         top: -10px;
         width: 24px;
         height: 12px;
-        z-index: $zIndex-dropdown;
+        z-index: $index-dropdown;
 
         &::after {
             content: "";

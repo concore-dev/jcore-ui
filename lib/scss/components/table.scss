@@ -39,7 +39,7 @@ $prefix-table-responsive: '#{prefix}-table-responsive';
 
     &[data-border] {
         th, td {
-            border: 1px solid $color-gray;
+            border: 1px solid $gray;
         }
     }
 
@@ -48,27 +48,27 @@ $prefix-table-responsive: '#{prefix}-table-responsive';
             border-top: 0;
             border-left: 0;
             border-right: 0;
-            border-bottom: 1px solid $color-gray;
+            border-bottom: 1px solid $gray;
         }
 
         thead {
-            border-bottom: 3px solid $color-gray;
+            border-bottom: 3px solid $gray;
         }
     }
 
     &[data-dark] {
         th {
             color: #fff;
-            background-color: $color-black-dark;
-            border-color: $color-black;
+            background-color: $black;
+            border-color: $black;
         }
     }
 
     &[data-light] {
         th {
-            color: $color-black-dark;
-            background-color: $color-gray-dark;
-            border-color: $color-gray-dark;
+            color: $black;
+            background-color: $gray-dark;
+            border-color: $gray-dark;
         }
     }
 }

@@ -14,7 +14,7 @@ $prefix-radio-label: '#{$prefix}-radio-label' !default;
 
     &:not([disabled]):hover {
         .#{$prefix-radio-icon} {
-            border-color: $color-main-blue-dark;
+            border-color: $blue-dark;
         }
     }
 
@@ -45,7 +45,7 @@ $prefix-radio-label: '#{$prefix}-radio-label' !default;
 
     .#{$prefix-radio-icon} {
         display: inline-block;
-        border: 1.5px solid $color-main-blue-blur;
+        border: 1.5px solid $blue;
         width: 18px;
         height: 18px;
         border-radius: 3px;
@@ -65,7 +65,7 @@ $prefix-radio-label: '#{$prefix}-radio-label' !default;
 
     .#{$prefix-radio-input}:checked + .#{$prefix-radio-wrapper} .#{$prefix-radio-icon} {
         border-width: 6px;
-        border-color: $color-main-blue-blur;
+        border-color: $blue;
     }
 
     .#{$prefix-radio-input}:disabled + .#{$prefix-radio-wrapper} .#{$prefix-radio-icon} {

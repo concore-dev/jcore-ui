@@ -30,8 +30,8 @@ $prefix-toggle-track: '#{prefix}-toggle-track' !default;
         cursor: pointer;
 
         &:checked + .#{$prefix-toggle-wrapper} {
-            background: $color-main-blue-blur;
-            border-color: $color-main-blue-blur;
+            background: $blue;
+            border-color: $blue;
 
             .#{$prefix-toggle-track} {
                 left: calc(100% - 19px);

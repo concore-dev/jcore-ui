@@ -20,41 +20,41 @@ $prefix-button: 'button' !default;
     border-color: #000;
 
     &.main {
-        background: $color-main;
+        background: $red;
         color: #fff;
-        border: 1px solid $color-main;
+        border: 1px solid $red;
 
         &:not([disabled]):hover {
-            background: $color-main-dark;
-            border-color: $color-main-dark;
+            background: $red-dark;
+            border-color: $red-dark;
         }
 
         &[disabled] {
-            background: rgba($color: $color-main, $alpha: 0.2);
-            border-color: rgba($color: $color-main, $alpha: 0.01);
+            background: rgba($color: $red, $alpha: 0.2);
+            border-color: rgba($color: $red, $alpha: 0.01);
             cursor: default;
         }
     }
 
     &.white {
-        border: 1px solid $color-main;
-        color: $color-main;
+        border: 1px solid $red;
+        color: $red;
 
         &:not([disabled]):hover {
-            background: $color-main;
+            background: $red;
             color: #fff;
         }
 
         &[disabled] {
-            border-color: $color-main-gray;
-            color: $color-main-gray;
+            border-color: $gray;
+            color: $gray;
             cursor: default;
         }
     }
 
     &.disabled {
-        border-color: $color-main-gray;
-        color: $color-main-gray;
+        border-color: $gray;
+        color: $gray;
         cursor: default;
     }
 }

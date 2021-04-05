@@ -16,7 +16,7 @@ $prefix-checkbox-input: 'checkbox-input' !default;
 
     &:not([disabled]):hover {
         .#{prefix}-#{$prefix-checkbox-icon} {
-            border-color: $color-main-blue-blur;
+            border-color: $blue-dark;
         }
     }
 
@@ -25,8 +25,8 @@ $prefix-checkbox-input: 'checkbox-input' !default;
     }
 
     .#{prefix}-#{$prefix-checkbox-input}:checked + .#{prefix}-#{$prefix-checkbox-wrapper} .#{prefix}-#{$prefix-checkbox-icon} {
-        background: $color-main-blue-blur;
-        border-color: $color-main-blue-blur;
+        background: $blue-dark;
+        border-color: $blue-dark;
     }
 
     .#{prefix}-#{$prefix-checkbox-input} + .#{prefix}-#{$prefix-checkbox-wrapper} .#{prefix}-#{$prefix-checkbox-icon},
@@ -54,7 +54,7 @@ $prefix-checkbox-input: 'checkbox-input' !default;
 
 .#{prefix}-#{$prefix-checkbox-icon} {
     display: inline-block;
-    border: 1px solid $color-main-gray-light;
+    border: 1px solid $gray-light;
     width: 18px;
     height: 18px;
     border-radius: 3px;

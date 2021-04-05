@@ -48,6 +48,41 @@ module.exports = (env, argv) => {
         module: {
             rules: [
                 {
+                    test: /\.(sa|sc|c)ss$/,
+                    exclude: [/node_modules/, /\.module\.(sa|sc|c)ss$/],
+                    use: [
+                        {
+                            loader: dev ? 'style-loader' : MiniCssExtractPlugin.loader,
+                            options: {
+                                esModule: false,
+                            },
+                        },
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                url: false,
+                                esModule: false,
+                                sourceMap: true
+                            }
+                        },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                sourceMap: true,
+                                postcssOptions: {
+                                    config: path.resolve(__dirname, './postcss.config.js')
+                                }
+                            }
+                        },
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                sourceMap: true
+                            }
+                        },
+                    ]
+                },
+                {
                     test: /\.jsx?$/,
                     exclude: /node_modules/,
                     use: {

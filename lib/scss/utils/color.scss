@@ -1,7 +1,7 @@
 @import '../var.scss';
 
 
-$prefix-color: '#{prefix}-color' !default;
+$prefix-color: '#{$prefix}-color' !default;
 
 
 @each $name, $color in $colors {

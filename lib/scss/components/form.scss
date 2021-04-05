@@ -1,9 +1,9 @@
 @import '../var.scss';
 
 
-$prefix-form: '#{prefix}-form' !default;
-$prefix-form-field: '#{prefix}-form-field' !default;
-$prefix-form-error: '#{prefix}-form-error' !default;
+$prefix-form: '#{$prefix}-form' !default;
+$prefix-form-field: '#{$prefix}-form-field' !default;
+$prefix-form-error: '#{$prefix}-form-error' !default;
 
 
 .#{$prefix-form} {

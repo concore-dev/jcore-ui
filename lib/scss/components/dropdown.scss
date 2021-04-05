@@ -1,11 +1,11 @@
 @import '../var.scss';
 
 
-$prefix-dropdown: '#{prefix}-dropdown' !default;
-$prefix-dropdown-header: '#{prefix}-dropdown-header' !default;
-$prefix-dropdown-content: '#{prefix}-dropdown-content' !default;
-$prefix-dropdown-wrapper: '#{prefix}-dropdown-wrapper' !default;
-$prefix-dropdown-arrow: '#{prefix}-dropdown-arrow' !default;
+$prefix-dropdown: '#{$prefix}-dropdown' !default;
+$prefix-dropdown-header: '#{$prefix}-dropdown-header' !default;
+$prefix-dropdown-content: '#{$prefix}-dropdown-content' !default;
+$prefix-dropdown-wrapper: '#{$prefix}-dropdown-wrapper' !default;
+$prefix-dropdown-arrow: '#{$prefix}-dropdown-arrow' !default;
 
 
 .#{$prefix-dropdown} {

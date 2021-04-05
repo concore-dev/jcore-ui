@@ -1,11 +1,11 @@
 @import '../var.scss';
 
 
-$prefix-input: '#{prefix}-input' !default;
-$prefix-input-check: '#{prefix}-input-check' !default;
-$prefix-input-group: '#{prefix}-input-group' !default;
-$prefix-input-hint: '#{prefix}-input-hint' !default;
-$prefix-input-required: '#{prefix}-input-required' !default;
+$prefix-input: '#{$prefix}-input' !default;
+$prefix-input-check: '#{$prefix}-input-check' !default;
+$prefix-input-group: '#{$prefix}-input-group' !default;
+$prefix-input-hint: '#{$prefix}-input-hint' !default;
+$prefix-input-required: '#{$prefix}-input-required' !default;
 
 
 .#{$prefix-input} {

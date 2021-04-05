@@ -1,7 +1,7 @@
 @import '../var.scss';
 
 
-$prefix-spinner: '#{prefix}-spinner';
+$prefix-spinner: '#{$prefix}-spinner';
 
 
 *[data-spinner] {

@@ -1,11 +1,11 @@
 @import '../var.scss';
 
 
-$prefix-tooltip: '#{prefix}-tooltip' !default;
-$prefix-tooltip-header: '#{prefix}-tooltip-header' !default;
-$prefix-tooltip-content: '#{prefix}-tooltip-content' !default;
-$prefix-tooltip-wrapper: '#{prefix}-tooltip-wrapper' !default;
-$prefix-tooltip-arrow: '#{prefix}-tooltip-arrow' !default;
+$prefix-tooltip: '#{$prefix}-tooltip' !default;
+$prefix-tooltip-header: '#{$prefix}-tooltip-header' !default;
+$prefix-tooltip-content: '#{$prefix}-tooltip-content' !default;
+$prefix-tooltip-wrapper: '#{$prefix}-tooltip-wrapper' !default;
+$prefix-tooltip-arrow: '#{$prefix}-tooltip-arrow' !default;
 
 
 .#{$prefix-tooltip} {

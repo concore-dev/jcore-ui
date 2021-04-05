@@ -1,12 +1,12 @@
 @import '../var.scss';
 
 
-$prefix-toggle: '#{prefix}-toggle' !default;
-$prefix-toggle-input: '#{prefix}-toggle-input' !default;
-$prefix-toggle-wrapper: '#{prefix}-toggle-wrapper' !default;
-$prefix-toggle-label: '#{prefix}-toggle-label' !default;
-$prefix-toggle-input: '#{prefix}-toggle-input' !default;
-$prefix-toggle-track: '#{prefix}-toggle-track' !default;
+$prefix-toggle: '#{$prefix}-toggle' !default;
+$prefix-toggle-input: '#{$prefix}-toggle-input' !default;
+$prefix-toggle-wrapper: '#{$prefix}-toggle-wrapper' !default;
+$prefix-toggle-label: '#{$prefix}-toggle-label' !default;
+$prefix-toggle-input: '#{$prefix}-toggle-input' !default;
+$prefix-toggle-track: '#{$prefix}-toggle-track' !default;
 
 
 .#{$prefix-toggle} {

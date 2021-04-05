@@ -1,11 +1,11 @@
 @import '../var.scss';
 
 
-$prefix-select: '#{prefix}-select' !default;
-$prefix-select-wrapper: '#{prefix}-select-wrapper' !default;
-$prefix-select-value: '#{prefix}-select-value' !default;
-$prefix-select-options: '#{prefix}-select-options' !default;
-$prefix-select-option: '#{prefix}-select-option' !default;
+$prefix-select: '#{$prefix}-select' !default;
+$prefix-select-wrapper: '#{$prefix}-select-wrapper' !default;
+$prefix-select-value: '#{$prefix}-select-value' !default;
+$prefix-select-options: '#{$prefix}-select-options' !default;
+$prefix-select-option: '#{$prefix}-select-option' !default;
 
 
 .#{$prefix-select} {

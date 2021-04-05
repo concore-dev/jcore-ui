@@ -1,10 +1,10 @@
 @import '../var.scss';
 
 
-$prefix-progress: '#{prefix}-progress' !default;
-$prefix-progress-percent: '#{prefix}-progress-percent' !default;
-$prefix-progress-bar: '#{prefix}-progress-bar' !default;
-$prefix-progress-ring: '#{prefix}-progress-ring' !default;
+$prefix-progress: '#{$prefix}-progress' !default;
+$prefix-progress-percent: '#{$prefix}-progress-percent' !default;
+$prefix-progress-bar: '#{$prefix}-progress-bar' !default;
+$prefix-progress-ring: '#{$prefix}-progress-ring' !default;
 
 
 .#{$prefix-progress} {

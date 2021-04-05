@@ -1,10 +1,10 @@
 @import '../var.scss';
 
 
-$prefix-modal: '#{prefix}-modal' !default;
-$prefix-modal-overlay: '#{prefix}-modal-overlay' !default;
-$prefix-modal-content: '#{prefix}-modal-content' !default;
-$prefix-modal-close: '#{prefix}-modal-close' !default;
+$prefix-modal: '#{$prefix}-modal' !default;
+$prefix-modal-overlay: '#{$prefix}-modal-overlay' !default;
+$prefix-modal-content: '#{$prefix}-modal-content' !default;
+$prefix-modal-close: '#{$prefix}-modal-close' !default;
 
 
 .#{$prefix-modal-overlay} {

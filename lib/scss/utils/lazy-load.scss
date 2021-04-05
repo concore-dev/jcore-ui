@@ -1,7 +1,7 @@
 @import '../var.scss';
 
 
-$prefix-lazy: '#{prefix}-lazy' !default;
+$prefix-lazy: '#{$prefix}-lazy' !default;
 
 
 .#{$prefix-lazy} {

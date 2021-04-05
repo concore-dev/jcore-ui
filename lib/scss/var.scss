@@ -86,18 +86,8 @@ $breakpoints: (
 
 
 // Z-INDEX
-$index-overlay: 999  !default;
-$index-tooltip: 99  !default;
-$index-dropdown: 99  !default;
-$index-select: 99  !default;
-$index-modal: 99  !default;
-
-
-// Mixins
-@import './mixins/aspect.scss';
-@import './mixins/button-color.scss';
-@import './mixins/fonts.scss';
-@import './mixins/gradient-hover.scss';
-@import './mixins/media.scss';
-@import './mixins/sprites.scss';
-@import './mixins/transition.scss';
+$index-overlay: 999 !default;
+$index-tooltip: 99 !default;
+$index-dropdown: 99 !default;
+$index-select: 99 !default;
+$index-modal: 99 !default;

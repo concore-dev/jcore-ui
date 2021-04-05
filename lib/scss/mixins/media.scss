@@ -1,20 +1,25 @@
-@mixin media-max($point) {
-    @each $name,
-    $value in $breakpoints {
-        @if $point == $name {
-            @media (max-width: $value) {
-                @content
-            }
-        }
-    }
-}
+@import '../var.scss';
 
-@mixin media-min($point) {
+
+@mixin j-media($point_first: 'lg', $type_first: 'max', $point_second: false, $type_second: false) {
     @each $name,
     $value in $breakpoints {
-        @if $point == $name {
-            @media (min-width: $value + 1px) {
-                @content
+        @if $point_first == $name {
+            @if $point_second == false and ($type_first == 'max' or $type_first == 'min') {
+                @media (#{$type_first}-width: $value) {
+                    @content
+                }
+            } @else if (($type_first == 'max' or $type_first == 'min') and $point_first != false) and (($type_second == 'max' or $type_second == 'min') and $point_second != false) {
+                @each $name_second,
+                $value_second in $breakpoints {
+                    @if $point_second == $name_second {
+                        @media (#{$type_first}-width: $value) and (#{$type_second}-width: $value_second) {
+                            @content
+                        }
+                    }
+                }
+            } @else {
+                @error "Unknown type media";
             }
         }
     }

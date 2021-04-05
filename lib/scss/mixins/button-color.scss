@@ -1,3 +1,6 @@
+@import '../var.scss';
+
+
 @mixin button-color($color: false, $background: false, $border-color: false) {
     @if $color { color: $color; }
     @if $background { background: $background; }

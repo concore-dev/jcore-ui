@@ -1,3 +1,6 @@
+@import '../var.scss';
+
+
 @mixin gradient-hover($transTime, $gradient-red){
     background-size: 100%;
     // background-image: linear-gradient($start, $end);

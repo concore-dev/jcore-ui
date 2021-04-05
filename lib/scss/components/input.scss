@@ -1,6 +1,14 @@
 @import '../variables.scss';
 
-[am-input] {
+
+$prefix-input: '#{prefix}-input' !default;
+$prefix-input-check: '#{prefix}-input-check' !default;
+$prefix-input-group: '#{prefix}-input-group' !default;
+$prefix-input-hint: '#{prefix}-input-hint' !default;
+$prefix-input-required: '#{prefix}-input-required' !default;
+
+
+.#{$prefix-input} {
     position: relative;
     width: 100%;
 
@@ -36,41 +44,37 @@
         min-height: 40px;
     }
 
-    &[error],
-    &[error][am-select] {
+    &[data-error] {
         input,
         select,
-        textarea,
-        [am-select-value] {
+        textarea {
             border: 1px solid $color-main;
             background: rgba($color: $color-main, $alpha: 0.1);
         }
 
-        [am-check] {
+        .#{$prefix-input-check} {
             background: $color-main;
         }
     }
 
-    &[accept],
-    &[accept][am-select] {
+    &[data-accept] {
         input,
         select,
-        textarea,
-        [am-select-value] {
+        textarea {
             border: 1px solid $color-main-green;
             background: rgba($color: $color-main-green, $alpha: 0.1);
         }
 
-        [am-check] {
+        .#{$prefix-input-check} {
             background: $color-main-green;
         }
     }
 
-    [am-input-group] {
+    .#{$prefix-input-group} {
         position: relative;
     }
 
-    [am-check] {
+    .#{$prefix-input-check} {
         position: absolute;
         top: 50%;
         right: 15px;
@@ -93,82 +97,26 @@
         }
     }
 
-    &[error] [am-check]::after,
-    &[accept] [am-check]::after {
+    &[data-error] .#{$prefix-input-check}::after,
+    &[data-accept] .#{$prefix-input-check}::after {
         background: #fff;
     }
 }
 
-[am-search] {
-    position: relative;
-    border: 1px solid $color-main-gray-light;
-    box-sizing: border-box;
-    display: flex;
-    width: 100%;
-    outline: none;
+.#{$prefix-input-hint} {
     font-size: 14px;
-    resize: none;
-    border-radius: 3px;
 
-    input {
-        padding: 12px 12px 12px 0;
-        line-height: 1;
-        flex-grow: 1;
-        font-size: 14px;
-        border: none;
-        transition: all .1s ease-in-out;
-        width: 100%;
+    &.top {
+        margin-bottom: 5px;
     }
 
-    [am-search-icon] {
-        padding: 0 10px 0 12px;
-        align-self: center;
-    }
-
-    [am-search-button] {
-        background: $color-gray;
-        border: none;
-        padding: 12px;
-        cursor: pointer;
-        transition: all .1s ease-in-out;
-
-        &:hover {
-            background: $color-gray-dark;
-        }
+    &.bottom {
+        margin-top: 5px;
+        font-size: 12px;
+        color: $color-main-gray;
     }
 }
 
-[am-hint] {
-    font-size: 14px;
-}
-
-[am-hint="top"] {
-    margin-bottom: 5px;
-}
-
-[am-hint="bottom"] {
-    margin-top: 5px;
-    font-size: 12px;
-    color: $color-main-gray;
-}
-
-[am-required] {
+.#{$prefix-input-required} {
     color: $color-main;
-}
-
-[am-error] {
-    font-size: 14px;
-    color: red;
-    pointer-events: none;
-    height: 0;
-    opacity: 0;
-    visibility: hidden;
-    transition: all .1s ease-in-out;
-
-    &[active] {
-        visibility: visible;
-        opacity: 1;
-        margin: 10px 0;
-        height: auto;
-    }
 }

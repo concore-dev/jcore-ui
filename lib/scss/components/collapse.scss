@@ -1,0 +1,28 @@
+@import '../var.scss';
+
+$prefix-collapse: '#{$prefix}-collapse' !default;
+$prefix-collapse-wrapper: '#{$prefix}-collapse-wrapper' !default;
+$prefix-collapse-button: '#{$prefix}-collapse-button' !default;
+
+
+.#{$prefix-collapse} {
+    position: relative;
+
+    &[data-init] {
+        .#{$prefix-collapse-button} {
+            display: block;
+        }
+    }
+}
+
+.#{$prefix-collapse-wrapper} {
+    overflow: hidden;
+    position: relative;
+    transition: all .3s ease;
+}
+
+.#{$prefix-collapse-button} {
+    cursor: pointer;
+    color: $color-main;
+    display: none;
+}

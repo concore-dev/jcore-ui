@@ -1,0 +1,195 @@
+@import '../var.scss';
+
+
+$prefix-dropdown: '#{prefix}-dropdown' !default;
+$prefix-dropdown-header: '#{prefix}-dropdown-header' !default;
+$prefix-dropdown-content: '#{prefix}-dropdown-content' !default;
+$prefix-dropdown-wrapper: '#{prefix}-dropdown-wrapper' !default;
+$prefix-dropdown-arrow: '#{prefix}-dropdown-arrow' !default;
+
+
+.#{$prefix-dropdown} {
+    position: relative;
+
+    &[data-active] {
+        .#{$prefix-dropdown-content} {
+            margin: 0;
+            opacity: 1;
+            pointer-events: auto;
+            visibility: visible;
+
+            &[data-direction="top"] {
+                margin: 0;
+            }
+        }
+    }
+}
+
+.#{$prefix-dropdown-header} {
+    width: 100%;
+    user-select: none;
+}
+
+.#{$prefix-dropdown-content} {
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
+    width: 100%;
+    z-index: $zIndex-dropdown;
+    margin: 5px 0 0 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all .15s ease-in-out;
+
+    // DIRECTION
+    &[data-direction="top"] {
+        top: 0px;
+
+        .#{$prefix-dropdown-wrapper} {
+            margin: 0 0 12px 0;
+            bottom: 0;
+            box-shadow: 0px 3px 5px 0 rgba(0, 0, 0, 0.1), 0px 4px 13px 0px rgba(0, 0, 0, 0.1);
+
+            .#{$prefix-dropdown-arrow} {
+                top: auto;
+                bottom: -10px;
+                transform: translateX(-50%) rotate(180deg);
+
+                &[data-align="left"] {
+                    transform: translateX(0) rotate(180deg);
+                    left: 10%;
+                }
+
+                &[data-align="center"] {
+                    transform: translateX(-50%) rotate(180deg);
+                    left: 50%;
+                }
+
+                &[data-align="right"] {
+                    transform: translateX(0) rotate(180deg);
+                    left: auto;
+                    right: 10%;
+                }
+            }
+        }
+    }
+
+    // ALIGN BOTTOM
+    &[data-align="left"]:not([data-direction]),
+    &[data-align="left"][data-direction="bottom"] {
+        left: 0;
+        transform: translate(0, 0);
+
+        .#{$prefix-dropdown-wrapper} {
+            left: 0;
+            transform: translate(0, 0);
+        }
+    }
+
+    &[data-align="stretch"]:not([data-direction]),
+    &[data-align="stretch"][data-direction="bottom"] {
+        .#{$prefix-dropdown-wrapper} {
+            min-width: 100%;
+        }
+    }
+
+    &[data-align="right"]:not([data-direction]),
+    &[data-align="right"][data-direction="bottom"] {
+        left: auto;
+        right: 0;
+        transform: translate(0, 0);
+
+        .#{$prefix-dropdown-wrapper} {
+            left: auto;
+            right: 0;
+            transform: translate(0, 0);
+        }
+    }
+
+    // ALIGN TOP
+    &[data-align="left"][data-direction="top"]  {
+        left: 0;
+        transform: translate(0, 0);
+
+        .#{$prefix-dropdown-wrapper} {
+            left: 0;
+            transform: translate(0, 0);
+        }
+    }
+
+    &[data-align="stretch"][data-direction="top"] {
+        .#{$prefix-dropdown-wrapper} {
+            min-width: 100%;
+        }
+    }
+
+    &[data-align="right"][data-direction="top"] {
+        left: auto;
+        right: 0;
+        transform: translate(0, 0);
+
+        .#{$prefix-dropdown-wrapper} {
+            left: auto;
+            right: 0;
+            transform: translate(0, 0);
+        }
+    }
+}
+
+.#{$prefix-dropdown-wrapper} {
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
+    z-index:1;
+    padding: 10px;
+    background: #fff;
+    border-radius: 3px;
+    margin-top: 12px;
+    max-width: calc(100vw - 40px);
+    white-space: normal;
+    border: 0;
+    box-shadow: 0px 3px 5px 0 rgba(0, 0, 0, 0.1), 0px -2px 13px 0px rgba(0, 0, 0, 0.1);
+
+    .#{$prefix-dropdown-arrow} {
+        top: -10px;
+        position: absolute;
+        display: block;
+        width: 16px;
+        height: 16px;
+        transform: translateX(-50%);
+        left: 50%;
+        left: 50%;
+        top: -10px;
+        width: 24px;
+        height: 12px;
+        z-index: $zIndex-dropdown;
+
+        &::after {
+            content: "";
+            position: absolute;
+            display: block;
+            border-color: transparent;
+            border-style: solid;
+            top: 1px;
+            border-width: 0 12px 12px 12px;
+            border-bottom-color: #fff;
+        }
+
+        &[data-align="left"] {
+            transform: translateX(0);
+            left: 10%;
+        }
+
+        &[data-align="center"] {
+            transform: translateX(-50%);
+            left: 50%;
+        }
+
+        &[data-align="right"] {
+            transform: translateX(0);
+            left: auto;
+            right: 10%;
+        }
+    }
+}

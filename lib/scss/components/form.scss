@@ -1,0 +1,40 @@
+@import '../var.scss';
+
+
+$prefix-form: '#{prefix}-form' !default;
+$prefix-form-field: '#{prefix}-form-field' !default;
+$prefix-form-error: '#{prefix}-form-error' !default;
+
+
+.#{$prefix-form} {
+
+}
+
+.#{$prefix-form-field} {
+    display: flex;
+
+    > *:not(:last-child) {
+        margin-right: 10px;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 10px;
+    }
+}
+
+.#{$prefix-form-error} {
+    font-size: 14px;
+    color: red;
+    pointer-events: none;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .1s ease-in-out;
+
+    &[data-active] {
+        visibility: visible;
+        opacity: 1;
+        margin: 10px 0;
+        height: auto;
+    }
+}

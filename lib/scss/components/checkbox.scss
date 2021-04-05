@@ -1,0 +1,97 @@
+@import '../var.scss';
+
+
+$prefix-checkbox: 'checkbox' !default;
+$prefix-checkbox-wrapper: 'checkbox-wrapper' !default;
+$prefix-checkbox-label: 'checkbox-label' !default;
+$prefix-checkbox-icon: 'checkbox-icon' !default;
+$prefix-checkbox-input: 'checkbox-input' !default;
+
+
+.#{prefix}-#{$prefix-checkbox} {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    position: relative;
+
+    &:not([disabled]):hover {
+        .#{prefix}-#{$prefix-checkbox-icon} {
+            border-color: $color-main-blue-blur;
+        }
+    }
+
+    > *:not(:last-child) {
+        margin-right: 6px;
+    }
+
+    .#{prefix}-#{$prefix-checkbox-input}:checked + .#{prefix}-#{$prefix-checkbox-wrapper} .#{prefix}-#{$prefix-checkbox-icon} {
+        background: $color-main-blue-blur;
+        border-color: $color-main-blue-blur;
+    }
+
+    .#{prefix}-#{$prefix-checkbox-input} + .#{prefix}-#{$prefix-checkbox-wrapper} .#{prefix}-#{$prefix-checkbox-icon},
+    .#{prefix}-#{$prefix-checkbox-input}:disabled + .#{prefix}-#{$prefix-checkbox-wrapper} .#{prefix}-#{$prefix-checkbox-label} {
+        opacity: 0.4;
+    }
+
+    .#{prefix}-#{$prefix-checkbox-input}:checked + .#{prefix}-#{$prefix-checkbox-wrapper} .#{prefix}-#{$prefix-checkbox-icon}::after {
+        opacity: 1;
+        margin-top: 0px;
+    }
+}
+
+.#{prefix}-#{$prefix-checkbox-input} {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.#{prefix}-#{$prefix-checkbox-icon} {
+    display: inline-block;
+    border: 1px solid $color-main-gray-light;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    vertical-align: middle;
+    position: relative;
+    flex-shrink: 0;
+    background: #fff;
+    transition: all .1s ease-in-out;
+
+    &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        right: 5px;
+        top: 1px;
+        width: 4px;
+        height: 8px;
+        border: solid #fff;
+        background: transparent;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+        opacity: 0;
+        margin-top: -3px;
+        transition: all .1s ease-in-out;
+    }
+}
+
+.#{prefix}-#{$prefix-checkbox-wrapper} {
+    display: flex;
+    user-select: none;
+
+    > *:not(:last-child) {
+        margin-right: 6px;
+    }
+}
+
+.#{prefix}-#{$prefix-checkbox-label} {
+    // margin-left: 6px;
+    display: inline-block;
+}

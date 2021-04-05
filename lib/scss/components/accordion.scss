@@ -1,19 +1,26 @@
 @import '../var.scss';
 
-.#{$prefix}-accordion {
+
+$prefix-accordion: 'accordion' !default;
+$prefix-accordion-panel: 'accordion-panel' !default;
+$prefix-accordion-content: 'accordion-content' !default;
+$prefix-accordion-tab: 'accordion-tab' !default;
+
+
+.#{$prefix}-#{$prefix-accordion} {
     position: relative;
 }
 
-.#{$prefix}-accordion-panel {
+.#{$prefix}-#{$prefix-accordion-panel} {
     position: relative;
 }
 
-.#{$prefix}-accordion-tab {
+.#{$prefix}-#{$prefix-accordion-tab} {
     position: relative;
     padding: 5px;
 }
 
-.#{$prefix}-accordion-content {
+.#{$prefix}-#{$prefix-accordion-content} {
     height: 0;
     // visibility: hidden;
     overflow: hidden;

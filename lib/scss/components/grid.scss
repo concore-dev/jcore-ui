@@ -46,6 +46,19 @@ $prefix-grid-item: '#{$prefix}-grid-item';
             content: "";
         }
     }
+
+    @for $i from 1 through $spacings {
+        &[data-spacing='#{$i}'] {
+            margin-left: -#{$i * 7.5}px;
+            margin-right: -#{$i * 7.5}px;
+            width: calc(100% + #{$i * 7.5 * 2}px);
+
+            > .#{$prefix-grid-item} {
+                padding-right: #{$i * 7.5}px;
+                padding-left: #{$i * 7.5}px;
+            }
+        }
+    }
 }
 
 .#{$prefix-grid-item} {
@@ -84,49 +97,6 @@ $prefix-grid-item: '#{$prefix}-grid-item';
         }
     }
 }
-
-// @for $i from 1 through $spacings {
-//     [am-grid="container"][spacing='#{$i}'] {
-//         // margin: -#{$i * 15}px;
-//         // width: calc(100% + #{$i * 15 * 2}px);
-//         margin-left: -#{$i * 7.5}px;
-//         margin-right: -#{$i * 7.5}px;
-//         width: calc(100% + #{$i * 7.5 * 2}px);
-
-//         >[am-grid="item"] {
-//             padding-right: #{$i * 7.5}px;
-//             padding-left: #{$i * 7.5}px;
-//         }
-//     }
-// }
-
-// [am-grid="container"][spacing='10'] {
-//     // margin: -#{2 * 5}px;
-//     // width: calc(100% + #{2 * 5 * 2}px);
-//     margin-left: -#{1 * 10}px;
-//     margin-right: -#{1 * 10}px;
-//     width: calc(100% + #{20}px);
-//     >[am-grid="item"] {
-//         padding-left: #{2 * 5}px;
-//         padding-right: #{2 * 5}px;
-//     }
-// }
-
-// @media (max-width: $lg) {
-//     @for $i from 1 through $columns {
-//         [am-grid~="item"][lg~='#{$i}'] {
-//             max-width: percentage($i / $columns);
-//         }
-//     }
-// }
-
-// @media (max-width: $md) {
-//     @for $i from 1 through $columns {
-//         [am-grid~="item"][md~='#{$i}'] {
-//             max-width: percentage($i / $columns);
-//         }
-//     }
-// }
 
 // @media (max-width: $sm) {
 //     @for $i from 1 through $columns {

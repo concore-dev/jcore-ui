@@ -1,0 +1,17 @@
+@import '../variables.scss';
+
+[am-form] {
+
+}
+
+[am-form-field] {
+    display: flex;
+
+    > *:not(:last-child) {
+        margin-right: 10px;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 10px;
+    }
+}

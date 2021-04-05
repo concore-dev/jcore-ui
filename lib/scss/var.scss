@@ -1,0 +1,78 @@
+// Core
+$prefix: 'j' !default;
+
+
+// Colors
+$black-text: #333333 !default;
+$black: #18181D !default;
+$white: #ffffff !default;
+
+$red:#D70000 !default;
+$red-dark: #8E1308 !default;
+$red-light: #D13B2D !default;
+
+$blue: #2E71F0 !default;
+$blue-dark: #0D3472 !default;
+$blue-light: #DEEBFF !default;
+
+$gray:#F0F0F0 !default;
+$gray-dark: #BDBDBD !default;
+$gray-light: #F2F2F2 !default;
+
+$gradient-red: linear-gradient(90deg, #891C18 0%, #D4352F 100%) !default;
+
+$colors:(
+    'black': $black,
+    'white': $white,
+    'red': $red,
+    'red-dark': $red-dark,
+    'red-light': $red-light,
+    'blue': $blue,
+    'blue-dark': $blue-dark,
+    'blue-light': $blue-light,
+    'gray': $gray,
+    'gray-dark': $gray-dark,
+    'gray-light': $gray-light) !default;
+
+
+// Transition
+$transition: all 0.1s ease-in-out !default;
+$transition_long: all 0.2s ease-in-out !default;
+$transition_longest: all 0.3s ease-in-out !default;
+$transition_big: all 0.5s ease-in-out !default;
+
+
+// Container
+$container-width: 1440px !default;
+$container-width-lg: 1024px !default;
+$container-width-md: 768px !default;
+$container-width-sm: 100% !default;
+
+
+// Grid
+$columns: 12 !default;
+$offset: 104px !default;
+
+$offset-lg: 32px !default;
+$offset-md: 24px !default;
+$offset-sm: 10px !default;
+
+$lg: 1440px !default;
+$md: 1024px !default;
+$sm: 768px !default;
+$xs: 480px !default;
+
+$breakpoints: (
+    'lg': $lg,
+    'md': $md,
+    'sm': $sm,
+    'xs': $xs
+) !default;
+
+
+// Z-INDEX
+$index-overlay: 999  !default;
+$index-tooltip: 99  !default;
+$index-dropdown: 99  !default;
+$index-select: 99  !default;
+$index-modal: 99  !default;

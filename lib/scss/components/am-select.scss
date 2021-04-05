@@ -1,0 +1,121 @@
+@import '../variables.scss';
+
+[am-select] {
+    position: relative;
+    // user-select: none;
+
+    &[active] {
+        [am-select-wrapper] {
+            // visibility: visible;
+            // pointer-events: auto;
+            display: block;
+        }
+    }
+
+    &[disabled] {
+        [am-select-value] {
+            border: 1px solid $color-main-gray-light;
+            background: #f0f0f0;
+            cursor: not-allowed;
+
+            &:hover {
+                border: 1px solid $color-main-gray-light;
+            }
+        }
+    }
+}
+
+[am-select-value] {
+    border: 1px solid $color-main-gray-light;
+    border-radius: 3px;
+    display: flex;
+    width: 100%;
+    outline: none;
+    align-items: center;
+    min-height: 40px;
+    line-height: 1;
+    padding: 0 25px 0 10px;
+    font-size: 14px;
+    resize: none;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    background: #fff;
+    transition: all .2s ease-in-out;
+
+    &[disabled] {
+        border: 1px solid $color-main-gray-light;
+        background: #f0f0f0;
+        cursor: not-allowed;
+    }
+
+    &:not([disabled]):hover {
+        border: 1px solid $color-main-gray;
+    }
+
+    &::after {
+        content: '';
+        border: solid #4F4F4F;
+        border-width: 0 1px 1px 0;
+        display: inline-block;
+        padding: 2.5px;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: rotate(45deg) translate(-50%, -50%);
+    }
+}
+
+[am-select-wrapper] {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    // visibility: hidden;
+    // pointer-events: none;
+    z-index: $zIndex-select;
+    display: none;
+}
+
+[am-select-options] {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    font-size: 14px;
+    background: #fff;
+    top: 5px;
+    border: 1px solid #E6E4E1;
+    border-radius: 3px;
+    font-size: 14px;
+    overflow: auto;
+    max-height: 183px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+
+    &[reverse] {
+        top: auto;
+        bottom: 42px;
+    }
+}
+
+[am-select-option] {
+    padding-left: 10px;
+    min-height: 35px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background .1s ease-in-out;
+
+    &:hover {
+        background: #FAFAFA;
+    }
+
+    &[selected] {
+        background: #DEEBFF;
+    }
+
+    &:not([selected]):focus {
+        background: #FAFAFA;
+    }
+}

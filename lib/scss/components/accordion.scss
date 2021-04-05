@@ -1,0 +1,26 @@
+@import '../var.scss';
+
+.#{$prefix}-accordion {
+    position: relative;
+}
+
+.#{$prefix}-accordion-panel {
+    position: relative;
+}
+
+.#{$prefix}-accordion-tab {
+    position: relative;
+    padding: 5px;
+}
+
+.#{$prefix}-accordion-content {
+    height: 0;
+    // visibility: hidden;
+    overflow: hidden;
+    position: relative;
+
+    &[data-active] {
+        height: auto;
+        // visibility: visible;
+    }
+}

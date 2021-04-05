@@ -1,0 +1,97 @@
+@import '../variables.scss';
+
+[am-toggle] {
+    display: flex;
+    position: relative;
+    user-select: none;
+
+    > *:not(:last-child) {
+        margin-right: 6px;
+    }
+
+    [am-toggle-input],
+    input {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        opacity: 0;
+        cursor: pointer;
+
+        &:checked + [am-toggle-wrapper] {
+            background: $color-main-blue-blur;
+            border-color: $color-main-blue-blur;
+
+            [am-toggle-track] {
+                left: calc(100% - 19px);
+            }
+        }
+
+        &:disabled + [am-toggle-wrapper] {
+            opacity: 0.4;
+        }
+
+        &:disabled + [am-toggle-wrapper] + [am-toggle-label] {
+            opacity: 0.4;
+        }
+    }
+
+    &[disabled] {
+        [am-toggle-wrapper] {
+            opacity: 0.4;
+        }
+
+        [am-toggle-label] {
+            opacity: 0.4;
+        }
+    }
+
+    &:hover {
+        [am-toggle-input]:not([disabled])[checked],
+        input:not([disabled]):checked {
+            + [am-toggle-wrapper] {
+                background: #323C64;
+            }
+        }
+
+        [am-toggle-input]:not([disabled]),
+        input:not([disabled]) {
+            + [am-toggle-wrapper] {
+                background: #FAFAFA;
+            }
+        }
+    }
+
+
+    [am-toggle-wrapper] {
+        position: relative;
+        width: 40px;
+        height: 22px;
+        border-radius: 12px;
+        background: #FFFFFF;
+        transition: all 0.2s ease-in-out;
+        flex-shrink: 0;
+        border: 1px solid rgba(163,162,161,0.5);
+    }
+
+    [am-toggle-track] {
+        position: absolute;
+        top: 50%;
+        left: 3px;
+        transform: translateY(-50%);
+        width: 16px;
+        height: 16px;
+        background: #FFFFFF;
+        border: 1px solid rgba(163,162,161,0.3);
+        box-sizing: border-box;
+        border-radius: 100%;
+        transition: all 0.2s ease-in-out;
+    }
+
+    [am-checkbox-label] {
+        display: inline-block;
+    }
+}

@@ -1,0 +1,33 @@
+@mixin button-color($color: false, $background: false, $border-color: false) {
+    @if $color { color: $color; }
+    @if $background { background: $background; }
+    @if $border-color { border-color: $border-color; }
+}
+
+@mixin button-color-content(
+    $text-color, $text-color-darked, $text-color-dark,
+    $background-color, $background-color-darked, $background-color-dark,
+    $border-color, $border-color-darked, $border-color-dark) {
+
+    @include button-color($text-color, $background-color, $border-color);
+
+    &:hover,
+    &[data-hover] {
+        @include button-color($text-color-darked, $background-color-darked, $border-color-darked);
+    }
+
+    &:active,
+    &[data-active] {
+        @include button-color($text-color-dark, $background-color-dark, $border-color-dark);
+    }
+
+    &[disabled],
+    &[disable] {
+        @include button-color($text-color-dark, $background-color-dark, $border-color-dark);
+
+        &:hover,
+        &[data-hover] {
+            @include button-color($text-color-dark, $background-color-dark, $border-color-dark);
+        }
+    }
+}

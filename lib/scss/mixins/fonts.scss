@@ -1,0 +1,18 @@
+// EXAMPLE
+// @include font-face('Roboto', '/assets/fonts/Roboto/roboto-400', 400, normal);
+
+
+@mixin font-face($font-family, $url, $weight: 400, $style: normal) {
+  @font-face {
+    font-family: '#{$font-family}';
+    // src: url('#{$url}.eot');
+    src:
+    // url('#{$url}.eot?#iefix') format('embedded-opentype'),
+    url('#{$url}.woff2') format('woff2'),
+    url('#{$url}.woff') format('woff'),
+    url('#{$url}.ttf') format('truetype');
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+  }
+}

@@ -1,0 +1,38 @@
+@import '../variables.scss';
+
+[am-progress] {
+    position: relative;
+    height: 3px;
+    border-radius: 5px;
+    background: #F3F1F0;
+}
+
+[am-progress-percent] {
+    color: #ADADAD;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: normal;
+    position: absolute;
+    right: 0;
+    bottom: 5px;
+}
+
+[am-progress-bar] {
+    position: absolute;
+    width: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    background: red;
+    transition: all .5s ease;
+}
+
+[am-progress-ring] {
+    position: relative;
+
+    circle {
+        transition: stroke-dashoffset .3s;
+        transform: rotate(-90deg);
+        transform-origin: 50% 50%;
+    }
+}

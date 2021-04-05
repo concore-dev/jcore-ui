@@ -1,0 +1,53 @@
+@import '../variables.scss';
+
+[am-collapse] {
+    position: relative;
+
+    [am-collapse-wrapper] {
+        overflow: hidden;
+        position: relative;
+        transition: all .3s ease;
+        // max-height: 0;
+        // padding-right: 13px;
+
+        &[active] {
+            &::after {
+                // content: '...';
+                position: absolute;
+                bottom: -2px;
+                right: 0;
+            }
+        }
+    }
+
+    [am-collapse-button] {
+        cursor: pointer;
+        color: $color-main;
+        display: none;
+
+        // &::after {
+        //     content: '';
+        //     display: inline-block;
+        //     margin-left: 5px;
+        //     transform: none;
+        //     transition: transform .3s ease-in-out;
+        // }
+
+        &[active] {
+            // display: block;
+            // margin-top: 3px;
+        }
+
+        &[init] {
+            display: block;
+        }
+    }
+
+    &[active] {
+        [am-collapse-button] {
+            &::after {
+                transform: rotateX(180deg);
+            }
+        }
+    }
+}

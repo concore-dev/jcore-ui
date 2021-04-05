@@ -20,7 +20,7 @@ module.exports = (env, argv) => {
     const config = {
         entry: {
             app: [
-                `${paths.src}/index.ts`,
+                `${paths.src}/app/index.ts`,
             ],
             lib: [
                 `${paths.root}/index.js`,

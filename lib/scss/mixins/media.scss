@@ -1,0 +1,21 @@
+@mixin media-max($point) {
+    @each $name,
+    $value in $breakpoints {
+        @if $point == $name {
+            @media (max-width: $value) {
+                @content
+            }
+        }
+    }
+}
+
+@mixin media-min($point) {
+    @each $name,
+    $value in $breakpoints {
+        @if $point == $name {
+            @media (min-width: $value + 1px) {
+                @content
+            }
+        }
+    }
+}

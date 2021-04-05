@@ -1,0 +1,31 @@
+@import '../variables.scss';
+
+[am-tabs] {
+
+}
+
+[am-tab-list] {
+    display: flex;    
+}
+
+[am-tab] {
+    padding: 5px;
+}
+
+[am-tab-wrapper] {
+    
+}
+
+[am-tab-content] {
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    position: relative;    
+
+    &[active] {
+        height: initial;
+        overflow: initial;
+        visibility: initial;
+        padding: 5px;
+    }
+}

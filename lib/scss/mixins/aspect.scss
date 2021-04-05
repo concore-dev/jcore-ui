@@ -1,0 +1,22 @@
+// EXAMPLE
+// @include aspect-ratio('parent', 492, 108);
+//  img {
+//    @include aspect-ratio('child');
+//  }
+
+
+@mixin aspect-ratio($type: 'parent', $width: 1, $height: 1) {
+    @if $type=='parent' {
+        position: relative !important;
+        width: 100%;
+        padding-top: calc(#{$height} / #{$width} * 100%);
+    }
+
+    @else if $type=='child' {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}

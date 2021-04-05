@@ -1,0 +1,144 @@
+@import '../variables.scss';
+
+[am-grid='container'] {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    width: 100%;
+    //Направление главной оси
+    &[direction='row'] {flex-direction: row}
+    &[direction='row-reverse'] {flex-direction: row-reverse}
+    &[direction='column'] {flex-direction: column}
+    &[direction='column-reverse'] {flex-direction: column-reverse}
+    //Выравнивание по главной оси
+    &[justify='start'] {justify-content: flex-start}
+    &[justify='end'] {justify-content: flex-end}
+    &[justify='center'] {justify-content: center}
+    &[justify='space-between'] {justify-content: space-between}
+    &[justify='space-around'] {justify-content: space-around}
+    //Выравнивание по поперечной оси
+    &[align-items='start'] {align-items: flex-start}
+    &[align-items='end'] {align-items: flex-end}
+    &[align-items='center'] {align-items: center}
+    &[align-items='baseline'] {align-items: baseline}
+    &[align-items='stretch'] {align-items: stretch}
+    //Выравнивание строк
+    &[align-content='start'] {align-content: flex-start}
+    &[align-content='end'] {align-content: flex-end}
+    &[align-content='center'] {align-content: center}
+    &[align-content='space-between'] {align-content: space-between}
+    &[align-content='space-around'] {align-content: space-around}
+    &[align-content='stretch'] {align-content: stretch}
+
+    &[width="auto"] {
+        >[am-grid="item"] {
+            flex-basis: auto;
+            width: auto;
+        }
+
+        &::after {
+            flex: auto;
+            content: "";
+        }
+    }
+}
+
+[am-grid='item'] {
+    display: block;
+    box-sizing: border-box;
+    //flex-basis: 100%;
+    width: 100%;
+    max-width: 100%;
+    //Выравнивание строк (self)
+    &[align-self='start'] {align-self: flex-start}
+    &[align-self='end'] {align-self: flex-end}
+    &[align-self='center'] {align-self: center}
+    &[align-self='baseline'] {align-self: baseline}
+    &[align-self='stretch'] {align-self: stretch}
+
+    @for $i from 1 through 4 {
+        &[spacing='#{$i}'] {
+            padding-top: #{$i * 7.5}px;
+            padding-bottom: #{$i * 7.5}px;
+        }
+    }
+}
+
+@for $i from 1 through $columns {
+    [am-grid='item'][elg='#{$i}'] {
+        max-width: percentage($i / $columns);
+    }
+}
+
+@for $i from 1 through 4 {
+    [am-grid="container"][spacing='#{$i}'] {
+        // margin: -#{$i * 15}px;
+        // width: calc(100% + #{$i * 15 * 2}px);
+        margin-left: -#{$i * 7.5}px;
+        margin-right: -#{$i * 7.5}px;
+        width: calc(100% + #{$i * 7.5 * 2}px);
+
+        >[am-grid="item"] {
+            padding-right: #{$i * 7.5}px;
+            padding-left: #{$i * 7.5}px;
+        }
+    }
+}
+
+[am-grid="container"][spacing='10'] {
+    // margin: -#{2 * 5}px;
+    // width: calc(100% + #{2 * 5 * 2}px);
+    margin-left: -#{1 * 10}px;
+    margin-right: -#{1 * 10}px;
+    width: calc(100% + #{20}px);
+    >[am-grid="item"] {
+        padding-left: #{2 * 5}px;
+        padding-right: #{2 * 5}px;
+    }
+}
+
+@media (max-width: $lg) {
+    @for $i from 1 through $columns {
+        [am-grid~="item"][lg~='#{$i}'] {
+            max-width: percentage($i / $columns);
+        }
+    }
+}
+
+@media (max-width: $md) {
+    @for $i from 1 through $columns {
+        [am-grid~="item"][md~='#{$i}'] {
+            max-width: percentage($i / $columns);
+        }
+    }
+}
+
+@media (max-width: $sm) {
+    @for $i from 1 through $columns {
+        [am-grid~="item"][sm~='#{$i}'] {
+            max-width: percentage($i / $columns);
+        }
+    }
+    @for $i from 1 through 4 {
+        [am-grid="container"][spacing='#{$i}'] {
+            // margin: -#{$i * 7}px;
+            // width: calc(100% + #{$i * 7 * 2}px);
+            margin-left: -#{10}px;
+            margin-right: -#{10}px;
+            width: calc(100% + #{20}px);
+            >[am-grid="item"] {
+                padding-right: #{10}px;
+                padding-left: #{10}px;
+            }
+        }
+    }
+
+    [am-grid='item'] {
+        @for $i from 1 through 4 {
+            &[spacing='#{$i}'] {
+                padding-top: #{10}px;
+                padding-bottom: #{10}px;
+            }
+        }
+    }
+}

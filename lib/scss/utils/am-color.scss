@@ -1,0 +1,12 @@
+@each $name, $color in $colors {
+    [am-color-bg="#{$name}"] {
+        background: $color;
+    }
+    [am-color="#{$name}"] {
+        color: $color;
+    }
+
+    [am-color-border="#{$name}"] {
+        border-color: $color;
+    }
+}

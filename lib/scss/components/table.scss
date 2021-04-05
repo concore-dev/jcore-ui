@@ -1,6 +1,11 @@
-@import '../variables.scss';
+@import '../var.scss';
 
-[am-table-responsive] {
+
+$prefix-table: '#{prefix}-table';
+$prefix-table-responsive: '#{prefix}-table-responsive';
+
+
+.#{$prefix-table-responsive} {
     display: block;
     width: 100%;
     overflow-x: auto;
@@ -8,7 +13,7 @@
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
-[am-table] {
+.#{$prefix-table} {
     width: 100%;
     max-width: 100%;
     border-collapse: collapse;
@@ -32,13 +37,13 @@
         vertical-align: top;
     }
 
-    &[border] {
+    &[data-border] {
         th, td {
             border: 1px solid $color-gray;
         }
     }
 
-    &[border-bottom] {
+    &[data-border-bottom] {
         th, td {
             border-top: 0;
             border-left: 0;
@@ -50,20 +55,20 @@
             border-bottom: 3px solid $color-gray;
         }
     }
-}
 
-[am-table='dark'] {
-    th {
-        color: #fff;
-        background-color: $color-black-dark;
-        border-color: $color-black;
+    &[data-dark] {
+        th {
+            color: #fff;
+            background-color: $color-black-dark;
+            border-color: $color-black;
+        }
     }
-}
 
-[am-table='light'] {
-    th {
-        color: $color-black-dark;
-        background-color: $color-gray-dark;
-        border-color: $color-gray-dark;
+    &[data-light] {
+        th {
+            color: $color-black-dark;
+            background-color: $color-gray-dark;
+            border-color: $color-gray-dark;
+        }
     }
 }

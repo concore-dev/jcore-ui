@@ -1,6 +1,15 @@
-@import '../variables.scss';
+@import '../var.scss';
 
-[am-toggle] {
+
+$prefix-toggle: '#{prefix}-toggle' !default;
+$prefix-toggle-input: '#{prefix}-toggle-input' !default;
+$prefix-toggle-wrapper: '#{prefix}-toggle-wrapper' !default;
+$prefix-toggle-label: '#{prefix}-toggle-label' !default;
+$prefix-toggle-input: '#{prefix}-toggle-input' !default;
+$prefix-toggle-track: '#{prefix}-toggle-track' !default;
+
+
+.#{$prefix-toggle} {
     display: flex;
     position: relative;
     user-select: none;
@@ -9,8 +18,7 @@
         margin-right: 6px;
     }
 
-    [am-toggle-input],
-    input {
+    .#{$prefix-toggle-input} {
         display: block;
         position: absolute;
         z-index: 1;
@@ -21,52 +29,50 @@
         opacity: 0;
         cursor: pointer;
 
-        &:checked + [am-toggle-wrapper] {
+        &:checked + .#{$prefix-toggle-wrapper} {
             background: $color-main-blue-blur;
             border-color: $color-main-blue-blur;
 
-            [am-toggle-track] {
+            .#{$prefix-toggle-track} {
                 left: calc(100% - 19px);
             }
         }
 
-        &:disabled + [am-toggle-wrapper] {
+        &:disabled + .#{$prefix-toggle-wrapper} {
             opacity: 0.4;
         }
 
-        &:disabled + [am-toggle-wrapper] + [am-toggle-label] {
+        &:disabled + .#{$prefix-toggle-wrapper} + .#{$prefix-toggle-label} {
             opacity: 0.4;
         }
     }
 
     &[disabled] {
-        [am-toggle-wrapper] {
+        .#{$prefix-toggle-wrapper} {
             opacity: 0.4;
         }
 
-        [am-toggle-label] {
+        .#{$prefix-toggle-label} {
             opacity: 0.4;
         }
     }
 
     &:hover {
-        [am-toggle-input]:not([disabled])[checked],
-        input:not([disabled]):checked {
-            + [am-toggle-wrapper] {
+        .#{$prefix-toggle-input}:not([disabled])[checked] {
+            + .#{$prefix-toggle-wrapper} {
                 background: #323C64;
             }
         }
 
-        [am-toggle-input]:not([disabled]),
-        input:not([disabled]) {
-            + [am-toggle-wrapper] {
+        .#{$prefix-toggle-input}:not([disabled]) {
+            + .#{$prefix-toggle-wrapper} {
                 background: #FAFAFA;
             }
         }
     }
 
 
-    [am-toggle-wrapper] {
+    .#{$prefix-toggle-wrapper} {
         position: relative;
         width: 40px;
         height: 22px;
@@ -77,7 +83,7 @@
         border: 1px solid rgba(163,162,161,0.5);
     }
 
-    [am-toggle-track] {
+    .#{$prefix-toggle-track} {
         position: absolute;
         top: 50%;
         left: 3px;
@@ -89,9 +95,5 @@
         box-sizing: border-box;
         border-radius: 100%;
         transition: all 0.2s ease-in-out;
-    }
-
-    [am-checkbox-label] {
-        display: inline-block;
     }
 }

@@ -1,0 +1,39 @@
+@import '../var.scss';
+
+
+$prefix-tabs: '#{prefix}-tabs' !default;
+$prefix-tabs-list: '#{prefix}-tabs-list' !default;
+$prefix-tabs-wrapper: '#{prefix}-tab-wrapper' !default;
+$prefix-tabs-content: '#{prefix}-tab-content' !default;
+$prefix-tabs-tab: '#{prefix}-tab' !default;
+
+
+.#{$prefix-tabs} {
+
+}
+
+.#{$prefix-tabs-list} {
+    display: flex;
+}
+
+.#{$prefix-tabs-tab} {
+    padding: 5px;
+}
+
+.#{$prefix-tabs-wrapper} {
+
+}
+
+.#{$prefix-tabs-content} {
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    position: relative;
+
+    &[data-active] {
+        height: initial;
+        overflow: initial;
+        visibility: initial;
+        padding: 5px;
+    }
+}

@@ -1,10 +1,10 @@
-@import '../variables.scss';
+@import '../var.scss';
 
-[am-wrapper] {
-    box-sizing: border-box;
-}
 
-[am-container] {
+$prefix-container: '#{prefix}-container' !default;
+
+
+.#{$prefix-container} {
     max-width: $container-width;
     width: 100%;
     box-sizing: border-box;
@@ -14,26 +14,28 @@
     transition: all .3s ease-in-out;
 }
 
-@media (max-width: $lg) {
-    [am-container] {
-        max-width: $container-width-lg;
-        padding-left:$offset-lg;
-        padding-right: $offset-lg;
-    }
-}
 
-@media (max-width: $md) {
-    [am-container] {
-        max-width: $container-width-md;
-        padding-left:$offset-md;
-        padding-right: $offset-md;
-    }
-}
 
-@media (max-width: $sm) {
-    [am-container] {
-        max-width: $container-width-sm;
-        padding-left:$offset-sm;
-        padding-right: $offset-sm;
-    }
-}
+// @media (max-width: $lg) {
+//     [am-container] {
+//         max-width: $container-width-lg;
+//         padding-left:$offset-lg;
+//         padding-right: $offset-lg;
+//     }
+// }
+
+// @media (max-width: $md) {
+//     [am-container] {
+//         max-width: $container-width-md;
+//         padding-left:$offset-md;
+//         padding-right: $offset-md;
+//     }
+// }
+
+// @media (max-width: $sm) {
+//     [am-container] {
+//         max-width: $container-width-sm;
+//         padding-left:$offset-sm;
+//         padding-right: $offset-sm;
+//     }
+// }

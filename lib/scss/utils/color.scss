@@ -1,0 +1,18 @@
+@import '../var.scss';
+
+
+$prefix-color: '#{prefix}-color' !default;
+
+
+@each $name, $color in $colors {
+    .#{$prefix-color}-bg-#{$name} {
+        background: $color;
+    }
+    .#{$prefix-color}-#{$name} {
+        color: $color;
+    }
+
+    .#{$prefix-color}-border-#{$name} {
+        border-color: $color;
+    }
+}

@@ -1,6 +1,13 @@
-@import '../variables.scss';
+@import '../var.scss';
 
-[am-modal-overlay] {
+
+$prefix-modal: '#{prefix}-modal' !default;
+$prefix-modal-overlay: '#{prefix}-modal-overlay' !default;
+$prefix-modal-content: '#{prefix}-modal-content' !default;
+$prefix-modal-close: '#{prefix}-modal-close' !default;
+
+
+.#{$prefix-modal-overlay} {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -9,8 +16,6 @@
     top: 0;
     left: 0;
     bottom: 0;
-    /* width: 100%; */
-    /* height: 100%; */
     right: 0;
     transition: all .3s ease-in-out;
     visibility: hidden;
@@ -23,27 +28,27 @@
     justify-content: center;
     align-items: center;
 
-    &[active] {
+    &[data-active] {
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
     }
 
-    &[closing] {
+    &[data-closing] {
         opacity: 0;
     }
 
-    &[mobile] {
+    &[data-mobile] {
         z-index: 0;
         background: transparent;
     }
 
-    &[mobile][active] {
+    &[data-mobile][data-active] {
         position: static;
     }
 }
 
-[am-modal] {
+.#{$prefix-modal} {
     padding: 30px;
     background: #fff;
     transition: all .3s ease-in-out;
@@ -61,26 +66,21 @@
     width: calc(100% - 36px);
     max-height: calc(100% - 36px);
 
-    &[active] {
+    &[data-active] {
         // margin-top: 0;
 
-        &:not([closing]) {
+        &:not([data-closing]) {
             opacity: 1;
         }
 
         @media (min-width: $sm + 1) {
-            &:not([closing]) {
+            &:not([data-closing]) {
                 top: calc(50% + 0px);
             }
         }
 
         @media (max-width: $sm) {
-            &[adaptive] {
-                // top: auto;
-                // bottom: 0;
-                // transform: translate(-50%, 0);
-            }
-            &:not([adaptive]):not([closing]) {
+            &:not([data-adaptive]):not([data-closing]) {
                 top: calc(50% + 0px);
             }
         }
@@ -93,22 +93,18 @@
     }
 
     @media (max-width: $sm ) {
-        &:not([adaptive]) {
+        &:not([data-adaptive]) {
             top: calc(50% + 10px);
         }
     }
 
-    &[closing] {
-        // margin-top: -10px;
-    }
-
-    [am-modal-content] {
+    .#{$prefix-modal-content} {
         overflow-y: auto;
         width: 100%;
     }
 
     @media (max-width: $sm) {
-        &[adaptive] {
+        &[data-adaptive] {
             width: 100%;
             max-width: 100%;
             border-radius: 0;
@@ -121,7 +117,7 @@
 
     &:not([mobile])[adaptive] {
         @media (max-width: $sm) {
-            [am-modal-close] {
+            .#{$prefix-modal-close} {
                 top: 5px;
                 right: 5px;
                 width: 30px;
@@ -130,7 +126,7 @@
         }
     }
 
-    &[mobile] {
+    &[data-mobile] {
         position: static;
         z-index: 0;
         animation: none;
@@ -142,12 +138,12 @@
         padding-top: 0;
     }
 
-    &[mobile] [am-modal-close] {
+    &[data-mobile] .#{$prefix-modal-close} {
         display: inline-block;
         cursor: pointer;
     }
 
-    &:not([mobile]) [am-modal-close] {
+    &:not([data-mobile]) .#{$prefix-modal-close} {
         display: block;
         width: 36px;
         height: 36px;

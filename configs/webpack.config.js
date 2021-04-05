@@ -23,7 +23,8 @@ module.exports = (env, argv) => {
                 `${paths.src}/app/index.ts`,
             ],
             lib: [
-                `${paths.root}/index.js`,
+                `${paths.root}/lib/core/index.ts`,
+                `${paths.root}/lib/scss/index.js`,
             ]
         },
         output: {
@@ -98,10 +99,10 @@ module.exports = (env, argv) => {
             //         { from: `${paths.src}/static/`, to: 'static' }
             //     ]
             // }),
-            // new MiniCssExtractPlugin({
-            //     filename: `/${paths.bundles}/css/[name].${prod ? '[contenthash:5].' : ''}css`,
-            //     chunkFilename: `/${paths.bundles}/css/[id].${prod ? '[contenthash:5].' : ''}css`
-            // })
+            new MiniCssExtractPlugin({
+                filename: `/${paths.bundles}/css/[name].${prod ? '[contenthash:5].' : ''}css`,
+                chunkFilename: `/${paths.bundles}/css/[id].${prod ? '[contenthash:5].' : ''}css`
+            })
         ]
             .concat(generateHtmlPlugin(paths.pages, {
                 minify: prod,

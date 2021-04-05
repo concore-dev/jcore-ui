@@ -47,6 +47,14 @@ $container-width: 1440px !default;
 $container-width-lg: 1024px !default;
 $container-width-md: 768px !default;
 $container-width-sm: 100% !default;
+$container-width-xs: 100% !default;
+
+$containers: (
+    'lg': $container-width-lg,
+    'md': $container-width-md,
+    'sm': $container-width-sm,
+    'xs': $container-width-xs
+) !default;
 
 
 // Grid
@@ -76,3 +84,13 @@ $index-tooltip: 99  !default;
 $index-dropdown: 99  !default;
 $index-select: 99  !default;
 $index-modal: 99  !default;
+
+
+// Mixins
+@import './mixins/aspect.scss';
+@import './mixins/button-color.scss';
+@import './mixins/fonts.scss';
+@import './mixins/gradient-hover.scss';
+@import './mixins/media.scss';
+@import './mixins/sprites.scss';
+@import './mixins/transition.scss';

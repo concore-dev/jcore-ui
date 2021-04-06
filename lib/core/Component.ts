@@ -6,14 +6,17 @@ import Tooltip from "../components/Tooltip";
 export type TComponents = Tooltip;
 export type TComponentsClass = typeof Tooltip;
 
+
 export interface IComponentSelector {
     element: string
 }
+
 
 export interface IComponent extends IObject {
     selectors?: IComponentSelector,
     $element?: HTMLElement | NodeListOf<HTMLElement> | string
 }
+
 
 export interface IComponentClass extends IComponent {
     Component: any
@@ -23,7 +26,7 @@ export interface IComponentClass extends IComponent {
 class Component {
     $element: HTMLElement;
     emitter: TEventEmitter;
-    _components: any[];
+    components: any[];
     selectors: IComponentSelector;
     name: string;
     _init: boolean = false;
@@ -39,7 +42,7 @@ class Component {
             let newProps = props;
 
             if (array.length) {
-                this._components = array.map(el => {
+                this.components = array.map(el => {
                     newProps.$element = el;
                     return new props.Component(newProps);
                 });
@@ -70,16 +73,6 @@ class Component {
         this.name = this.$element.dataset.name || '';
         this.selectors = props.selectors;
         this.emitter = props.emitter || new EventEmitter();
-    }
-
-    init() {
-        if (!this.$element || this._init) return;
-
-        this._init = true;
-    }
-
-    get components() {
-        return this._components;
     }
 
     getByName(arrayComponents: TComponents[], name: string): any {

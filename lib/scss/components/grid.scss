@@ -12,7 +12,6 @@ $grid-space-start: 2.5 !default;
     display: flex;
     flex-wrap: wrap;
     box-sizing: border-box;
-    width: 100%;
 
     &[data-dir='row'] {flex-direction: row}
     &[data-dir='row-reverse'] {flex-direction: row-reverse}
@@ -44,10 +43,10 @@ $grid-space-start: 2.5 !default;
             width: auto;
         }
 
-        &::after {
-            flex: auto;
-            content: "";
-        }
+        // &::after {
+        //     flex: auto;
+        //     content: "";
+        // }
     }
 
     @for $i from 1 through $grid-space {
@@ -67,9 +66,11 @@ $grid-space-start: 2.5 !default;
 .#{$prefix-grid-item} {
     display: block;
     box-sizing: border-box;
-    //flex-basis: 100%;
+    // flex-grow: 1;
+    // flex-basis: 0;
     width: 100%;
-    max-width: 100%;
+    // max-width: 100%;
+    flex: 1 1 0;
 
     &[data-as='start'] {align-self: flex-start}
     &[data-as='end'] {align-self: flex-end}
@@ -83,21 +84,46 @@ $grid-space-start: 2.5 !default;
             padding-bottom: #{$i * $grid-space-step + $grid-space-start}px;
         }
     }
+
+    &[data-elg="auto"] {
+        width: auto;
+        max-width: none;
+        flex: 0 0 auto;
+    }
+
+    &[data-elg="default"] {
+        flex: 1 1 0;
+    }
 }
 
 // Дефолтная сетка
 @for $i from 1 through $columns {
     .#{$prefix-grid-item}[data-elg='#{$i}'] {
+        flex-basis: percentage($i / $columns);
         max-width: percentage($i / $columns);
     }
 }
 
 // Адаптивная сетка
 @each $point, $value in $breakpoints {
+    @include j-media($point, 'max') {
+        &[data-#{$point}="auto"] {
+            // flex-basis: auto;
+            width: auto;
+            max-width: none;
+            flex: 0 0 auto;
+        }
+
+        &[data-#{$point}="default"] {
+            flex: 1 1 0;
+        }
+    }
+
     @for $i from 1 through $columns {
         @include j-media($point, 'max') {
             .#{$prefix-grid-item} {
                 &[data-#{$point}='#{$i}'] {
+                    flex-basis: percentage($i / $columns);
                     max-width: percentage($i / $columns);
                 }
 

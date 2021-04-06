@@ -1,5 +1,5 @@
 import config from "../../configs";
-import Component, { IComponent, IComponentClass, IComponentSelector } from "../core/Component";
+import Component, { IComponent, IComponentSelector } from "../core/Component";
 
 
 const selectors = {
@@ -21,8 +21,8 @@ interface ITooltip extends IComponent {
     selectors?: ITooltipSelector
 }
 
-class Tooltip extends Component {
 
+class Tooltip extends Component {
     constructor(props: ITooltip = {}) {
         super({
             ...props,
@@ -34,21 +34,28 @@ class Tooltip extends Component {
     }
 
     init() {
-        super.init()
+        if (!this.$element || this._init) return;
+        this._init = true;
 
         this.addEvents()
+
     }
 
     addEvents() {
-        this.$element.addEventListener('mouseover', this.mouseOver)
-        this.$element.addEventListener('mouseout', this.mouseOut)
+        this.$element.addEventListener('mouseover', e => this.mouseOverHandler())
+        this.$element.addEventListener('mouseout', e => this.mouseOutHandler())
+        this.$element.addEventListener('click', e => this.clickHandler())
     }
 
-    mouseOver() {
+    mouseOverHandler() {
         this.$element.toggleAttribute('data-active')
     }
 
-    mouseOut() {
+    mouseOutHandler() {
+        this.$element.removeAttribute('data-active')
+    }
+
+    clickHandler() {
         this.$element.toggleAttribute('data-active')
     }
 }

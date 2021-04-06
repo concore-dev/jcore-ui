@@ -1,9 +1,7 @@
 import Tooltip from "../../lib/components/Tooltip";
 
 
-const component = new Tooltip({
-    $element: '.j-tooltip'
-});
+const component = new Tooltip();
 
 
 console.log(component);

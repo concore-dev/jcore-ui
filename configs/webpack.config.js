@@ -37,7 +37,7 @@ module.exports = (env, argv) => {
             paths: paths
         },
         resolve: {
-            extensions: ['.js', 'jsx', 'ts', 'tsx'],
+            extensions: ['.js', '.jsx', '.ts', '.tsx'],
             alias: {
                 '@ui': path.resolve(__dirname, 'ui')
             }

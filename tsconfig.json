@@ -27,7 +27,8 @@
             "typings/**/*"
         ],
         "noImplicitThis": false,
-        "baseUrl": "."
+        "rootDir": "."
+        // "baseUrl": "."
     },
     "exclude": [
         "node_modules",
@@ -38,6 +39,7 @@
         "configs"
     ],
     "include": [
+        // "**/*.ts",
         "./typings/**/*.ts",
         "./lib/**/*.ts",
         "./src/**/*.ts",

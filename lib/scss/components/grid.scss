@@ -1,8 +1,11 @@
 @import '../var.scss';
 
 
-$prefix-grid: '#{$prefix}-grid';
-$prefix-grid-item: '#{$prefix}-grid-item';
+$prefix-grid: '#{$prefix}-grid' !default;
+$prefix-grid-item: '#{$prefix}-grid-item' !default;
+$grid-space: 5 !default;
+$grid-space-step: 2.5 !default;
+$grid-space-start: 2.5 !default;
 
 
 .#{$prefix-grid} {
@@ -10,30 +13,30 @@ $prefix-grid-item: '#{$prefix}-grid-item';
     flex-wrap: wrap;
     box-sizing: border-box;
     width: 100%;
-    //Направление главной оси
-    &[data-direction='row'] {flex-direction: row}
-    &[data-direction='row-reverse'] {flex-direction: row-reverse}
-    &[data-direction='column'] {flex-direction: column}
-    &[data-direction='column-reverse'] {flex-direction: column-reverse}
-    //Выравнивание по главной оси
-    &[data-justify='start'] {justify-content: flex-start}
-    &[data-justify='end'] {justify-content: flex-end}
-    &[data-justify='center'] {justify-content: center}
-    &[data-justify='space-between'] {justify-content: space-between}
-    &[data-justify='space-around'] {justify-content: space-around}
-    //Выравнивание по поперечной оси
-    &[data-align-items='start'] {align-items: flex-start}
-    &[data-align-items='end'] {align-items: flex-end}
-    &[data-align-items='center'] {align-items: center}
-    &[data-align-items='baseline'] {align-items: baseline}
-    &[data-align-items='stretch'] {align-items: stretch}
-    //Выравнивание строк
-    &[data-align-content='start'] {align-content: flex-start}
-    &[data-align-content='end'] {align-content: flex-end}
-    &[data-align-content='center'] {align-content: center}
-    &[data-align-content='space-between'] {align-content: space-between}
-    &[data-align-content='space-around'] {align-content: space-around}
-    &[data-align-content='stretch'] {align-content: stretch}
+
+    &[data-dir='row'] {flex-direction: row}
+    &[data-dir='row-reverse'] {flex-direction: row-reverse}
+    &[data-dir='column'] {flex-direction: column}
+    &[data-dir='column-reverse'] {flex-direction: column-reverse}
+
+    &[data-jc='start'] {justify-content: flex-start}
+    &[data-jc='end'] {justify-content: flex-end}
+    &[data-jc='center'] {justify-content: center}
+    &[data-jc='space-between'] {justify-content: space-between}
+    &[data-jc='space-around'] {justify-content: space-around}
+
+    &[data-ai='start'] {align-items: flex-start}
+    &[data-ai='end'] {align-items: flex-end}
+    &[data-ai='center'] {align-items: center}
+    &[data-ai='baseline'] {align-items: baseline}
+    &[data-ai='stretch'] {align-items: stretch}
+
+    &[data-ac='start'] {align-content: flex-start}
+    &[data-ac='end'] {align-content: flex-end}
+    &[data-ac='center'] {align-content: center}
+    &[data-ac='space-between'] {align-content: space-between}
+    &[data-ac='space-around'] {align-content: space-around}
+    &[data-ac='stretch'] {align-content: stretch}
 
     &[data-width="auto"] {
         > .#{$prefix-grid-item} {
@@ -47,15 +50,15 @@ $prefix-grid-item: '#{$prefix}-grid-item';
         }
     }
 
-    @for $i from 1 through $spacings {
-        &[data-spacing='#{$i}'] {
-            margin-left: -#{$i * 7.5}px;
-            margin-right: -#{$i * 7.5}px;
-            width: calc(100% + #{$i * 7.5 * 2}px);
+    @for $i from 1 through $grid-space {
+        &[data-space='#{$i}'] {
+            margin-left: -#{$i * $grid-space-step + $grid-space-start}px;
+            margin-right: -#{$i * $grid-space-step + $grid-space-start}px;
+            width: calc(100% + #{($i * $grid-space-step + $grid-space-start) * 2}px);
 
             > .#{$prefix-grid-item} {
-                padding-right: #{$i * 7.5}px;
-                padding-left: #{$i * 7.5}px;
+                padding-right: #{$i * $grid-space-step + $grid-space-start}px;
+                padding-left: #{$i * $grid-space-step + $grid-space-start}px;
             }
         }
     }
@@ -67,63 +70,89 @@ $prefix-grid-item: '#{$prefix}-grid-item';
     //flex-basis: 100%;
     width: 100%;
     max-width: 100%;
-    //Выравнивание строк (self)
-    &[data-align-self='start'] {align-self: flex-start}
-    &[data-align-self='end'] {align-self: flex-end}
-    &[data-align-self='center'] {align-self: center}
-    &[data-align-self='baseline'] {align-self: baseline}
-    &[data-align-self='stretch'] {align-self: stretch}
 
-    @for $i from 1 through $spacings {
-        &[data-spacing='#{$i}'] {
-            padding-top: #{$i * 7.5}px;
-            padding-bottom: #{$i * 7.5}px;
+    &[data-as='start'] {align-self: flex-start}
+    &[data-as='end'] {align-self: flex-end}
+    &[data-as='center'] {align-self: center}
+    &[data-as='baseline'] {align-self: baseline}
+    &[data-as='stretch'] {align-self: stretch}
+
+    @for $i from 1 through $grid-space {
+        &[data-space='#{$i}'] {
+            padding-top: #{$i * $grid-space-step + $grid-space-start}px;
+            padding-bottom: #{$i * $grid-space-step + $grid-space-start}px;
         }
     }
 }
 
+// Дефолтная сетка
 @for $i from 1 through $columns {
     .#{$prefix-grid-item}[data-elg='#{$i}'] {
         max-width: percentage($i / $columns);
     }
 }
 
+// Адаптивная сетка
 @each $point, $value in $breakpoints {
     @for $i from 1 through $columns {
         @include j-media($point, 'max') {
-            .#{$prefix-grid-item}[data-#{$point}='#{$i}'] {
-                max-width: percentage($i / $columns);
+            .#{$prefix-grid-item} {
+                &[data-#{$point}='#{$i}'] {
+                    max-width: percentage($i / $columns);
+                }
+
+                &[data-as-#{$point}='start'] {align-self: flex-start}
+                &[data-as-#{$point}='end'] {align-self: flex-end}
+                &[data-as-#{$point}='center'] {align-self: center}
+                &[data-as-#{$point}='baseline'] {align-self: baseline}
+                &[data-as-#{$point}='stretch'] {align-self: stretch}
+
+                @for $i from 1 through $grid-space {
+                    &[data-space-#{$point}='#{$i}'] {
+                        padding-top: #{$i * $grid-space-step + $grid-space-start}px;
+                        padding-bottom: #{$i * $grid-space-step + $grid-space-start}px;
+                    }
+                }
+            }
+
+            .#{$prefix-grid} {
+                @for $i from 1 through $grid-space {
+                    &[data-space-#{$point}='#{$i}'] {
+                        margin-left: -#{$i * $grid-space-step + $grid-space-start}px;
+                        margin-right: -#{$i * $grid-space-step + $grid-space-start}px;
+                        width: calc(100% + #{($i * $grid-space-step + $grid-space-start) * 2}px);
+
+                        > .#{$prefix-grid-item} {
+                            padding-right: #{$i * $grid-space-step + $grid-space-start}px;
+                            padding-left: #{$i * $grid-space-step + $grid-space-start}px;
+                        }
+                    }
+                }
+
+                &[data-dir-#{$point}='row'] {flex-direction: row}
+                &[data-dir-#{$point}='row-reverse'] {flex-direction: row-reverse}
+                &[data-dir-#{$point}='column'] {flex-direction: column}
+                &[data-dir-#{$point}='column-reverse'] {flex-direction: column-reverse}
+
+                &[data-jc-#{$point}='start'] {justify-content: flex-start}
+                &[data-jc-#{$point}='end'] {justify-content: flex-end}
+                &[data-jc-#{$point}='center'] {justify-content: center}
+                &[data-jc-#{$point}='space-between'] {justify-content: space-between}
+                &[data-jc-#{$point}='space-around'] {justify-content: space-around}
+
+                &[data-ai-#{$point}='start'] {align-items: flex-start}
+                &[data-ai-#{$point}='end'] {align-items: flex-end}
+                &[data-ai-#{$point}='center'] {align-items: center}
+                &[data-ai-#{$point}='baseline'] {align-items: baseline}
+                &[data-ai-#{$point}='stretch'] {align-items: stretch}
+
+                &[data-ac-#{$point}='start'] {align-content: flex-start}
+                &[data-ac-#{$point}='end'] {align-content: flex-end}
+                &[data-ac-#{$point}='center'] {align-content: center}
+                &[data-ac-#{$point}='space-between'] {align-content: space-between}
+                &[data-ac-#{$point}='space-around'] {align-content: space-around}
+                &[data-ac-#{$point}='stretch'] {align-content: stretch}
             }
         }
     }
 }
-
-// @media (max-width: $sm) {
-//     @for $i from 1 through $columns {
-//         [am-grid~="item"][sm~='#{$i}'] {
-//             max-width: percentage($i / $columns);
-//         }
-//     }
-//     @for $i from 1 through 4 {
-//         [am-grid="container"][spacing='#{$i}'] {
-//             // margin: -#{$i * 7}px;
-//             // width: calc(100% + #{$i * 7 * 2}px);
-//             margin-left: -#{10}px;
-//             margin-right: -#{10}px;
-//             width: calc(100% + #{20}px);
-//             >[am-grid="item"] {
-//                 padding-right: #{10}px;
-//                 padding-left: #{10}px;
-//             }
-//         }
-//     }
-
-//     [am-grid='item'] {
-//         @for $i from 1 through 4 {
-//             &[spacing='#{$i}'] {
-//                 padding-top: #{10}px;
-//                 padding-bottom: #{10}px;
-//             }
-//         }
-//     }
-// }

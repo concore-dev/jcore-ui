@@ -2,6 +2,9 @@
 
 
 $prefix-container: '#{$prefix}-container' !default;
+$container-space: 4 !default;
+$container-space-step: 5 !default;
+$container-space-start: 10 !default;
 
 
 .#{$prefix-container} {
@@ -12,6 +15,18 @@ $prefix-container: '#{$prefix}-container' !default;
     padding-left: $offset;
     padding-right: $offset;
     transition: all .3s ease-in-out;
+
+    &[data-space] {
+        padding-left: #{$container-space-start}px;
+        padding-right: #{$container-space-start}px;
+    }
+
+    @for $i from 1 through $container-space {
+        &[data-space='#{$i}'] {
+            padding-left: #{$i * $container-space-step + $container-space-start}px;
+            padding-right: #{$i * $container-space-step + $container-space-start}px;
+        }
+    }
 }
 
 @each $point, $value in $breakpoints {
@@ -29,6 +44,13 @@ $prefix-container: '#{$prefix}-container' !default;
                 .#{$prefix-container} {
                     padding-left: $value;
                     padding-right: $value;
+
+                    @for $i from 1 through $container-space {
+                        &[data-space-#{$point_offsets}='#{$i}'] {
+                            padding-left: #{$i * $container-space-step + $container-space-start}px;
+                            padding-right: #{$i * $container-space-step + $container-space-start}px;
+                        }
+                    }
                 }
             }
         }

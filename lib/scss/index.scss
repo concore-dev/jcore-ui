@@ -1,31 +1,36 @@
+@import './var.scss';
+
+
 // Mixins
-@import './mixins/aspect.scss';
-@import './mixins/button-color.scss';
-@import './mixins/fonts.scss';
-@import './mixins/gradient-hover.scss';
+// @import './mixins/aspect.scss';
+// @import './mixins/button-color.scss';
+// @import './mixins/fonts.scss';
+// @import './mixins/gradient-hover.scss';
 @import './mixins/media.scss';
-@import './mixins/sprites.scss';
-@import './mixins/transition.scss';
+// @import './mixins/sprites.scss';
+// @import './mixins/transition.scss';
 
-@import './utils/color.scss';
-@import './utils/lazy-load.scss';
-@import './utils/visible.scss';
-@import './utils/color.scss';
 
-@import './components/accordion';
-@import './components/button';
-@import './components/checkbox';
-@import './components/collapse';
-@import './components/dropdown';
-@import './components/form';
-@import './components/input';
-@import './components/progress';
-@import './components/radio';
-@import './components/select';
-@import './components/spinner';
-@import './components/table';
-@import './components/tabs';
-@import './components/toggle';
-@import './components/tooltip';
+// @import './utils/color.scss';
+// @import './utils/lazy-load.scss';
+// @import './utils/visible.scss';
+// @import './utils/color.scss';
+
+
+// @import './components/accordion';
+// @import './components/button';
+// @import './components/checkbox';
+// @import './components/collapse';
+// @import './components/dropdown';
+// @import './components/form';
+// @import './components/input';
+// @import './components/progress';
+// @import './components/radio';
+// @import './components/select';
+// @import './components/spinner';
+// @import './components/table';
+// @import './components/tabs';
+// @import './components/toggle';
+// @import './components/tooltip';
 @import './components/container';
-@import './components/grid';
+// @import './components/grid';

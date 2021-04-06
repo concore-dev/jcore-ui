@@ -27,7 +27,7 @@
             "typings/**/*"
         ],
         "noImplicitThis": false,
-        "rootDir": "."
+        // "rootDir": "."
         // "baseUrl": "."
     },
     "exclude": [

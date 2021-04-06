@@ -1,5 +1,4 @@
-import Component from "../../lib/core/components/Component";
-import Tooltip from "../../lib/core/components/Tooltip";
+import Tooltip from "../../lib/components/Tooltip";
 
 
 const component = new Tooltip({

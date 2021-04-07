@@ -1,10 +1,14 @@
 import Tooltip from "../../lib/components/Tooltip";
+import Dropdown from '../../lib/components/Dropdown';
 
 
-const component = new Tooltip();
+
+window.Tooltip = Tooltip;
+window.Dropdown = Dropdown;
 
 
-console.log(component);
+window.Tooltips = new Tooltip();
+window.Dropdowns = new Dropdown();
 
 
 export {}

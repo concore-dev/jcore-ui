@@ -75,6 +75,15 @@ class Component {
         this.emitter = props.emitter || new EventEmitter();
     }
 
+
+    init() {
+        if (!this.$element || this._init || this.$element.hasAttribute('data-init')) return;
+
+        this.$element.setAttribute('data-init', 'true')
+
+        this._init = true;
+    }
+
     getByName(arrayComponents: TComponents[], name: string): any {
         return arrayComponents.filter(component => component.name === name)[0]
     }

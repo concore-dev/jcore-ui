@@ -34,11 +34,11 @@ class Tooltip extends Component {
     }
 
     init() {
-        if (!this.$element || this._init) return;
-        this._init = true;
+        if (!this.$element || this._init || this.$element.hasAttribute('data-init')) return;
+
+        super.init()
 
         this.addEvents()
-
     }
 
     addEvents() {

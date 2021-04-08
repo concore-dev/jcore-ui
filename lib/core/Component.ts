@@ -12,6 +12,11 @@ export interface IComponentSelector {
 }
 
 
+export interface IComponentOptions {
+    init: boolean
+}
+
+
 export interface IComponent extends IObject {
     selectors?: IComponentSelector,
     $element?: HTMLElement | NodeListOf<HTMLElement> | string
@@ -30,6 +35,7 @@ class Component {
     selectors: IComponentSelector;
     name: string;
     _init: boolean = false;
+    options: IComponentOptions;
 
     constructor(props: IComponentClass) {
         /**
@@ -69,6 +75,10 @@ class Component {
         if (!this.$element) {
             throw Error(`Не найден HTMLElement ${this.constructor.name}`)
         }
+
+        this.options = Object.assign({
+            init: true
+        }, props.options || {})
 
         this.name = this.$element.dataset.name || '';
         this.selectors = props.selectors;

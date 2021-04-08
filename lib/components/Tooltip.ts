@@ -1,5 +1,5 @@
 import config from "../../configs";
-import Component, { IComponent, IComponentSelector } from "../core/Component";
+import Component, { IComponent, IComponentOptions, IComponentSelector } from "../core/Component";
 
 
 const selectors = {
@@ -17,12 +17,20 @@ interface ITooltipSelector extends IComponentSelector {
 }
 
 
+interface ITooltipOptions extends IComponentOptions {
+
+}
+
+
 interface ITooltip extends IComponent {
-    selectors?: ITooltipSelector
+    selectors?: ITooltipSelector,
+    options?: ITooltipOptions
 }
 
 
 class Tooltip extends Component {
+    // options: ITooltipOptions;
+
     constructor(props: ITooltip = {}) {
         super({
             ...props,
@@ -30,7 +38,12 @@ class Tooltip extends Component {
             selectors: Object.assign(selectors, props.selectors || {})
         })
 
-        this.init()
+        this.options = Object.assign({}, this.options)
+
+
+        if (this.options.init) {
+            this.init()
+        }
     }
 
     init() {

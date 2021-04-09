@@ -72,7 +72,7 @@ class Accordion extends Component {
         this.options = Object.assign({
             active: this.$element.dataset.active || false,
             multiple: this.$element.dataset.multiple || false,
-            duration: this.$element.dataset.duration || false
+            duration: this.$element.dataset.duration || 300
         }, this.options)
 
         this.on = Object.assign({

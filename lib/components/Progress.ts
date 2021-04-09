@@ -54,6 +54,7 @@ class Progress extends Component {
             this.mount()
         }
     }
+
     mount() {
         if (!this.$element || this._mount || this.$element.hasAttribute('data-mount')) return;
         super.mount()

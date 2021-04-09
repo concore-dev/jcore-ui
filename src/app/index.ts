@@ -4,6 +4,7 @@ import Tab from "../../lib/components/Tab";
 import Accordion from "../../lib/components/Accordion";
 import Collapse from "../../lib/components/Collapse";
 import Progress from "../../lib/components/Progress";
+import Modal from "../../lib/components/Modal";
 
 
 window.Tooltip = Tooltip;
@@ -12,6 +13,7 @@ window.Tab = Tab;
 window.Accordion = Accordion;
 window.Collapse = Collapse;
 window.Progress = Progress;
+window.Modal = Modal;
 
 
 window.Tooltips = new Tooltip({
@@ -32,7 +34,7 @@ window.Tooltips = new Tooltip({
 });
 window.Dropdowns = new Dropdown({
     options: {
-        mount: false
+        mount: true
     }
     // on: {
     //     mount: (ctx) => {
@@ -69,7 +71,7 @@ window.Tabs = new Tab({
 window.Accordions = new Accordion({
     options: {
         mount: true,
-        multiple: false
+        multiple: true
         // active: true
     },
     // on: {
@@ -86,22 +88,40 @@ window.Accordions = new Accordion({
 })
 window.Collapses = new Collapse({
     options: {
-        mount: false,
+        mount: true,
         // active: true
     },
     on: {
-        mount: (ctx) => {
-            console.log('on mount', ctx);
-        },
-        toggle: (ctx) => {
-            console.log('on toggle', ctx);
-        },
-        unmount: (ctx) => {
-            console.log('on unmount', ctx);
-        }
+        // mount: (ctx) => {
+        //     console.log('on mount', ctx);
+        // },
+        // toggle: (ctx) => {
+        //     console.log('on toggle', ctx);
+        // },
+        // unmount: (ctx) => {
+        //     console.log('on unmount', ctx);
+        // }
     }
 })
 window.Progresses = new Progress({
+    options: {
+        mount: true,
+        // active: true
+    },
+    // on: {
+    //     mount: (ctx) => {
+    //         console.log('on mount', ctx);
+    //     },
+    //     change: (ctx) => {
+    //         console.log('on change', ctx);
+    //     },
+    //     unmount: (ctx) => {
+    //         console.log('on unmount', ctx);
+    //     }
+    // }
+})
+
+window.Modals = new Modal({
     options: {
         mount: false,
         // active: true
@@ -110,8 +130,11 @@ window.Progresses = new Progress({
         mount: (ctx) => {
             console.log('on mount', ctx);
         },
-        change: (ctx) => {
-            console.log('on change', ctx);
+        render: (ctx) => {
+            console.log('on render', ctx);
+        },
+        destroy: (ctx) => {
+            console.log('on destroy', ctx);
         },
         unmount: (ctx) => {
             console.log('on unmount', ctx);
@@ -173,18 +196,34 @@ window.Progresses = new Progress({
 // })
 // collapse.mount()
 
-const progress = window.Progresses.getByName(window.Progresses.components, 'prog-50');
+// const progress = window.Progresses.getByName(window.Progresses.components, 'prog-50');
 
-progress.emitter.on('mount', (ctx) => {
+// progress.emitter.on('mount', (ctx) => {
+//     console.log('emitter mount', ctx);
+// })
+// progress.emitter.on('change', (ctx) => {
+//     console.log('emitter toggle', ctx);
+// })
+// progress.emitter.on('unmount', (ctx) => {
+//     console.log('emitter unmount', ctx);
+// })
+// progress.mount()
+
+const modal = window.Modals.getByName(window.Modals.components, 'mod-1');
+
+modal.emitter.on('mount', (ctx: Modal) => {
     console.log('emitter mount', ctx);
 })
-progress.emitter.on('change', (ctx) => {
-    console.log('emitter toggle', ctx);
+modal.emitter.on('render', (ctx: Modal) => {
+    console.log('emitter render', ctx);
 })
-progress.emitter.on('unmount', (ctx) => {
+modal.emitter.on('destroy', (ctx: Modal) => {
+    console.log('emitter destroy', ctx);
+})
+modal.emitter.on('unmount', (ctx: Modal) => {
     console.log('emitter unmount', ctx);
 })
-progress.mount()
+modal.mount()
 
 
 export {}

@@ -71,6 +71,10 @@ class Collapse extends Component {
             resize: this.resize.bind(this)
         }
 
+        this.on = Object.assign({
+            toggle: () => {}
+        }, this.on)
+
         this.$wrapper = this.$element.querySelector(this.selectors.wrapper)
         this.$button = this.$element.querySelector(this.selectors.button)
 

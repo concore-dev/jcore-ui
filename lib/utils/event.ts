@@ -7,7 +7,7 @@ const event = {
         var t,
             el = document.createElement("fakeelement");
 
-        var transitions = {
+        var transitions: any = {
         "transition"      : "transitionend",
         "OTransition"     : "oTransitionEnd",
         "MozTransition"   : "transitionend",
@@ -15,12 +15,14 @@ const event = {
         }
 
         for (t in transitions){
-            if (el.style[t] !== undefined){
-                return transitions[t];
+            const idx: any = t;
+
+            if (el.style[idx] !== undefined){
+                return transitions[idx];
             }
         }
     },
-    
+
     /**
      * Отслеживает окончание animation css на элементе
      * element.addEventListener(animationEnd, cb)
@@ -29,7 +31,7 @@ const event = {
         var t,
             el = document.createElement("fakeelement");
 
-        var animations = {
+        var animations: any = {
         "animation"      : "animationend",
         "OAnimation"     : "oAnimationEnd",
         "MozAnimation"   : "animationend",
@@ -37,11 +39,14 @@ const event = {
         }
 
         for (t in animations){
-            if (el.style[t] !== undefined){
-                return animations[t];
+            const idx: any = t;
+
+            if (el.style[idx] !== undefined){
+                return animations[idx];
             }
         }
     }
 }
+
 
 export default event

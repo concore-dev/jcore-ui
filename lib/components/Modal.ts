@@ -1,0 +1,167 @@
+import Component, { IComponent, IComponentOn, IComponentOptions, IComponentSelector } from "../core/Component";
+import config from '../../config';
+import createTemplate from "../utils/createTemplate";
+import event from "../utils/event";
+
+
+const selectors = {
+    element: `.${config.prefix}-modal`,
+    overlay: `.${config.prefix}-modal-overlay`,
+    content: `.${config.prefix}-modal-content`,
+    close: `.${config.prefix}-modal-close`,
+    btnTarget: `data-modal-target`,
+}
+
+
+interface IModalSelector extends IComponentSelector {
+    overlay: string
+    content: string
+    close: string
+    btnTarget: string
+    // percent: string
+    // bar: string
+}
+
+interface IModalOptions extends IComponentOptions {
+    adaptive?: boolean
+    children?: HTMLElement[]
+}
+
+
+interface IModalOn extends IComponentOn {
+    // change?: (ctx?: Component) => void;
+}
+
+
+interface IModalElements {
+    // $close?: HTMLElement
+    $btnTarget?: HTMLElement
+    $container?: HTMLElement
+}
+
+
+interface IModal extends IComponent {
+    selectors?: IModalSelector
+    options?: IModalOptions
+    on?: IModalOn
+    elements?: IModalElements
+}
+
+
+interface Modal {
+    selectors: IModalSelector
+    $overlay: HTMLElement
+    $close: HTMLElement
+    $btnTarget: HTMLElement
+    $container?: HTMLElement
+    options: IModalOptions;
+    on: IModalOn
+    props: IModal
+    isRender: boolean
+}
+
+
+class Modal extends Component {
+    constructor(props: IModal = {}) {
+        super({
+            ...props,
+            Component: Modal,
+            selectors: Object.assign(selectors, props.selectors || {})
+        })
+
+        this.props = props;
+
+        if (this.options && this.options.mount) {
+            this.mount()
+        }
+    }
+    mount() {
+        if (!this.$element || this._mount || this.$element.hasAttribute('data-mount')) return;
+        super.mount()
+
+        this.options = Object.assign({
+            // percent: this.$element.dataset.percent || 0,
+            // type: this.$element.dataset.type || 'line',
+        }, this.options)
+
+        this.handlers = {
+            // change: this.change.bind(this)
+        }
+
+        this.isRender = false;
+        // this.transitionEnd = transitionE
+
+        this.$overlay = createTemplate(`<div class="${this.selectors.overlay.replace('.', '')}"></div>`)
+        this.$close = this.$element.querySelector(this.selectors.close);
+        this.$btnTarget = this.props.elements && this.props.elements.$btnTarget || document.querySelector(`[${this.selectors.btnTarget}="${this.options.name}"]`);
+        this.$container = this.props.elements && this.props.elements.$container || document.querySelector(`body`);
+
+        this.addEvents()
+
+        this.on.mount(this)
+        this.emitter.emit('mount', this)
+    }
+
+    addEvents() {
+        if (this.$btnTarget) {
+            this.$btnTarget.addEventListener('click', e => this.render())
+        }
+
+        this.$overlay.addEventListener('click', this.destroy.bind(this))
+        this.$close.addEventListener('click', this.destroy.bind(this))
+    }
+
+    unmount() {
+        super.unmount()
+
+        this.on.unmount(this)
+        this.emitter.emit('unmount', this)
+    }
+
+
+    render() {
+        document.querySelector('body').style.setProperty('overflow', 'hidden')
+
+        this.$container.appendChild(this.$overlay)
+        this.$container.appendChild(this.$element)
+
+        this.isRender = true;
+
+        this.on.render(this)
+        this.emitter.emit('render', this)
+
+        setTimeout(() => {
+            this.$overlay.setAttribute('data-active', '');
+            this.$element.setAttribute('data-active', '');
+        }, 10);
+    }
+
+    destroy() {
+        if (!this.isRender) {
+            return;
+        }
+
+        this.$overlay.addEventListener(event.transitionEnd(), () => {
+            this.$overlay.removeAttribute('data-closing');
+            this.$element.removeAttribute('data-closing');
+
+            this.$overlay.removeAttribute('data-active');
+            this.$element.removeAttribute('data-active');
+
+            this.$overlay.remove();
+            this.$element.remove();
+        }, {once: true});
+
+        this.$overlay.setAttribute('data-closing', '');
+        this.$element.setAttribute('data-closing', '');
+        this.isRender = false;
+
+        this.on.destroy(this)
+        this.emitter.emit('destroy', this)
+
+        document.querySelector('body').style.removeProperty('overflow')
+    }
+}
+
+
+export default Modal

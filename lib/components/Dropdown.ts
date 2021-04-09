@@ -68,6 +68,7 @@ class Dropdown extends Component {
 
         if (this.$element.hasAttribute('data-active')) {
             this.on.render(this)
+            this.emitter.emit('render', this)
         } else {
             this.on.destroy(this)
         }

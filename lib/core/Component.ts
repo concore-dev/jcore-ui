@@ -1,9 +1,10 @@
 import { IObject, TFunction } from "../interfaces";
 import EventEmitter, { TEventEmitter } from "../utils/EventEmitter";
 import Tooltip from "../components/Tooltip";
+import Dropdown from "../components/Dropdown";
 
 
-export type TComponents = Tooltip;
+export type TComponents = Tooltip | Dropdown;
 export type TComponentsClass = typeof Tooltip;
 
 
@@ -38,8 +39,14 @@ export interface IComponentClass extends IComponent {
 }
 
 
+export interface IComponentState extends IObject {
+    name?: string;
+}
+
+
 interface Component {
-    handlers?: IObject
+    handlers?: IObject;
+    state: IComponentState
 }
 
 
@@ -48,7 +55,6 @@ class Component {
     emitter: TEventEmitter;
     components: any[];
     selectors: IComponentSelector;
-    name: string;
     _mount: boolean = false;
     options: IComponentOptions;
     on: IComponentOn;
@@ -107,7 +113,9 @@ class Component {
             unmount: (ctx) => {},
         }
 
-        this.name = this.$element.dataset.name || '';
+        this.state = {
+            name: this.$element.dataset.name || props.state && props.state.name || null
+        }
         this.selectors = props.selectors;
         this.emitter = props.emitter || new EventEmitter();
 
@@ -121,8 +129,8 @@ class Component {
         this._mount = true;
     }
 
-    getByName(arrayComponents: TComponents[], name: string): any {
-        return arrayComponents.filter(component => component.name === name)[0]
+    getByName(components: TComponents[], name: string): TComponents {
+        return components.filter(component => component.state.name === name)[0]
     }
 
     unmount() {

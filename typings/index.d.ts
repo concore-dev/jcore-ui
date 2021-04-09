@@ -1,10 +1,10 @@
 declare var config: any;
 
 interface Window {
-    Tooltip: typeof Tooltip;
-    Tooltips: Tooltip
-    Dropdown: typeof Dropdown;
-    Dropdowns: Dropdown
+    Tooltip: typeof import("../lib/components/Tooltip").default;
+    Tooltips: import("../lib/components/Tooltip").default
+    Dropdown:  typeof import("../lib/components/Dropdown").default;
+    Dropdowns: import("../lib/components/Dropdown").default
 }
 
 interface EventTarget {

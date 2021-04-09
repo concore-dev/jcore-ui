@@ -1,6 +1,7 @@
 import Tooltip from "../../lib/components/Tooltip";
 import Dropdown from '../../lib/components/Dropdown';
 import Tab from "../../lib/components/Tab";
+import Accordion from "../../lib/components/Accordion";
 
 
 window.Tooltip = Tooltip;
@@ -45,20 +46,38 @@ window.Dropdowns = new Dropdown({
 });
 window.Tabs = new Tab({
     options: {
-        mount: false,
+        mount: true,
         active: true
     },
-    on: {
-        mount: (ctx) => {
-            console.log('on mount', ctx);
-        },
-        toggle: (ctx) => {
-            console.log('on toggle', ctx);
-        },
-        unmount: (ctx) => {
-            console.log('on unmount', ctx);
-        }
-    }
+    // on: {
+    //     mount: (ctx) => {
+    //         console.log('on mount', ctx);
+    //     },
+    //     toggle: (ctx) => {
+    //         console.log('on toggle', ctx);
+    //     },
+    //     unmount: (ctx) => {
+    //         console.log('on unmount', ctx);
+    //     }
+    // }
+})
+window.Accordions = new Accordion({
+    options: {
+        mount: true,
+        multiple: true
+        // active: true
+    },
+    // on: {
+    //     mount: (ctx) => {
+    //         console.log('on mount', ctx);
+    //     },
+    //     toggle: (ctx) => {
+    //         console.log('on toggle', ctx);
+    //     },
+    //     unmount: (ctx) => {
+    //         console.log('on unmount', ctx);
+    //     }
+    // }
 })
 
 
@@ -77,17 +96,17 @@ window.Tabs = new Tab({
 // })
 // dropdown.mount()
 
-const tabs = window.Tabs.getByName(window.Tabs.components, 'tabs-1');
-tabs.emitter.on('mount', (ctx) => {
-    console.log('emitter mount', ctx);
-})
-tabs.emitter.on('toggle', (ctx) => {
-    console.log('emitter toggle', ctx);
-})
-tabs.emitter.on('unmount', (ctx) => {
-    console.log('emitter unmount', ctx);
-})
-tabs.mount()
+// const tabs = window.Tabs.getByName(window.Tabs.components, 'tabs-1');
+// tabs.emitter.on('mount', (ctx) => {
+//     console.log('emitter mount', ctx);
+// })
+// tabs.emitter.on('toggle', (ctx) => {
+//     console.log('emitter toggle', ctx);
+// })
+// tabs.emitter.on('unmount', (ctx) => {
+//     console.log('emitter unmount', ctx);
+// })
+// tabs.mount()
 
 
 export {}

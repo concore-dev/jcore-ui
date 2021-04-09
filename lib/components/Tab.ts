@@ -21,7 +21,7 @@ interface ITabSelector extends IComponentSelector {
 
 
 interface ITabOptions extends IComponentOptions {
-    active: boolean
+    active?: boolean
 }
 
 

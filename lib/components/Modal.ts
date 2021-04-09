@@ -80,7 +80,7 @@ class Modal extends Component {
         super.mount()
 
         this.options = Object.assign({
-            // percent: this.$element.dataset.percent || 0,
+            adaptive: this.$element.dataset.adaptive || true,
             // type: this.$element.dataset.type || 'line',
         }, this.options)
 
@@ -89,7 +89,6 @@ class Modal extends Component {
         }
 
         this.isRender = false;
-        // this.transitionEnd = transitionE
 
         this.$overlay = createTemplate(`<div class="${this.selectors.overlay.replace('.', '')}"></div>`)
         this.$close = this.$element.querySelector(this.selectors.close);
@@ -103,6 +102,10 @@ class Modal extends Component {
     }
 
     addEvents() {
+        if (this.options.adaptive) {
+            this.$element.setAttribute('data-adaptive', '')
+        }
+
         if (this.$btnTarget) {
             this.$btnTarget.addEventListener('click', e => this.render())
         }

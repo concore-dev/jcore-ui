@@ -1,9 +1,11 @@
 import Tooltip from "../../lib/components/Tooltip";
 import Dropdown from '../../lib/components/Dropdown';
+import Tab from "../../lib/components/Tab";
 
 
 window.Tooltip = Tooltip;
 window.Dropdown = Dropdown;
+window.Tab = Tab;
 
 
 window.Tooltips = new Tooltip({
@@ -41,22 +43,51 @@ window.Dropdowns = new Dropdown({
     //     }
     // }
 });
+window.Tabs = new Tab({
+    options: {
+        mount: false,
+        active: true
+    },
+    on: {
+        mount: (ctx) => {
+            console.log('on mount', ctx);
+        },
+        toggle: (ctx) => {
+            console.log('on toggle', ctx);
+        },
+        unmount: (ctx) => {
+            console.log('on unmount', ctx);
+        }
+    }
+})
 
 
-const dropdown = window.Dropdowns.getByName(window.Dropdowns.components, 'dropdown-1');
-dropdown.emitter.on('mount', (ctx) => {
-    console.log('mount', ctx);
+// const dropdown = window.Dropdowns.getByName(window.Dropdowns.components, 'dropdown-1');
+// dropdown.emitter.on('mount', (ctx) => {
+//     console.log('mount', ctx);
+// })
+// dropdown.emitter.on('render', (ctx) => {
+//     console.log('render', ctx);
+// })
+// dropdown.emitter.on('destroy', (ctx) => {
+//     console.log('destroy', ctx);
+// })
+// dropdown.emitter.on('unmount', (ctx) => {
+//     console.log('unmount', ctx);
+// })
+// dropdown.mount()
+
+const tabs = window.Tabs.getByName(window.Tabs.components, 'tabs-1');
+tabs.emitter.on('mount', (ctx) => {
+    console.log('emitter mount', ctx);
 })
-dropdown.emitter.on('render', (ctx) => {
-    console.log('render', ctx);
+tabs.emitter.on('toggle', (ctx) => {
+    console.log('emitter toggle', ctx);
 })
-dropdown.emitter.on('destroy', (ctx) => {
-    console.log('destroy', ctx);
+tabs.emitter.on('unmount', (ctx) => {
+    console.log('emitter unmount', ctx);
 })
-dropdown.emitter.on('unmount', (ctx) => {
-    console.log('unmount', ctx);
-})
-dropdown.mount()
+tabs.mount()
 
 
 export {}

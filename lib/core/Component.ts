@@ -14,7 +14,8 @@ export interface IComponentSelector {
 
 
 export interface IComponentOptions {
-    mount: boolean
+    mount?: boolean,
+    name?: string;
 }
 
 
@@ -39,14 +40,8 @@ export interface IComponentClass extends IComponent {
 }
 
 
-export interface IComponentState extends IObject {
-    name?: string;
-}
-
-
 interface Component {
     handlers?: IObject;
-    state: IComponentState
 }
 
 
@@ -101,21 +96,17 @@ class Component {
         }
 
         this.options = {
-            mount: true
+            mount: true,
+            name: this.$element.dataset.name || props.options && props.options.name || null
         }
-
-        const ctx = this;
 
         this.on = {
-            mount: (ctx) => {},
-            render: (ctx) => {},
-            destroy: (ctx) => {},
-            unmount: (ctx) => {},
+            mount: () => {},
+            render: () => {},
+            destroy: () => {},
+            unmount: () => {},
         }
 
-        this.state = {
-            name: this.$element.dataset.name || props.state && props.state.name || null
-        }
         this.selectors = props.selectors;
         this.emitter = props.emitter || new EventEmitter();
 
@@ -130,7 +121,7 @@ class Component {
     }
 
     getByName(components: TComponents[], name: string): TComponents {
-        return components.filter(component => component.state.name === name)[0]
+        return components.filter(component => component.options.name === name)[0]
     }
 
     unmount() {

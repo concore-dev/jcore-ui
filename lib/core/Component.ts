@@ -3,9 +3,10 @@ import EventEmitter, { TEventEmitter } from "../utils/EventEmitter";
 import Tooltip from "../components/Tooltip";
 import Dropdown from "../components/Dropdown";
 import Accordion from "../components/Accordion";
+import Collapse from "../components/Collapse";
 
 
-export type TComponents = Tooltip | Dropdown | Accordion;
+// export type TComponents = Tooltip | Dropdown | Accordion | Collapse;
 export type TComponentsClass = typeof Tooltip;
 
 
@@ -121,7 +122,7 @@ class Component {
         this._mount = true;
     }
 
-    getByName(components: TComponents[], name: string): TComponents {
+    getByName(components: Component[], name: string): Component {
         return components.filter(component => component.options.name === name)[0]
     }
 

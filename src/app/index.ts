@@ -2,12 +2,14 @@ import Tooltip from "../../lib/components/Tooltip";
 import Dropdown from '../../lib/components/Dropdown';
 import Tab from "../../lib/components/Tab";
 import Accordion from "../../lib/components/Accordion";
+import Collapse from "../../lib/components/Collapse";
 
 
 window.Tooltip = Tooltip;
 window.Dropdown = Dropdown;
 window.Tab = Tab;
 window.Accordion = Accordion;
+window.Collapse = Collapse;
 
 
 window.Tooltips = new Tooltip({
@@ -64,8 +66,8 @@ window.Tabs = new Tab({
 })
 window.Accordions = new Accordion({
     options: {
-        mount: false,
-        multiple: true
+        mount: true,
+        multiple: false
         // active: true
     },
     // on: {
@@ -79,6 +81,23 @@ window.Accordions = new Accordion({
     //         console.log('on unmount', ctx);
     //     }
     // }
+})
+window.Collapses = new Collapse({
+    options: {
+        mount: false,
+        // active: true
+    },
+    on: {
+        mount: (ctx) => {
+            console.log('on mount', ctx);
+        },
+        toggle: (ctx) => {
+            console.log('on toggle', ctx);
+        },
+        unmount: (ctx) => {
+            console.log('on unmount', ctx);
+        }
+    }
 })
 
 
@@ -109,18 +128,31 @@ window.Accordions = new Accordion({
 // })
 // tabs.mount()
 
-const acc = window.Accordions.getByName(window.Accordions.components, 'acc-1');
+// const acc = window.Accordions.getByName(window.Accordions.components, 'acc-1');
 
-acc.emitter.on('mount', (ctx: Accordion) => {
+// acc.emitter.on('mount', (ctx: Accordion) => {
+//     console.log('emitter mount', ctx);
+// })
+// acc.emitter.on('toggle', (ctx: Accordion) => {
+//     console.log('emitter toggle', ctx);
+// })
+// acc.emitter.on('unmount', (ctx: Accordion) => {
+//     console.log('emitter unmount', ctx);
+// })
+// acc.mount()
+
+const collapse = window.Collapses.getByName(window.Collapses.components, 'col-1');
+
+collapse.emitter.on('mount', (ctx: Accordion) => {
     console.log('emitter mount', ctx);
 })
-acc.emitter.on('toggle', (ctx: Accordion) => {
+collapse.emitter.on('toggle', (ctx: Accordion) => {
     console.log('emitter toggle', ctx);
 })
-acc.emitter.on('unmount', (ctx: Accordion) => {
+collapse.emitter.on('unmount', (ctx: Accordion) => {
     console.log('emitter unmount', ctx);
 })
-acc.mount()
+collapse.mount()
 
 
 export {}

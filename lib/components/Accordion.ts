@@ -70,9 +70,9 @@ class Accordion extends Component {
         super.mount()
 
         this.options = Object.assign({
-            active: false,
-            multiple: false,
-            duration: 300
+            active: this.$element.dataset.active || false,
+            multiple: this.$element.dataset.multiple || false,
+            duration: this.$element.dataset.duration || false
         }, this.options)
 
         this.on = Object.assign({

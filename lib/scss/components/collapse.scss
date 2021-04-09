@@ -8,7 +8,7 @@ $prefix-collapse-button: '#{$prefix}-collapse-button' !default;
 .#{$prefix-collapse} {
     position: relative;
 
-    &[data-init] {
+    &[data-mount] {
         .#{$prefix-collapse-button} {
             display: block;
         }

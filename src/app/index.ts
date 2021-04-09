@@ -3,6 +3,7 @@ import Dropdown from '../../lib/components/Dropdown';
 import Tab from "../../lib/components/Tab";
 import Accordion from "../../lib/components/Accordion";
 import Collapse from "../../lib/components/Collapse";
+import Progress from "../../lib/components/Progress";
 
 
 window.Tooltip = Tooltip;
@@ -10,6 +11,7 @@ window.Dropdown = Dropdown;
 window.Tab = Tab;
 window.Accordion = Accordion;
 window.Collapse = Collapse;
+window.Progress = Progress;
 
 
 window.Tooltips = new Tooltip({
@@ -99,6 +101,23 @@ window.Collapses = new Collapse({
         }
     }
 })
+window.Progresses = new Progress({
+    options: {
+        mount: false,
+        // active: true
+    },
+    on: {
+        mount: (ctx) => {
+            console.log('on mount', ctx);
+        },
+        change: (ctx) => {
+            console.log('on change', ctx);
+        },
+        unmount: (ctx) => {
+            console.log('on unmount', ctx);
+        }
+    }
+})
 
 
 // const dropdown = window.Dropdowns.getByName(window.Dropdowns.components, 'dropdown-1');
@@ -141,18 +160,31 @@ window.Collapses = new Collapse({
 // })
 // acc.mount()
 
-const collapse = window.Collapses.getByName(window.Collapses.components, 'col-1');
+// const collapse = window.Collapses.getByName(window.Collapses.components, 'col-1');
 
-collapse.emitter.on('mount', (ctx: Accordion) => {
+// collapse.emitter.on('mount', (ctx: Accordion) => {
+//     console.log('emitter mount', ctx);
+// })
+// collapse.emitter.on('toggle', (ctx: Accordion) => {
+//     console.log('emitter toggle', ctx);
+// })
+// collapse.emitter.on('unmount', (ctx: Accordion) => {
+//     console.log('emitter unmount', ctx);
+// })
+// collapse.mount()
+
+const progress = window.Progresses.getByName(window.Progresses.components, 'prog-50');
+
+progress.emitter.on('mount', (ctx) => {
     console.log('emitter mount', ctx);
 })
-collapse.emitter.on('toggle', (ctx: Accordion) => {
+progress.emitter.on('change', (ctx) => {
     console.log('emitter toggle', ctx);
 })
-collapse.emitter.on('unmount', (ctx: Accordion) => {
+progress.emitter.on('unmount', (ctx) => {
     console.log('emitter unmount', ctx);
 })
-collapse.mount()
+progress.mount()
 
 
 export {}

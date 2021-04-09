@@ -1,6 +1,7 @@
 import Component, { IComponent, IComponentOn, IComponentOptions, IComponentSelector } from "../core/Component";
 import config from '../../config';
 
+
 const selectors = {
     element: `.${config.prefix}-collapse`,
     wrapper: `.${config.prefix}-collapse-wrapper`,
@@ -55,6 +56,7 @@ class Collapse extends Component {
             this.mount()
         }
     }
+
     mount() {
         if (!this.$element || this._mount || this.$element.hasAttribute('data-mount')) return;
         super.mount()

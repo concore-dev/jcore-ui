@@ -23,7 +23,7 @@ module.exports = (env, argv) => {
                 `${paths.src}/app/index.ts`,
             ],
             lib: [
-                `${paths.root}/lib/core/index.ts`,
+                // `${paths.root}/lib/core/index.ts`,
                 `${paths.root}/lib/scss/index.js`,
             ]
         },

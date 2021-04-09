@@ -13,18 +13,33 @@ export interface IComponentSelector {
 
 
 export interface IComponentOptions {
-    init: boolean
+    mount: boolean
+}
+
+
+export interface IComponentOn {
+    mount?: (ctx?: Component) => void;
+    render?: (ctx?: Component) => void;
+    destroy?: (ctx?: Component) => void;
+    unmount?: (ctx?: Component) => void;
 }
 
 
 export interface IComponent extends IObject {
-    selectors?: IComponentSelector,
-    $element?: HTMLElement | NodeListOf<HTMLElement> | string
+    selectors?: IComponentSelector;
+    $element?: HTMLElement | NodeListOf<HTMLElement> | string;
+    options?: IComponentOptions;
+    on?: IComponentOn;
 }
 
 
 export interface IComponentClass extends IComponent {
     Component: any
+}
+
+
+interface Component {
+    handlers?: IObject
 }
 
 
@@ -34,8 +49,9 @@ class Component {
     components: any[];
     selectors: IComponentSelector;
     name: string;
-    _init: boolean = false;
+    _mount: boolean = false;
     options: IComponentOptions;
+    on: IComponentOn;
 
     constructor(props: IComponentClass) {
         /**
@@ -49,9 +65,11 @@ class Component {
 
             if (array.length) {
                 this.components = array.map(el => {
+                    if (this._mount || el.hasAttribute('data-mount')) return;
+
                     newProps.$element = el;
                     return new props.Component(newProps);
-                });
+                }).filter(cpm => cpm);
             } else {
                 throw Error(`Не найден HTMLElement ${this.constructor.name}`)
             }
@@ -76,26 +94,40 @@ class Component {
             throw Error(`Не найден HTMLElement ${this.constructor.name}`)
         }
 
-        this.options = Object.assign({
-            init: true
-        }, props.options || {})
+        this.options = {
+            mount: true
+        }
+
+        const ctx = this;
+
+        this.on = {
+            mount: (ctx) => {},
+            render: (ctx) => {},
+            destroy: (ctx) => {},
+            unmount: (ctx) => {},
+        }
 
         this.name = this.$element.dataset.name || '';
         this.selectors = props.selectors;
         this.emitter = props.emitter || new EventEmitter();
+
+        this.options = Object.assign(this.options, props.options || {})
+        this.on = Object.assign(this.on, props.on || {})
     }
 
 
-    init() {
-        if (!this.$element || this._init || this.$element.hasAttribute('data-init')) return;
-
-        this.$element.setAttribute('data-init', 'true')
-
-        this._init = true;
+    mount() {
+        this.$element.setAttribute('data-mount', 'true')
+        this._mount = true;
     }
 
     getByName(arrayComponents: TComponents[], name: string): any {
         return arrayComponents.filter(component => component.name === name)[0]
+    }
+
+    unmount() {
+        this._mount = false;
+        this.$element.removeAttribute('data-mount')
     }
 }
 

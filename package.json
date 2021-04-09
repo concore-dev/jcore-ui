@@ -4,13 +4,13 @@
     "description": "jcore-ui - components for building an interface",
     "main": "index.js",
     "scripts": {
-        "sprite": "gulp sprite --gulpfile ./configs/gulpfile.js",
-        "jest": "cross-env NODE_ENV=test jest --config ./configs/jest.config.js",
-        "jest:watch": "cross-env NODE_ENV=test jest --watch --config ./configs/jest.config.js",
-        "jest:coverage": "cross-env NODE_ENV=test jest --coverage --config ./configs/jest.config.js",
-        "start": "webpack-dev-server --mode development --config ./configs/webpack.config.js",
-        "build": "webpack --mode production --config ./configs/webpack.config.js",
-        "watch": "webpack --watch --mode development --config ./configs/webpack.config.js"
+        "sprite": "gulp sprite --gulpfile ./config/gulpfile.js",
+        "jest": "cross-env NODE_ENV=test jest --config ./config/jest.config.js",
+        "jest:watch": "cross-env NODE_ENV=test jest --watch --config ./config/jest.config.js",
+        "jest:coverage": "cross-env NODE_ENV=test jest --coverage --config ./config/jest.config.js",
+        "start": "webpack-dev-server --mode development --config ./config/webpack.config.js",
+        "build": "webpack --mode production --config ./config/webpack.config.js",
+        "watch": "webpack --watch --mode development --config ./config/webpack.config.js"
     },
     "repository": {
         "type": "git",

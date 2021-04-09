@@ -7,6 +7,7 @@ import Accordion from "../../lib/components/Accordion";
 window.Tooltip = Tooltip;
 window.Dropdown = Dropdown;
 window.Tab = Tab;
+window.Accordion = Accordion;
 
 
 window.Tooltips = new Tooltip({
@@ -63,7 +64,7 @@ window.Tabs = new Tab({
 })
 window.Accordions = new Accordion({
     options: {
-        mount: true,
+        mount: false,
         multiple: true
         // active: true
     },
@@ -107,6 +108,19 @@ window.Accordions = new Accordion({
 //     console.log('emitter unmount', ctx);
 // })
 // tabs.mount()
+
+const acc = window.Accordions.getByName(window.Accordions.components, 'acc-1');
+
+acc.emitter.on('mount', (ctx: Accordion) => {
+    console.log('emitter mount', ctx);
+})
+acc.emitter.on('toggle', (ctx: Accordion) => {
+    console.log('emitter toggle', ctx);
+})
+acc.emitter.on('unmount', (ctx: Accordion) => {
+    console.log('emitter unmount', ctx);
+})
+acc.mount()
 
 
 export {}

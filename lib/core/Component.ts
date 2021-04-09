@@ -2,9 +2,10 @@ import { IObject, TFunction } from "../interfaces";
 import EventEmitter, { TEventEmitter } from "../utils/EventEmitter";
 import Tooltip from "../components/Tooltip";
 import Dropdown from "../components/Dropdown";
+import Accordion from "../components/Accordion";
 
 
-export type TComponents = Tooltip | Dropdown;
+export type TComponents = Tooltip | Dropdown | Accordion;
 export type TComponentsClass = typeof Tooltip;
 
 

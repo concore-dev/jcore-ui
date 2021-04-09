@@ -81,6 +81,8 @@ class Accordion extends Component {
 
         this.handlers = {
             // change: this.change.bind(this),
+            resize: this.resize.bind(this),
+            toggle: this.toggle.bind(this)
         }
 
         this.id = 0
@@ -109,23 +111,27 @@ class Accordion extends Component {
                 this.toggle(tab, content)
             }
 
-            tab.addEventListener('click', () => this.toggle(tab, content))
+            tab.addEventListener('click', this.handlers.toggle)
         })
 
-        const resize = this.onResize.bind(this)
-        window.addEventListener('resize', resize)
+        window.addEventListener('resize', this.handlers.resize)
     }
 
     unmount() {
         super.unmount()
 
-        // this.$tabs.forEach(tab => tab.removeEventListener('click', this.handlers.change))
+        this.$tabs.forEach(tab => tab.removeEventListener('click', this.handlers.toggle))
+        window.removeEventListener('resize', this.handlers.resize)
 
         this.on.unmount(this)
         this.emitter.emit('unmount', this)
     }
 
-    toggle(tab: HTMLElement, content: HTMLElement) {
+    toggle(e: Event | HTMLElement, cont?: HTMLElement) {
+        const tab = e instanceof HTMLElement ? e : e.target as HTMLElement;
+        const panel = tab.closest(this.selectors.panel);
+        const content = cont || panel.querySelector<HTMLElement>(this.selectors.content);
+
         // Если последний активный таб не равен текущему, сбрасываем состояние
         if (this.tab !== tab && !this.options.multiple && this.$tabs.length > 1) {
             this.isShow = false
@@ -261,7 +267,7 @@ class Accordion extends Component {
         })
     }
 
-    onResize() {
+    resize() {
         this.$tabs.forEach((tab, i) => {
             if (!tab.hasAttribute('active')) return
 

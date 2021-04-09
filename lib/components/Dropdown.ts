@@ -49,6 +49,7 @@ class Dropdown extends Component {
         this.addEvents()
 
         this.on.mount(this)
+        this.emitter.emit('mount', this)
     }
 
     addEvents() {
@@ -60,6 +61,7 @@ class Dropdown extends Component {
         if (!e.target.closest(this.selectors.element) && this.$element.hasAttribute('data-active')) {
             this.$element.toggleAttribute('data-active')
             this.on.destroy(this)
+            this.emitter.emit('destroy', this)
         }
     }
 
@@ -71,6 +73,7 @@ class Dropdown extends Component {
             this.emitter.emit('render', this)
         } else {
             this.on.destroy(this)
+            this.emitter.emit('destroy', this)
         }
     }
 
@@ -81,6 +84,7 @@ class Dropdown extends Component {
         this.$element.removeEventListener('click', this.handlers.clickHandler)
 
         this.on.unmount(this)
+        this.emitter.emit('unmount', this)
     }
 }
 

@@ -23,6 +23,9 @@ window.Tooltips = new Tooltip({
     }
 });
 window.Dropdowns = new Dropdown({
+    options: {
+        mount: false
+    }
     // on: {
     //     mount: (ctx) => {
     //         console.log('mount', ctx);
@@ -40,10 +43,20 @@ window.Dropdowns = new Dropdown({
 });
 
 
-window.Dropdowns.getByName(window.Dropdowns.components, 'dropdown-1').emitter.on('render', (ctx) => {
-    console.log(ctx);
-
+const dropdown = window.Dropdowns.getByName(window.Dropdowns.components, 'dropdown-1');
+dropdown.emitter.on('mount', (ctx) => {
+    console.log('mount', ctx);
 })
+dropdown.emitter.on('render', (ctx) => {
+    console.log('render', ctx);
+})
+dropdown.emitter.on('destroy', (ctx) => {
+    console.log('destroy', ctx);
+})
+dropdown.emitter.on('unmount', (ctx) => {
+    console.log('unmount', ctx);
+})
+dropdown.mount()
 
 
 export {}

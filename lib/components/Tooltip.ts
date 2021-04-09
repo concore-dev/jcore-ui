@@ -59,6 +59,7 @@ class Tooltip extends Component {
         this.addEvents()
 
         this.on.mount(this)
+        this.emitter.emit('mount', this)
     }
 
     addEvents() {
@@ -70,11 +71,13 @@ class Tooltip extends Component {
     mouseOverHandler() {
         this.$element.toggleAttribute('data-active')
         this.on.render(this)
+        this.emitter.emit('render', this)
     }
 
     mouseOutHandler() {
         this.$element.removeAttribute('data-active')
         this.on.destroy(this)
+        this.emitter.emit('destroy', this)
     }
 
     clickHandler() {
@@ -82,8 +85,10 @@ class Tooltip extends Component {
 
         if (this.$element.hasAttribute('data-active')) {
             this.on.render(this)
+            this.emitter.emit('render', this)
         } else {
             this.on.destroy(this)
+            this.emitter.emit('destroy', this)
         }
     }
 
@@ -95,6 +100,7 @@ class Tooltip extends Component {
         this.$element.removeEventListener('click', this.handlers.clickHandler)
 
         this.on.unmount(this)
+        this.emitter.emit('unmount', this)
     }
 }
 

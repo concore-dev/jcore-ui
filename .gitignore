@@ -13,7 +13,7 @@ chromedriver.log
 
 # production
 dist
-bin
+# bin
 
 # misc
 .vscode

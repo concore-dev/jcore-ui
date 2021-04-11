@@ -10,18 +10,18 @@
             "esnext"
         ],
         "allowJs": true,
-        "skipLibCheck": true,
+        // "skipLibCheck": true,
         "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
+        // "allowSyntheticDefaultImports": true,
         "strict": true,
-        "forceConsistentCasingInFileNames": true,
-        "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "isolatedModules": true,
+        // "forceConsistentCasingInFileNames": true,
+        // "moduleResolution": "node",
+        // "resolveJsonModule": true,
+        // "isolatedModules": true,
         "noEmit": false,
-        "jsx": "react",
+        // "jsx": "react",
         "module" : "commonjs",
-        "strictNullChecks": false,
+        // "strictNullChecks": false,
         "typeRoots": [
             "node_modules/@types",
             "typings/**/*"
@@ -29,6 +29,10 @@
         "noImplicitThis": false,
         // "rootDir": "."
         // "baseUrl": "."
+        "outDir": "./bin",
+        "declaration": true,
+        "declarationMap": true,
+        "sourceMap": true
     },
     "exclude": [
         "node_modules",
@@ -42,7 +46,7 @@
         // "**/*.ts",
         "./typings/**/*.ts",
         "./lib/**/*.ts",
-        "./src/**/*.ts",
-        "./tests/**/*.ts"
+        // "./src/**/*.ts",
+        // "./tests/**/*.ts"
     ]
 }

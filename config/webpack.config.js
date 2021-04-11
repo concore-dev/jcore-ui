@@ -25,6 +25,10 @@ module.exports = (env, argv) => {
             lib: [
                 // `${paths.root}/lib/core/index.ts`,
                 `${paths.root}/lib/scss/index.js`,
+            ],
+            index: [
+                // `${paths.root}/lib/core/index.ts`,
+                `${paths.root}/lib/index.ts`,
             ]
         },
         output: {

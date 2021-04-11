@@ -2,7 +2,8 @@
     "name": "jcore-ui",
     "version": "0.2.0",
     "description": "jcore-ui - components for building an interface",
-    "main": "index.js",
+    "main": "./lib/index.ts",
+    "types": "./lib/index.d.ts",
     "scripts": {
         "sprite": "gulp sprite --gulpfile ./config/gulpfile.js",
         "jest": "cross-env NODE_ENV=test jest --config ./config/jest.config.js",

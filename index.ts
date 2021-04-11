@@ -12,7 +12,6 @@ import event from './lib/utils/event';
 import EventEmitter from './lib/utils/EventEmitter';
 
 
-
 export {
     Accordion,
     Collapse,
@@ -23,9 +22,21 @@ export {
     Tab,
     Tooltip,
     Component,
+    createTemplate,
+    event,
+    EventEmitter
 }
 
-export {
+export default {
+    Accordion,
+    Collapse,
+    Dropdown,
+    Modal,
+    Progress,
+    Select,
+    Tab,
+    Tooltip,
+    Component,
     createTemplate,
     event,
     EventEmitter

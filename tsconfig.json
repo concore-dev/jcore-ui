@@ -17,7 +17,7 @@
         // "isolatedModules": true,
         "noImplicitAny": true,
         // "jsx": "react",
-        "module" : "AMD",
+        "module" : "commonjs",
         "strictNullChecks": false,
         "typeRoots": [
             "node_modules/@types",
@@ -26,8 +26,8 @@
         "noImplicitThis": true,
         "rootDir": ".",
         // "baseUrl": "."
-        // "outDir": "./bin",
-        "outFile": "./bin/index.js",
+        "outDir": "./bin",
+        // "outFile": "./bin/index.js",
         "declaration": true,
         "declarationMap": true,
         "sourceMap": true
@@ -43,7 +43,7 @@
         // "**/*.ts",
         "./typings/**/*.ts",
         "./lib/**/*.ts",
-        "jcore-ui.ts",
+        "index.ts",
         // "./tests/**/*.ts"
     ]
 }

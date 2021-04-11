@@ -1,6 +1,6 @@
 {
     "name": "jcore-ui",
-    "version": "0.4.3",
+    "version": "0.4.4",
     "description": "jcore-ui - components for building an interface",
     "main": "bin",
     "types": "bin",

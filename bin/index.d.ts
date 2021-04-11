@@ -11,4 +11,22 @@ import createTemplate from './lib/utils/createTemplate';
 import event from './lib/utils/event';
 import EventEmitter from './lib/utils/EventEmitter';
 export { Accordion, Collapse, Dropdown, Modal, Progress, Select, Tab, Tooltip, Component, createTemplate, event, EventEmitter };
+declare const _default: {
+    Accordion: typeof Accordion;
+    Collapse: typeof Collapse;
+    Dropdown: typeof Dropdown;
+    Modal: typeof Modal;
+    Progress: typeof Progress;
+    Select: typeof Select;
+    Tab: typeof Tab;
+    Tooltip: typeof Tooltip;
+    Component: typeof Component;
+    createTemplate: (content: string) => HTMLElement;
+    event: {
+        transitionEnd(): any;
+        animationEnd(): any;
+    };
+    EventEmitter: typeof EventEmitter;
+};
+export default _default;
 //# sourceMappingURL=index.d.ts.map

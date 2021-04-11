@@ -28,4 +28,18 @@ const event_1 = __importDefault(require("./lib/utils/event"));
 exports.event = event_1.default;
 const EventEmitter_1 = __importDefault(require("./lib/utils/EventEmitter"));
 exports.EventEmitter = EventEmitter_1.default;
+exports.default = {
+    Accordion: Accordion_1.default,
+    Collapse: Collapse_1.default,
+    Dropdown: Dropdown_1.default,
+    Modal: Modal_1.default,
+    Progress: Progress_1.default,
+    Select: Select_1.default,
+    Tab: Tab_1.default,
+    Tooltip: Tooltip_1.default,
+    Component: Component_1.default,
+    createTemplate: createTemplate_1.default,
+    event: event_1.default,
+    EventEmitter: EventEmitter_1.default
+};
 //# sourceMappingURL=index.js.map

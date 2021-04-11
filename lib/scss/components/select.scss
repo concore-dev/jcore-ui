@@ -4,8 +4,10 @@
 $prefix-select: '#{$prefix}-select' !default;
 $prefix-select-wrapper: '#{$prefix}-select-wrapper' !default;
 $prefix-select-value: '#{$prefix}-select-value' !default;
-$prefix-select-options: '#{$prefix}-select-options' !default;
-$prefix-select-option: '#{$prefix}-select-option' !default;
+$prefix-select-items: '#{$prefix}-select-items' !default;
+$prefix-select-item: '#{$prefix}-select-item' !default;
+$prefix-select-input: '#{$prefix}-select-input' !default;
+$prefix-select-current: '#{$prefix}-select-current' !default;
 
 
 .#{$prefix-select} {
@@ -31,6 +33,10 @@ $prefix-select-option: '#{$prefix}-select-option' !default;
             }
         }
     }
+}
+
+.#{$prefix-select-input} {
+    display: none;
 }
 
 .#{$prefix-select-value} {
@@ -85,7 +91,7 @@ $prefix-select-option: '#{$prefix}-select-option' !default;
     display: none;
 }
 
-.#{$prefix-select-options} {
+.#{$prefix-select-items} {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -107,7 +113,7 @@ $prefix-select-option: '#{$prefix}-select-option' !default;
     }
 }
 
-.#{$prefix-select-option} {
+.#{$prefix-select-item} {
     padding-left: 10px;
     min-height: 35px;
     display: flex;
@@ -119,11 +125,13 @@ $prefix-select-option: '#{$prefix}-select-option' !default;
         background: #FAFAFA;
     }
 
-    &[data-selected] {
+    &[data-selected],
+    &.#{$prefix-select-current} {
         background: #DEEBFF;
     }
 
-    &:not([data-selected]):focus {
+    &:not([data-selected]):focus,
+    &.#{$prefix-select-current} {
         background: #FAFAFA;
     }
 }

@@ -5,6 +5,7 @@ import Accordion from "../../lib/components/Accordion";
 import Collapse from "../../lib/components/Collapse";
 import Progress from "../../lib/components/Progress";
 import Modal from "../../lib/components/Modal";
+import Select from "../../lib/components/Select";
 
 
 window.Tooltip = Tooltip;
@@ -14,6 +15,7 @@ window.Accordion = Accordion;
 window.Collapse = Collapse;
 window.Progress = Progress;
 window.Modal = Modal;
+window.Select = Select;
 
 
 window.Tooltips = new Tooltip({
@@ -34,7 +36,8 @@ window.Tooltips = new Tooltip({
 });
 window.Dropdowns = new Dropdown({
     options: {
-        mount: true
+        mount: true,
+        name: '123'
     }
     // on: {
     //     mount: (ctx) => {
@@ -122,19 +125,39 @@ window.Progresses = new Progress({
 })
 
 window.Modals = new Modal({
+    // options: {
+    //     mount: true,
+    //     // active: true
+    // },
+    // on: {
+    //     mount: (ctx) => {
+    //         console.log('on mount', ctx);
+    //     },
+    //     render: (ctx) => {
+    //         console.log('on render', ctx);
+    //     },
+    //     destroy: (ctx) => {
+    //         console.log('on destroy', ctx);
+    //     },
+    //     unmount: (ctx) => {
+    //         console.log('on unmount', ctx);
+    //     }
+    // }
+})
+
+window.Selects = new Select({
     options: {
-        mount: false,
-        // active: true
+        mount: false
     },
     on: {
         mount: (ctx) => {
             console.log('on mount', ctx);
         },
-        render: (ctx) => {
-            console.log('on render', ctx);
+        change: (ctx) => {
+            console.log('on change', ctx);
         },
-        destroy: (ctx) => {
-            console.log('on destroy', ctx);
+        toggle: (ctx) => {
+            console.log('on toggle', ctx);
         },
         unmount: (ctx) => {
             console.log('on unmount', ctx);
@@ -211,19 +234,35 @@ window.Modals = new Modal({
 
 const modal = window.Modals.getByName(window.Modals.components, 'mod-1');
 
-modal.emitter.on('mount', (ctx: Modal) => {
+// modal.emitter.on('mount', (ctx: Modal) => {
+//     console.log('emitter mount', ctx);
+// })
+// modal.emitter.on('render', (ctx: Modal) => {
+//     console.log('emitter render', ctx);
+// })
+// modal.emitter.on('destroy', (ctx: Modal) => {
+//     console.log('emitter destroy', ctx);
+// })
+// modal.emitter.on('unmount', (ctx: Modal) => {
+//     console.log('emitter unmount', ctx);
+// })
+// modal.mount()
+
+const select = window.Selects.getByName(window.Selects.components, 'select-1');
+
+select.emitter.on('mount', (ctx: Modal) => {
     console.log('emitter mount', ctx);
 })
-modal.emitter.on('render', (ctx: Modal) => {
-    console.log('emitter render', ctx);
+select.emitter.on('change', (ctx: Modal) => {
+    console.log('emitter change', ctx);
 })
-modal.emitter.on('destroy', (ctx: Modal) => {
-    console.log('emitter destroy', ctx);
+select.emitter.on('toggle', (ctx: Modal) => {
+    console.log('emitter toggle', ctx);
 })
-modal.emitter.on('unmount', (ctx: Modal) => {
+select.emitter.on('unmount', (ctx: Modal) => {
     console.log('emitter unmount', ctx);
 })
-modal.mount()
+select.mount()
 
 
 export {}

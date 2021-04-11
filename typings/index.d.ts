@@ -26,7 +26,7 @@ interface Event {
 }
 
 interface EventTarget {
-    closest: (...args: any) => any
+    closest: (selector: string) => Element
     dataset: any
 }
 

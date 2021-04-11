@@ -65,9 +65,11 @@ $prefix-modal-close: '#{$prefix}-modal-close' !default;
     max-width: 600px;
     width: calc(100% - 36px);
     max-height: calc(100% - 36px);
+    pointer-events: none;
 
     &[data-active] {
         // margin-top: 0;
+        pointer-events: auto;
 
         &:not([data-closing]) {
             opacity: 1;

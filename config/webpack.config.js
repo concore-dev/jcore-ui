@@ -17,22 +17,29 @@ module.exports = (env, argv) => {
     const pathHtml = argv.pathHtml || paths.html;
     const db = argv.db || {};
 
+    let entry = {
+        app: [
+            `${paths.src}/app/index.ts`,
+            `${paths.src}/scss/index.scss`,
+        ]
+    };
+
+    if (prod) {
+        entry['lib.component'] = [
+            `${paths.root}/lib/components/index.ts`,
+            `${paths.root}/lib/scss/index.scss`,
+        ]
+        // entry['lib.utils'] = [
+        //     `${paths.root}/lib/utils/index.ts`,
+        // ]
+    }
+
     const config = {
-        entry: {
-            app: [
-                `${paths.src}/app/index.ts`,
-                `${paths.root}/lib/scss/index.js`,
-            ],
-            lib: [
-                // `${paths.root}/lib/core/index.ts`,
-                `${paths.root}/lib/index.ts`,
-                `${paths.root}/lib/scss/index.js`,
-            ]
-        },
+        entry,
         output: {
             path: paths.dist,
             filename: (file) => {
-                if (file.chunk.name === 'lib') {
+                if (file.chunk.name.split('.').shift() === 'lib') {
                     return `../bin/[name].js`;
                 }
 
@@ -46,9 +53,7 @@ module.exports = (env, argv) => {
         },
         resolve: {
             extensions: ['.js', '.jsx', '.ts', '.tsx'],
-            alias: {
-                '@ui': path.resolve(__dirname, 'ui')
-            }
+            alias: {}
         },
         performance: {
             hints: false,
@@ -144,7 +149,7 @@ module.exports = (env, argv) => {
             // }),
             new MiniCssExtractPlugin({
                 filename: (file) => {
-                    if (file.chunk.name === 'lib') {
+                    if (file.chunk.name.split('.').shift() === 'lib') {
                         return `../bin/[name].css`;
                     }
 

@@ -99,7 +99,7 @@ class Component {
 
         this.options = {
             mount: true,
-            name: this.$element.dataset.name || props.options && props.options.name || null
+            name: this.$element.dataset.name || props.options && props.options.name || ''
         }
 
         this.on = {

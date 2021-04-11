@@ -1,7 +1,6 @@
 import { IObject } from './../interfaces/index';
+import { TFunction } from '../interfaces/index';
 
-
-export type TEventEmitterListener = (...args: any) => void
 
 export type TEventEmitter = EventEmitter;
 
@@ -13,10 +12,7 @@ class EventEmitter {
         this.events = {};
     }
 
-    /**
-     * Добавляет событие
-     */
-    on(event: string, listener: TEventEmitterListener) {
+    on(event: string, listener: TFunction) {
         if (typeof this.events[event] !== 'object') {
             this.events[event] = [];
         }
@@ -24,10 +20,7 @@ class EventEmitter {
         return () => this.removeListener(event, listener);
     }
 
-    /**
-     * Удаляет событие
-     */
-    removeListener(event: string, listener: TEventEmitterListener) {
+    removeListener(event: string, listener: TFunction) {
         if (typeof this.events[event] === 'object') {
             const idx = this.events[event].indexOf(listener);
             if (idx > -1) {
@@ -36,16 +29,13 @@ class EventEmitter {
         }
     }
 
-    /**
-     * Вызывает событие
-     */
     emit(event: string, ...args: any) {
         if (typeof this.events[event] === 'object') {
-            this.events[event].forEach((listener: TEventEmitterListener) => listener.apply(this, args));
+            this.events[event].forEach((listener: TFunction) => listener.apply(this, args));
         }
     }
 
-    once(event: string, listener: TEventEmitterListener) {
+    once(event: string, listener: TFunction) {
         const remove = this.on(event, (...args) => {
             remove();
             listener.apply(this, args);

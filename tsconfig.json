@@ -1,33 +1,33 @@
 {
     "compilerOptions": {
-        "target": "es5",
-        // "lib": [
-        //     "dom",
-        //     "dom.iterable",
-        //     "esnext"
-        // ],
-        // "allowJs": true,
+        "target": "esnext",
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
+        "allowJs": true,
         "skipLibCheck": true,
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "strict": true,
         "forceConsistentCasingInFileNames": true,
         "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "isolatedModules": true,
+        // "resolveJsonModule": true,
+        // "isolatedModules": true,
         "noImplicitAny": true,
-        "noEmit": false,
         // "jsx": "react",
-        "module" : "commonjs",
+        "module" : "AMD",
         "strictNullChecks": false,
         "typeRoots": [
             "node_modules/@types",
             "typings/**/*"
         ],
         "noImplicitThis": true,
-        // "rootDir": "."
+        "rootDir": ".",
         // "baseUrl": "."
-        "outDir": "./bin",
+        // "outDir": "./bin",
+        "outFile": "./bin/index.js",
         "declaration": true,
         "declarationMap": true,
         "sourceMap": true
@@ -43,7 +43,7 @@
         // "**/*.ts",
         "./typings/**/*.ts",
         "./lib/**/*.ts",
-        // "./src/**/*.ts",
+        "jcore-ui.ts",
         // "./tests/**/*.ts"
     ]
 }

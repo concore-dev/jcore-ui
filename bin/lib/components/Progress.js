@@ -1,30 +1,55 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Component_1 = __importDefault(require("../core/Component"));
-const config_1 = __importDefault(require("../../config"));
-const selectors = {
-    element: `.${config_1.default.prefix}-progress`,
-    percent: `.${config_1.default.prefix}-progress-percent`,
-    bar: `.${config_1.default.prefix}-progress-bar`
+var Component_1 = __importDefault(require("../core/Component"));
+var config_1 = __importDefault(require("../../config"));
+var selectors = {
+    element: "." + config_1.default.prefix + "-progress",
+    percent: "." + config_1.default.prefix + "-progress-percent",
+    bar: "." + config_1.default.prefix + "-progress-bar"
 };
-class Progress extends Component_1.default {
-    constructor(props = {}) {
-        super({
-            ...props,
-            Component: Progress,
-            selectors: Object.assign(selectors, props.selectors || {})
-        });
-        if (this.options && this.options.mount) {
-            this.mount();
+var Progress = /** @class */ (function (_super) {
+    __extends(Progress, _super);
+    function Progress(props) {
+        if (props === void 0) { props = {}; }
+        var _this = _super.call(this, __assign(__assign({}, props), { Component: Progress, selectors: Object.assign(selectors, props.selectors || {}) })) || this;
+        if (_this.options && _this.options.mount) {
+            _this.mount();
         }
+        return _this;
     }
-    mount() {
+    Progress.prototype.mount = function () {
         if (!this.$element || this._mount || this.$element.hasAttribute('data-mount'))
             return;
-        super.mount();
+        _super.prototype.mount.call(this);
         this.options = Object.assign({
             percent: this.$element.dataset.percent || 0,
             type: this.$element.dataset.type || 'line',
@@ -37,16 +62,17 @@ class Progress extends Component_1.default {
         this.addEvents();
         this.on.mount(this);
         this.emitter.emit('mount', this);
-    }
-    addEvents() {
+    };
+    Progress.prototype.addEvents = function () {
         this.change(this.getPercent(), false);
-    }
+    };
     // unmount() {
     //     super.unmount()
     //     this.on.unmount(this)
     //     this.emitter.emit('unmount', this)
     // }
-    change(value, lifecycle = true) {
+    Progress.prototype.change = function (value, lifecycle) {
+        if (lifecycle === void 0) { lifecycle = true; }
         if (value >= 100) {
             this.options.percent = 100;
         }
@@ -57,7 +83,7 @@ class Progress extends Component_1.default {
             this.options.percent = value;
         }
         if (this.options.type === 'line') {
-            this.$bar.setAttribute('style', `width:${this.options.percent}%`);
+            this.$bar.setAttribute('style', "width:" + this.options.percent + "%");
             this.$percent.innerText = this.options.percent + '%';
         }
         else if (this.options.type === 'ring') {
@@ -66,11 +92,12 @@ class Progress extends Component_1.default {
             this.on.change(this);
             this.emitter.emit('change', this);
         }
-    }
-    getPercent() {
+    };
+    Progress.prototype.getPercent = function () {
         return this.options.percent;
-    }
-}
+    };
+    return Progress;
+}(Component_1.default));
 // class Progress {
 //     constructor(props) {
 //         this.props = props

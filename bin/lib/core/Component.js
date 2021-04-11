@@ -1,11 +1,23 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const EventEmitter_1 = __importDefault(require("../utils/EventEmitter"));
-class Component {
-    constructor(props) {
+var EventEmitter_1 = __importDefault(require("../utils/EventEmitter"));
+var Component = /** @class */ (function () {
+    function Component(props) {
+        var _this = this;
         this._mount = false;
         /**
          * Если пришел массив HTMLElement,
@@ -13,18 +25,18 @@ class Component {
          * и записываем их в массив
          */
         if (Array.isArray(props.$element) || props.$element instanceof NodeList) {
-            let array = Array.from(props.$element);
-            let newProps = props;
+            var array = Array.from(props.$element);
+            var newProps_1 = props;
             if (array.length) {
-                this.components = array.map(el => {
-                    if (this._mount || el.hasAttribute('data-mount'))
+                this.components = array.map(function (el) {
+                    if (_this._mount || el.hasAttribute('data-mount'))
                         return;
-                    newProps.$element = el;
-                    return new props.Component(newProps);
-                }).filter(cpm => cpm);
+                    newProps_1.$element = el;
+                    return new props.Component(newProps_1);
+                }).filter(function (cpm) { return cpm; });
             }
             else {
-                throw Error(`Не найден HTMLElement ${this.constructor.name}`);
+                throw Error("\u041D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D HTMLElement " + this.constructor.name);
             }
             return this;
         }
@@ -33,41 +45,39 @@ class Component {
          * то делаем поиск по селектору элемента и вызываем для него экземпляр компонента
          */
         if (!props.$element) {
-            return new props.Component({
-                ...props,
-                $element: document.querySelectorAll(props.selectors.element)
-            });
+            return new props.Component(__assign(__assign({}, props), { $element: document.querySelectorAll(props.selectors.element) }));
         }
         this.$element = props.$element instanceof Element ? props.$element : document.querySelector(props.$element);
         if (!this.$element) {
-            throw Error(`Не найден HTMLElement ${this.constructor.name}`);
+            throw Error("\u041D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D HTMLElement " + this.constructor.name);
         }
         this.options = {
             mount: true,
             name: this.$element.dataset.name || props.options && props.options.name || ''
         };
         this.on = {
-            mount: () => { },
-            render: () => { },
-            destroy: () => { },
-            unmount: () => { },
+            mount: function () { },
+            render: function () { },
+            destroy: function () { },
+            unmount: function () { },
         };
         this.selectors = props.selectors;
         this.emitter = props.emitter || new EventEmitter_1.default();
         this.options = Object.assign(this.options, props.options || {});
         this.on = Object.assign(this.on, props.on || {});
     }
-    mount() {
+    Component.prototype.mount = function () {
         this.$element.setAttribute('data-mount', 'true');
         this._mount = true;
-    }
-    getByName(components, name) {
-        return components.filter(component => component.options.name === name)[0];
-    }
-    unmount() {
+    };
+    Component.prototype.getByName = function (components, name) {
+        return components.filter(function (component) { return component.options.name === name; })[0];
+    };
+    Component.prototype.unmount = function () {
         this._mount = false;
         this.$element.removeAttribute('data-mount');
-    }
-}
+    };
+    return Component;
+}());
 exports.default = Component;
 //# sourceMappingURL=Component.js.map

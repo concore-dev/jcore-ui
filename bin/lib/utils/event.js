@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const event = {
-    transitionEnd() {
+var event = {
+    transitionEnd: function () {
         var t, el = document.createElement("fakeelement");
         var transitions = {
             "transition": "transitionend",
@@ -10,13 +10,13 @@ const event = {
             "WebkitTransition": "webkitTransitionEnd"
         };
         for (t in transitions) {
-            const idx = t;
+            var idx = t;
             if (el.style[idx] !== undefined) {
                 return transitions[idx];
             }
         }
     },
-    animationEnd() {
+    animationEnd: function () {
         var t, el = document.createElement("fakeelement");
         var animations = {
             "animation": "animationend",
@@ -25,7 +25,7 @@ const event = {
             "WebkitAnimation": "webkitAnimationEnd"
         };
         for (t in animations) {
-            const idx = t;
+            var idx = t;
             if (el.style[idx] !== undefined) {
                 return animations[idx];
             }

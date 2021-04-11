@@ -1,38 +1,63 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Component_1 = __importDefault(require("../core/Component"));
-const config_1 = __importDefault(require("../../config"));
-const selectors = {
-    element: `.${config_1.default.prefix}-accordion`,
-    panel: `.${config_1.default.prefix}-accordion-panel`,
-    tab: `.${config_1.default.prefix}-accordion-tab`,
-    content: `.${config_1.default.prefix}-accordion-content`
+var Component_1 = __importDefault(require("../core/Component"));
+var config_1 = __importDefault(require("../../config"));
+var selectors = {
+    element: "." + config_1.default.prefix + "-accordion",
+    panel: "." + config_1.default.prefix + "-accordion-panel",
+    tab: "." + config_1.default.prefix + "-accordion-tab",
+    content: "." + config_1.default.prefix + "-accordion-content"
 };
-class Accordion extends Component_1.default {
-    constructor(props = {}) {
-        super({
-            ...props,
-            Component: Accordion,
-            selectors: Object.assign(selectors, props.selectors || {})
-        });
-        if (this.options && this.options.mount) {
-            this.mount();
+var Accordion = /** @class */ (function (_super) {
+    __extends(Accordion, _super);
+    function Accordion(props) {
+        if (props === void 0) { props = {}; }
+        var _this = _super.call(this, __assign(__assign({}, props), { Component: Accordion, selectors: Object.assign(selectors, props.selectors || {}) })) || this;
+        if (_this.options && _this.options.mount) {
+            _this.mount();
         }
+        return _this;
     }
-    mount() {
+    Accordion.prototype.mount = function () {
         if (!this.$element || this._mount || this.$element.hasAttribute('data-mount'))
             return;
-        super.mount();
+        _super.prototype.mount.call(this);
         this.options = Object.assign({
             active: this.$element.dataset.active || false,
             multiple: this.$element.dataset.multiple || false,
             duration: this.$element.dataset.duration || 300
         }, this.options);
         this.on = Object.assign({
-            toggle: () => { }
+            toggle: function () { }
         }, this.on);
         this.handlers = {
             // change: this.change.bind(this),
@@ -47,32 +72,34 @@ class Accordion extends Component_1.default {
         this.addEvents();
         this.on.mount(this);
         this.emitter.emit('mount', this);
-    }
-    addEvents() {
-        this.$tabs.forEach((tab, i) => {
-            const panel = tab.closest(this.selectors.panel);
-            const content = panel.querySelector(this.selectors.content);
-            const id = this.setId(tab);
-            content.style.setProperty('transition', `height ease-in-out ${this.options.duration}ms`);
-            this.isShowTabs.push({ tab, id, isShow: false });
-            if (this.options.active && i === 0) {
-                this.toggle(tab, content);
+    };
+    Accordion.prototype.addEvents = function () {
+        var _this = this;
+        this.$tabs.forEach(function (tab, i) {
+            var panel = tab.closest(_this.selectors.panel);
+            var content = panel.querySelector(_this.selectors.content);
+            var id = _this.setId(tab);
+            content.style.setProperty('transition', "height ease-in-out " + _this.options.duration + "ms");
+            _this.isShowTabs.push({ tab: tab, id: id, isShow: false });
+            if (_this.options.active && i === 0) {
+                _this.toggle(tab, content);
             }
-            tab.addEventListener('click', this.handlers.toggle);
+            tab.addEventListener('click', _this.handlers.toggle);
         });
         window.addEventListener('resize', this.handlers.resize);
-    }
-    unmount() {
-        super.unmount();
-        this.$tabs.forEach(tab => tab.removeEventListener('click', this.handlers.toggle));
+    };
+    Accordion.prototype.unmount = function () {
+        var _this = this;
+        _super.prototype.unmount.call(this);
+        this.$tabs.forEach(function (tab) { return tab.removeEventListener('click', _this.handlers.toggle); });
         window.removeEventListener('resize', this.handlers.resize);
         this.on.unmount(this);
         this.emitter.emit('unmount', this);
-    }
-    toggle(e, cont) {
-        const tab = e instanceof HTMLElement ? e : e.target;
-        const panel = tab.closest(this.selectors.panel);
-        const content = cont || panel.querySelector(this.selectors.content);
+    };
+    Accordion.prototype.toggle = function (e, cont) {
+        var tab = e instanceof HTMLElement ? e : e.target;
+        var panel = tab.closest(this.selectors.panel);
+        var content = cont || panel.querySelector(this.selectors.content);
         // Если последний активный таб не равен текущему, сбрасываем состояние
         if (this.tab !== tab && !this.options.multiple && this.$tabs.length > 1) {
             this.isShow = false;
@@ -90,7 +117,7 @@ class Accordion extends Component_1.default {
             this.isShow = !this.isShow;
         }
         else {
-            const tabParam = this.isShowTabs.filter(param => param.tab === tab)[0];
+            var tabParam = this.isShowTabs.filter(function (param) { return param.tab === tab; })[0];
             if (tabParam.isShow) {
                 this.setShowTab(tab, false);
                 this.hide(tab, content);
@@ -103,93 +130,98 @@ class Accordion extends Component_1.default {
         }
         this.on.toggle(this);
         this.emitter.emit('toggle', this);
-    }
-    setId(tab) {
-        tab.setAttribute('data-id', `${this.id++}`);
+    };
+    Accordion.prototype.setId = function (tab) {
+        tab.setAttribute('data-id', "" + this.id++);
         return this.id;
-    }
-    show(tab, content) {
-        const height = content.scrollHeight;
+    };
+    Accordion.prototype.show = function (tab, content) {
+        var _this = this;
+        var height = content.scrollHeight;
         tab.setAttribute('data-active', '');
         // this.$panels.setAttribute('active', '')
         content.setAttribute('showing', '');
-        this.setHeight(`${height}px`, content);
-        setTimeout(() => {
-            this.showEnd(tab, content);
+        this.setHeight(height + "px", content);
+        setTimeout(function () {
+            _this.showEnd(tab, content);
         }, this.options.duration);
-    }
-    showEnd(tab, content) {
+    };
+    Accordion.prototype.showEnd = function (tab, content) {
         content.removeAttribute('showing');
         content.setAttribute('show', '');
         this.emitter.emit('show', this);
         // content.style.setProperty('height', `auto`)
-    }
-    hide(tab, content) {
+    };
+    Accordion.prototype.hide = function (tab, content) {
+        var _this = this;
         content.setAttribute('hiding', '');
         tab.removeAttribute('data-active');
         this.setHeight(0, content);
-        setTimeout(() => {
-            this.hideEnd(tab, content);
+        setTimeout(function () {
+            _this.hideEnd(tab, content);
         }, this.options.duration);
-    }
-    hideEnd(tab, content) {
+    };
+    Accordion.prototype.hideEnd = function (tab, content) {
         content.removeAttribute('show');
         content.removeAttribute('hiding');
         // this.$panels.removeAttribute('active')
         this.emitter.emit('hide', tab, content);
-    }
-    hideAll(currentTab) {
+    };
+    Accordion.prototype.hideAll = function (currentTab) {
+        var _this = this;
         if (currentTab) {
-            const needTabsHidden = Array.prototype.filter.call(this.$tabs, tab => tab !== currentTab);
-            needTabsHidden.forEach(tab => {
-                const panel = tab.closest(this.selectors.panel);
-                const content = panel.querySelector(this.selectors.content);
+            var needTabsHidden = Array.prototype.filter.call(this.$tabs, function (tab) { return tab !== currentTab; });
+            needTabsHidden.forEach(function (tab) {
+                var panel = tab.closest(_this.selectors.panel);
+                var content = panel.querySelector(_this.selectors.content);
                 content.removeAttribute('showing');
                 content.removeAttribute('show', '');
                 content.removeAttribute('hiding');
                 tab.removeAttribute('active');
-                this.setHeight(0, content);
+                _this.setHeight(0, content);
             });
             this.tab = currentTab;
         }
         else {
-            this.$tabs.forEach(tab => {
-                const panel = tab.closest(this.selectors.panel);
-                const content = panel.querySelector(this.selectors.content);
+            this.$tabs.forEach(function (tab) {
+                var panel = tab.closest(_this.selectors.panel);
+                var content = panel.querySelector(_this.selectors.content);
                 content.removeAttribute('showing');
                 content.removeAttribute('show');
                 content.removeAttribute('hiding');
                 tab.removeAttribute('active');
-                this.setHeight(0, content);
+                _this.setHeight(0, content);
             });
             this.tab = null;
         }
-    }
-    setHeight(height, content) {
-        content.style.setProperty('height', `${content.scrollHeight}px`);
-        window.requestAnimationFrame(() => {
-            content.style.setProperty('height', `${height}`);
+    };
+    Accordion.prototype.setHeight = function (height, content) {
+        content.style.setProperty('height', content.scrollHeight + "px");
+        window.requestAnimationFrame(function () {
+            content.style.setProperty('height', "" + height);
         });
-    }
-    setShowTab(tab, state) {
-        const needTab = this.isShowTabs.filter(param => param.tab === tab)[0];
-        this.isShowTabs = this.isShowTabs.map(param => {
+    };
+    Accordion.prototype.setShowTab = function (tab, state) {
+        var needTab = this.isShowTabs.filter(function (param) { return param.tab === tab; })[0];
+        this.isShowTabs = this.isShowTabs.map(function (param) {
             if (param.tab === needTab.tab) {
                 param.isShow = state;
             }
             return param;
         });
-    }
-    resize() {
-        this.$tabs.forEach((tab, i) => {
+    };
+    Accordion.prototype.resize = function () {
+        var _this = this;
+        this.$tabs.forEach(function (tab, i) {
             if (!tab.hasAttribute('active'))
                 return;
-            const panel = tab.closest(this.selectors.panel);
-            const content = panel.querySelector(this.selectors.content);
-            content.style.setProperty('height', `auto`);
-            this.setHeight(tab, content);
+            var panel = tab.closest(_this.selectors.panel);
+            var content = panel.querySelector(_this.selectors.content);
+            content.style.setProperty('height', "auto");
+            _this.setHeight(tab, content);
         });
-    }
-}
+    };
+    return Accordion;
+}(Component_1.default));
 exports.default = Accordion;
 //# sourceMappingURL=Accordion.js.map

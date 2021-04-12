@@ -1,181 +1,236 @@
-<div class="j-container">
-    <h2>Tooltips:</h2>
+{% extends "layout_ui.njk" %}
 
-    <div class="j-grid">
-        <div class="j-grid-item">
-            <div class="j-tooltip">
-                <div class="j-tooltip-header">Tooltip 1</div>
-                <div class="j-tooltip-content">
-                    <div class="j-tooltip-wrapper">
-                        <div class="j-tooltip-arrow"></div>
-                        wrapper 1
+
+
+{% block content %}
+    {# <div class="j-container">
+        <section class="ui-section">
+            <div class="ui-header">
+                header
+            </div>
+
+            <div class="ui-content">
+                content
+            </div>
+        </section>
+    </div> #}
+
+    {# <div am-ui-section="grid" data-target-scroll="grid">
+        <div am-ui-header="">
+            <h2 am-subtitle>Сетка</h2>
+            <p>Брейкпоинты: $lg, $md, $sm</p>
+            <p>Ширина контейнера: 1170px | 960px | 768px | 100%</p>
+            <p>Колонок: 12</p>
+            <p>Отступы: 15, 30 | 45 | 60 (spacing="1,2,3,4")</p>
+        </div>
+
+        <div am-ui-content="">
+            <div am-container="grid">
+                <div am-grid="container" spacing="2">
+                    <div am-grid="item" elg="1" lg="2" md="3" sm="6">1 ст.</div>
+                    <div am-grid="item" elg="1" lg="2" md="3" sm="6">2 ст.</div>
+                    <div am-grid="item" elg="1" lg="2" md="3" sm="6">3 ст.</div>
+                    <div am-grid="item" elg="1" lg="2" md="3" sm="6">4 ст.</div>
+                    <div am-grid="item" elg="1" lg="2" md="3" sm="6">5 ст.</div>
+                    <div am-grid="item" elg="1" lg="2" md="3" sm="6">6 ст.</div>
+                    <div am-grid="item" elg="1" lg="2" md="3" sm="6">7 ст.</div>
+                    <div am-grid="item" elg="1" lg="2" md="3" sm="6">8 ст.</div>
+                    <div am-grid="item" elg="1" lg="2" md="3" sm="6">9 ст.</div>
+                    <div am-grid="item" elg="1" lg="2" md="3" sm="6">10 ст.</div>
+                    <div am-grid="item" elg="1" lg="2" md="3" sm="6">11 ст.</div>
+                    <div am-grid="item" elg="1" lg="2" md="3" sm="6">12 ст.</div>
+                </div>
+
+                <div am-grid="container" spacing="2">
+                    <div am-grid="item" elg="3" md="6" sm="12">1 ст.</div>
+                    <div am-grid="item" elg="3" md="6" sm="12">2 ст.</div>
+                    <div am-grid="item" elg="3" md="6" sm="12">3 ст.</div>
+                    <div am-grid="item" elg="3" md="6" sm="12">4 ст.</div>
+                </div>
+
+                <div am-grid="container" spacing="2">
+                    <div am-grid="item" elg="6" md="6" sm="12">1 ст.</div>
+                    <div am-grid="item" elg="6" md="6" sm="12">2 ст.</div>
+                </div>
+            </div>
+        </div>
+    </div> #}
+
+
+
+    {# <div class="j-container">
+        <h2>Tooltips:</h2>
+
+        <div class="j-grid">
+            <div class="j-grid-item">
+                <div class="j-tooltip">
+                    <div class="j-tooltip-header">Tooltip 1</div>
+                    <div class="j-tooltip-content">
+                        <div class="j-tooltip-wrapper">
+                            <div class="j-tooltip-arrow"></div>
+                            wrapper 1
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="j-grid-item">
+                <div class="j-tooltip">
+                    <div class="j-tooltip-header">Tooltip 2</div>
+                    <div class="j-tooltip-content">
+                        <div class="j-tooltip-wrapper">
+                            <div class="j-tooltip-arrow"></div>
+                            wrapper 2
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="j-grid-item">
+                <div class="j-dropdown" data-name="dropdown-1">
+                    <div class="j-dropdown-header">dropdown 1</div>
+                    <div class="j-dropdown-content">
+                        <div class="j-dropdown-wrapper">
+                            <div class="j-dropdown-arrow"></div>
+                            <ul>
+                                <li>dropdown-item-1</li>
+                                <li>dropdown-item-2</li>
+                                <li>dropdown-item-3</li>
+                                <li>dropdown-item-4</li>
+                                <li>dropdown-item-5</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="j-grid-item">
+                <div class="j-dropdown">
+                    <div class="j-dropdown-header">dropdown 2</div>
+                    <div class="j-dropdown-content">
+                        <div class="j-dropdown-wrapper">
+                            <div class="j-dropdown-arrow"></div>
+                            <ul>
+                                <li>dropdown-item-1</li>
+                                <li>dropdown-item-2</li>
+                                <li>dropdown-item-3</li>
+                                <li>dropdown-item-4</li>
+                                <li>dropdown-item-5</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="j-grid-item">
-            <div class="j-tooltip">
-                <div class="j-tooltip-header">Tooltip 2</div>
-                <div class="j-tooltip-content">
-                    <div class="j-tooltip-wrapper">
-                        <div class="j-tooltip-arrow"></div>
-                        wrapper 2
+
+        <h2>Tabs:</h2>
+
+        <div class="j-grid">
+            <div class="j-tabs" data-name="tabs-1">
+                <div class="j-tabs-list">
+                    <div class="j-tab" data-target="content1">tab1</div>
+                    <div class="j-tab" data-target="content2">tab2</div>
+                </div>
+                <div class="j-tab-wrapper">
+                    <div class="j-tab-content" data-tab="content1">content1</div>
+                    <div class="j-tab-content" data-tab="content2">content2</div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Accordion:</h2>
+
+        <div class="j-grid">
+            <div class="j-grid-item">
+                <div class="j-accordion" data-name="acc-1">
+                    <div class="j-accordion-panel">
+                        <div class="j-accordion-tab">Acc tab1</div>
+                        <div class="j-accordion-content">Acc cont1</div>
+                    </div>
+                </div>
+            </div>
+            <div class="j-grid-item">
+                <div class="j-accordion">
+                    <div class="j-accordion-panel">
+                        <div class="j-accordion-tab">Acc tab2</div>
+                        <div class="j-accordion-content">Acc cont2</div>
+                    </div>
+                    <div class="j-accordion-panel">
+                        <div class="j-accordion-tab">Acc tab3</div>
+                        <div class="j-accordion-content">Acc cont3</div>
+                    </div>
+                </div>
+            </div>
+            <div class="j-grid-item">
+                <div class="j-accordion">
+                    <div class="j-accordion-panel">
+                        <div class="j-accordion-tab">Acc tab3</div>
+                        <div class="j-accordion-content">Acc cont3</div>
+                    </div>
+                    <div class="j-accordion-panel">
+                        <div class="j-accordion-tab">Acc tab3</div>
+                        <div class="j-accordion-content">Acc cont3</div>
+                    </div>
+                    <div class="j-accordion-panel">
+                        <div class="j-accordion-tab">Acc tab3</div>
+                        <div class="j-accordion-content">Acc cont3</div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="j-grid-item">
-            <div class="j-dropdown" data-name="dropdown-1">
-                <div class="j-dropdown-header">dropdown 1</div>
-                <div class="j-dropdown-content">
-                    <div class="j-dropdown-wrapper">
-                        <div class="j-dropdown-arrow"></div>
-                        <ul>
-                            <li>dropdown-item-1</li>
-                            <li>dropdown-item-2</li>
-                            <li>dropdown-item-3</li>
-                            <li>dropdown-item-4</li>
-                            <li>dropdown-item-5</li>
-                        </ul>
+
+        <h2>Collapse:</h2>
+
+        <div class="j-grid">
+            <div class="j-grid-item">
+                <div class="j-collapse" data-name="col-1" data-height="5">
+                    <div class="j-collapse-wrapper">
+                        wrapper collapse
+                    </div>
+                    <div class="j-collapse-button">button collapse</div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Progress:</h2>
+
+        <div class="j-grid">
+            <div class="j-grid-item">
+                <div class="j-progress" data-name="prog-50" data-percent="50">
+                    <div class="j-progress-percent"></div>
+                    <div class="j-progress-bar"></div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Modal:</h2>
+
+        <div class="j-grid">
+            <div class="j-grid-item">
+                <div class="j-modal" data-name="mod-1">
+                    <div class="j-modal-close"></div>
+                    <div class="j-modal-content"></div>
+                </div>
+                <div class="j-button main" data-modal-target="mod-1">btn modal-1</div>
+            </div>
+        </div>
+
+        <h2>Select:</h2>
+
+        <div class="j-grid">
+            <div class="j-grid-item">
+                <div class="j-select" data-name="select-1">
+                    <input class="j-select-input" name="city" value="0">
+                    <div class="j-select-value">Выберите город</div>
+                    <div class="j-select-wrapper">
+                        <div class="j-select-items">
+                            <div class="j-select-item" data-value="0">Все города</div>
+                            <div class="j-select-item" data-value="1">Москва</div>
+                            <div class="j-select-item" data-value="2">Самара</div>
+                            <div class="j-select-item" data-value="3">Тольятти</div>
+                            <div class="j-select-item" data-value="4">Казань</div>
+                            <div class="j-select-item" data-value="5">Сызрань</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="j-grid-item">
-            <div class="j-dropdown">
-                <div class="j-dropdown-header">dropdown 2</div>
-                <div class="j-dropdown-content">
-                    <div class="j-dropdown-wrapper">
-                        <div class="j-dropdown-arrow"></div>
-                        <ul>
-                            <li>dropdown-item-1</li>
-                            <li>dropdown-item-2</li>
-                            <li>dropdown-item-3</li>
-                            <li>dropdown-item-4</li>
-                            <li>dropdown-item-5</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <h2>Tabs:</h2>
-
-    <div class="j-grid">
-        <div class="j-tabs" data-name="tabs-1">
-            <div class="j-tabs-list">
-                <div class="j-tab" data-target="content1">tab1</div>
-                <div class="j-tab" data-target="content2">tab2</div>
-            </div>
-            <div class="j-tab-wrapper">
-                <div class="j-tab-content" data-tab="content1">content1</div>
-                <div class="j-tab-content" data-tab="content2">content2</div>
-            </div>
-        </div>
-    </div>
-
-    <h2>Accordion:</h2>
-
-    <div class="j-grid">
-        <div class="j-grid-item">
-            <div class="j-accordion" data-name="acc-1">
-                <div class="j-accordion-panel">
-                    <div class="j-accordion-tab">Acc tab1</div>
-                    <div class="j-accordion-content">Acc cont1</div>
-                </div>
-            </div>
-        </div>
-        <div class="j-grid-item">
-            <div class="j-accordion">
-                <div class="j-accordion-panel">
-                    <div class="j-accordion-tab">Acc tab2</div>
-                    <div class="j-accordion-content">Acc cont2</div>
-                </div>
-                <div class="j-accordion-panel">
-                    <div class="j-accordion-tab">Acc tab3</div>
-                    <div class="j-accordion-content">Acc cont3</div>
-                </div>
-            </div>
-        </div>
-        <div class="j-grid-item">
-            <div class="j-accordion">
-                <div class="j-accordion-panel">
-                    <div class="j-accordion-tab">Acc tab3</div>
-                    <div class="j-accordion-content">Acc cont3</div>
-                </div>
-                <div class="j-accordion-panel">
-                    <div class="j-accordion-tab">Acc tab3</div>
-                    <div class="j-accordion-content">Acc cont3</div>
-                </div>
-                <div class="j-accordion-panel">
-                    <div class="j-accordion-tab">Acc tab3</div>
-                    <div class="j-accordion-content">Acc cont3</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <h2>Collapse:</h2>
-
-    <div class="j-grid">
-        <div class="j-grid-item">
-            <div class="j-collapse" data-name="col-1" data-height="5">
-                <div class="j-collapse-wrapper">
-                    wrapper collapse
-                </div>
-                <div class="j-collapse-button">button collapse</div>
-            </div>
-        </div>
-    </div>
-
-    <h2>Progress:</h2>
-
-    <div class="j-grid">
-        <div class="j-grid-item">
-            <div class="j-progress" data-name="prog-50" data-percent="50">
-                <div class="j-progress-percent"></div>
-                <div class="j-progress-bar"></div>
-            </div>
-        </div>
-    </div>
-
-    <h2>Modal:</h2>
-
-    <div class="j-grid">
-        <div class="j-grid-item">
-            <div class="j-modal" data-name="mod-1">
-                <div class="j-modal-close"></div>
-                <div class="j-modal-content"></div>
-            </div>
-            <div class="j-button" data-modal-target="mod-1">btn modal-1</div>
-            {# <div am-modal="modal_bubble">
-                <div am-modal-close></div>
-                <div am-modal-content>
-                    modal_bubble-content
-                </div>
-            </div> #}
-        </div>
-    </div>
-
-    <h2>Select:</h2>
-
-    <div class="j-grid">
-        <div class="j-grid-item">
-            <div class="j-select" data-name="select-1">
-                <input class="j-select-input" name="city" value="0">
-                <div class="j-select-value">Выберите город</div>
-                <div class="j-select-wrapper">
-                    <div class="j-select-items">
-                        <div class="j-select-item" data-value="0">Все города</div>
-                        <div class="j-select-item" data-value="1">Москва</div>
-                        <div class="j-select-item" data-value="2">Самара</div>
-                        <div class="j-select-item" data-value="3">Тольятти</div>
-                        <div class="j-select-item" data-value="4">Казань</div>
-                        <div class="j-select-item" data-value="5">Сызрань</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    </div> #}
+{% endblock %}

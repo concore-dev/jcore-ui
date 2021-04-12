@@ -1,1 +1,71 @@
 @import 'lib/scss/index.scss';
+
+
+body {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+
+.#{$prefix-accordion-tab} {
+    padding: 0;
+}
+
+.#{$prefix-accordion-content} {
+    padding-left: 10px;
+}
+
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: #2a2f3a;
+    color: #fff;
+    width: 100%;
+    max-width: 250px;
+    padding: 45px 0;
+    transform: translateX(-100%);
+    @include transition();
+
+    &[data-active] {
+        transform: translateX(0);
+        left: 0;
+
+        .menu-toggle {
+            right: 10px;
+
+            .j-burger-line {
+                background: #fff;
+            }
+        }
+    }
+
+    &-toggle {
+        position: absolute;
+        right: -40px;
+        top: 10px;
+    }
+
+    &-item {
+        color: $gray;
+        font-size: 14px;
+
+        @include transition();
+    }
+
+    &-link {
+        cursor: pointer;
+        padding: 10px 20px;
+
+        &:hover {
+            background: #484c54;
+            color: #fff;
+        }
+    }
+}
+

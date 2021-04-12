@@ -2,13 +2,7 @@
 
 
 // Mixins
-@import './mixins/aspect.scss';
-@import './mixins/button-color.scss';
-@import './mixins/fonts.scss';
-@import './mixins/gradient-hover.scss';
-@import './mixins/media.scss';
-@import './mixins/sprites.scss';
-@import './mixins/transition.scss';
+@import './mixins/index.scss';
 
 
 @import './utils/color.scss';
@@ -35,3 +29,4 @@
 @import './components/container';
 @import './components/grid';
 @import './components/modal';
+@import './components/burger';

@@ -28,8 +28,6 @@ $prefix-button: 'button' !default;
     }
 
     &.main {
-        color: #fff;
-
         @include button-color-content(
             #fff, #fff, #fff,
             $red, $red-light, $red-dark,
@@ -45,8 +43,6 @@ $prefix-button: 'button' !default;
     }
 
     &.second {
-        color: #fff;
-
         @include button-color-content(
             #fff, #fff, #fff,
             $blue, $blue-light, $blue-dark,
@@ -62,19 +58,26 @@ $prefix-button: 'button' !default;
     }
 
     &.transparent {
-        // border: 1px solid $red;
-        color: $red;
-
         @include button-color-content(
             $red, #fff, #fff,
             #fff, $red-light, $red-dark,
             $red, $red-light, $red-dark
         );
 
-        // &:not([disabled] or .disabled):hover {
-        //     background: $red;
-        //     color: #fff;
-        // }
+        &.second {
+            @include button-color-content(
+                $blue, #fff, #fff,
+                #fff, $blue-light, $blue-dark,
+                $blue, $blue-light, $blue-dark
+            );
+
+            &[disabled],
+            &.disabled {
+                background: rgba($color: $blue, $alpha: 0.2)!important;
+                border-color: rgba($color: $blue, $alpha: 0.01)!important;
+                cursor: default;
+            }
+        }
 
         &[disabled],
         &.disabled {

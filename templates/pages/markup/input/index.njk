@@ -8,27 +8,176 @@
         </header>
         <content class="page-content">
             <section class="page-section">
-                <div class="page-section-header">Правила использования.</div>
-                <div class="page-section-label">Контейнер указывается через .j-container класс</div>
+                <div class="page-section-header">Обычные</div>
+                <div class="page-section-label">класс .j-input</div>
                 <div class="page-section-example">
-                    <div class="j-container">
-                        <div class="j-grid">
-                            <div class="j-grid-item">Колонка 1</div>
-                            <div class="j-grid-item">Колонка 2</div>
-                            <div class="j-grid-item">Колонка 3</div>
-                            <div class="j-grid-item">Колонка 4</div>
+                    <div class="j-input">
+                        <input type="text" placeholder="Обычное поле">
+                    </div>
+                </div>
+                <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<div class="j-input" data-error>
+    <input type="text" placeholder="Обычное поле"/>
+</div>
+</script></code>
+</pre>
+                </div>
+            </section>
+
+            <section class="page-section">
+                <div class="page-section-header">Большие</div>
+                <div class="page-section-example">
+                    <div class="j-input big">
+                        <input type="text" placeholder="Обычное поле">
+                    </div>
+                </div>
+                <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<div class="j-input" data-error>
+    <input type="text" placeholder="Обычное поле"/>
+</div>
+</script></code>
+</pre>
+                </div>
+            </section>
+
+            <section class="page-section">
+                <div class="page-section-header">Валидация</div>
+                <div class="page-section-label">аттрибут [data-error|data-accept]</div>
+                <div class="page-section-example">
+                    <div class="j-input" data-accept>
+                        <input type="text" placeholder="Обычное поле">
+                    </div> </br>
+                    <div class="j-input" data-error>
+                        <input type="text" placeholder="Обычное поле">
+                    </div>
+                </div>
+                <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<div class="j-input" data-accept>
+    <input type="text" placeholder="Обычное поле"/>
+</div> </br>
+<div class="j-input" data-error>
+    <input type="text" placeholder="Обычное поле"/>
+</div>
+</script></code>
+</pre>
+                </div>
+            </section>
+        </content>
+
+            <section class="page-section">
+                <div class="page-section-header">С лейблами</div>
+                <div class="page-section-example">
+                    <div class="j-input">
+                        <div class="j-input-hint top">Имя</div>
+                        <input type="text" placeholder="Обычное поле">
+                    </div> </br>
+                    <div class="j-input" data-accept>
+                        <div class="j-input-hint top">Имя</div>
+                        <input type="text" placeholder="Обычное поле">
+                    </div> </br>
+                    <div class="j-input" data-error>
+                        <div class="j-input-hint top">Имя</div>
+                        <input type="text" placeholder="Обычное поле">
+                    </div> </br>
+                    <div class="j-input">
+                        <div class="j-input-hint top">Имя <span class="j-input-required">*</span></div>
+                        <input type="text" placeholder="Обычное поле">
+                        <div class="j-input-hint bottom"><span class="j-input-required">*</span> обязательно для заполнения</div>
+                    </div>
+                </div>
+                <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<div class="j-input">
+    <div class="j-input-hint top">Имя</div>
+    <input type="text" placeholder="Обычное поле"/>
+</div> </br>
+<div class="j-input" data-accept>
+    <div class="j-input-hint top">Имя</div>
+    <input type="text" placeholder="Обычное поле"/>
+</div> </br>
+<div class="j-input" data-error>
+    <div class="j-input-hint top">Имя</div>
+    <input type="text" placeholder="Обычное поле"/>
+</div> </br>
+<div class="j-input">
+    <div class="j-input-hint top">Имя <span class="j-input-required">*</span></div>
+    <input type="text" placeholder="Обычное поле"/>
+    <div class="j-input-hint bottom"><span class="j-input-required">*</span> обязательно для заполнения</div>
+</div>
+</script></code>
+</pre>
+                </div>
+            </section>
+
+            <section class="page-section">
+                <div class="page-section-header">Всплывающий лейбл</div>
+                <div class="page-section-example">
+                    <div class="j-input">
+                        <div class="j-input-group">
+                            <input type="text" placeholder=" ">
+                            <label for="name" class="j-input-hint placeholder">Имя</label>
+                        </div>
+                    </div> </br>
+                    <div class="j-input big">
+                        <div class="j-input-group">
+                            <input type="text" placeholder=" ">
+                            <label for="name" class="j-input-hint placeholder">Имя</label>
                         </div>
                     </div>
                 </div>
                 <div class="page-section-code">
 <pre>
 <code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
-<div class="j-container">
-    <div class="j-grid">
-        <div class="j-grid-item">Колонка 1</div>
-        <div class="j-grid-item">Колонка 2</div>
-        <div class="j-grid-item">Колонка 3</div>
-        <div class="j-grid-item">Колонка 4</div>
+<div class="j-input">
+    <div class="j-input-group">
+        <input type="text" placeholder=" "/>
+        <label for="name" class="j-input-hint placeholder">Имя</label>
+    </div>
+</div> </br>
+<div class="j-input big">
+    <div class="j-input-group">
+        <input type="text" placeholder=" "/>
+        <label for="name" class="j-input-hint placeholder">Имя</label>
+    </div>
+</div>
+</script></code>
+</pre>
+                </div>
+            </section>
+
+            <section class="page-section">
+                <div class="page-section-header">textarea</div>
+                <div class="page-section-example">
+                    <div class="j-input">
+                        <textarea name="" id="" rows="5" placeholder="Сообщение"></textarea>
+                    </div> </br>
+                    <div class="j-input">
+                        <div class="j-input-group">
+                            <textarea name="" id="" rows="5" placeholder=" "></textarea>
+                            <label for="name" class="j-input-hint placeholder">Сообщение</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<div class="j-input">
+    <div class="j-input-group">
+        <input type="text" placeholder=" "/>
+        <label for="name" class="j-input-hint placeholder">Имя</label>
+    </div>
+</div> </br>
+<div class="j-input big">
+    <div class="j-input-group">
+        <input type="text" placeholder=" "/>
+        <label for="name" class="j-input-hint placeholder">Имя</label>
     </div>
 </div>
 </script></code>

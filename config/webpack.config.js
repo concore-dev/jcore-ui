@@ -19,14 +19,14 @@ module.exports = (env, argv) => {
 
     let entry = {
         app: [
-            `${paths.src}/app/index.ts`,
+            `${paths.src}/js/index.ts`,
             `${paths.src}/scss/index.scss`,
         ]
     };
 
     if (prod) {
         entry['lib.component'] = [
-            `${paths.root}/lib/components/index.ts`,
+            `${paths.root}/index.ts`,
             `${paths.root}/lib/scss/index.scss`,
         ]
         // entry['lib.utils'] = [
@@ -39,9 +39,9 @@ module.exports = (env, argv) => {
         output: {
             path: paths.dist,
             filename: (file) => {
-                if (file.chunk.name.split('.').shift() === 'lib') {
-                    return `../bin/[name].js`;
-                }
+                // if (file.chunk.name.split('.').shift() === 'lib') {
+                //     return `../bin/[name].js`;
+                // }
 
                 return `${paths.bundles}/js/[name].${prod ? '[chunkhash:5].' : ''}js`;
             },
@@ -149,9 +149,9 @@ module.exports = (env, argv) => {
             // }),
             new MiniCssExtractPlugin({
                 filename: (file) => {
-                    if (file.chunk.name.split('.').shift() === 'lib') {
-                        return `../bin/[name].css`;
-                    }
+                    // if (file.chunk.name.split('.').shift() === 'lib') {
+                    //     return `../bin/[name].css`;
+                    // }
 
                     return `/${paths.bundles}/css/[name].${prod ? '[contenthash:5].' : ''}css`;
                 },

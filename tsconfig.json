@@ -43,6 +43,7 @@
         // "**/*.ts",
         "./typings/**/*.ts",
         "./lib/**/*.ts",
+        "./app/**/*.ts",
         "index.ts",
         // "./tests/**/*.ts"
     ]

@@ -8,17 +8,17 @@ const dataHref = () => {
 
     Element.prototype.dataHref = function () {
         this.addEventListener('click', e => clickHandler(e))
-        this.addEventListener('mousedown', e => doubleclick(e))
+        this.addEventListener('mousedown', (e) => doubleclick(e as MouseEvent))
     }
 
-    function clickHandler(e) {
-        const target = e.target;
+    function clickHandler(e: Event) {
+        const target = e.target as Element;
 
         if (target.closest(selector) || target.hasAttribute(dataAttr)) {
             click(target.closest(selector) || target)
         }
 
-        function click(target) {
+        function click(target: Element) {
             if (target.hasAttribute(targetAttr)) {
                 window.open(target.getAttribute(dataAttr), target.getAttribute(targetAttr));
             } else {
@@ -27,13 +27,14 @@ const dataHref = () => {
         }
     }
 
-    function doubleclick(e) {
-        const target = e.target;
+    function doubleclick(e: MouseEvent) {
+        const target = e.target as Element;
 
         if ((target.closest(selector) || target.hasAttribute(dataAttr)) && e.which == 2) {
             window.open(target.closest(selector).getAttribute(dataAttr) || target.getAttribute(dataAttr), '_blank');
         }
     }
 }
+
 
 export default dataHref

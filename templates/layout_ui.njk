@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jcore-ui | kit</title>
 </head>
-<body>
+<body data-menu>
     {% block menu %}
         {% include "components/menu.njk" %}
     {% endblock %}
@@ -14,6 +14,17 @@
 
     {% block content %}
         content
+    {% endblock %}
+
+
+    {% block footer %}
+        <footer class="footer">
+            <div class="j-container">
+                <div class="footer-copyright">
+                    © 2021 Eryomin Nickolay.
+                </div>
+            </div>
+        </footer>
     {% endblock %}
 </body>
 </html>

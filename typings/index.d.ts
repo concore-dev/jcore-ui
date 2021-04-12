@@ -30,6 +30,10 @@ interface EventTarget {
     dataset: any
 }
 
-declare module 'jcore-ui';
+
+interface Element {
+    dataHref(): void
+}
+
 
 // declare const filterController: TEventEmitter;

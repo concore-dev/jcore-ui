@@ -113,6 +113,9 @@ body {
     }
 }
 
+script[class^="language"] {
+    display: block;
+}
 
 .footer {
     margin-top: auto;
@@ -163,6 +166,12 @@ body {
 
         &-code {
             padding: 10px 0;
+        }
+
+        &-example,
+        pre {
+            border: 1px solid #e0dddb!important;
+            padding: 1em;
         }
     }
 }

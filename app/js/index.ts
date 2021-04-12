@@ -30,15 +30,16 @@ try {
         $menuToggle.toggleAttribute('data-active')
     })
 
-    window.Accordions = new Accordion()
     dataHref()
-    // window.Tooltips = new Tooltip();
-    // window.Dropdowns = new Dropdown();
-    // window.Tabs = new Tab()
-    // window.Collapses = new Collapse()
-    // window.Progresses = new Progress()
-    // window.Modals = new Modal()
-    // window.Selects = new Select()
+
+    window.Accordions = new Accordion()
+    window.Tooltips = new Tooltip();
+    window.Dropdowns = new Dropdown();
+    window.Tabs = new Tab()
+    window.Collapses = new Collapse()
+    window.Progresses = new Progress()
+    window.Modals = new Modal()
+    window.Selects = new Select()
 } catch (e) {
     console.log(e);
 }

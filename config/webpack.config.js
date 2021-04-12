@@ -25,7 +25,7 @@ module.exports = (env, argv) => {
     };
 
     if (prod) {
-        entry['lib.component'] = [
+        entry['lib'] = [
             `${paths.root}/index.ts`,
             `${paths.root}/lib/scss/index.scss`,
         ]

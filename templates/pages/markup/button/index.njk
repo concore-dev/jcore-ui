@@ -1,0 +1,74 @@
+{% extends "layout_ui.njk" %}
+
+{% block content %}
+    <div class="j-container">
+        <header class="page-header">
+                <div class="page-title">Кнопка</div>
+                <div class="page-label">компонент кнопки</div>
+        </header>
+        <content class="page-content">
+            <section class="page-section">
+                <div class="page-section-header">Правила использования</div>
+                <div class="page-section-label">Класс .j-button</div>
+                <div class="page-section-example">
+                    <button class="j-button">default кнопка</button>
+                    <button class="j-button main">main кнопка</button>
+                    <button class="j-button second">second кнопка</button>
+                    <button class="j-button transparent">white кнопка</button>
+                </div>
+                <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<button class="j-button">default кнопка</button>
+<button class="j-button main">main кнопка</button>
+<button class="j-button second">second кнопка</button>
+<button class="j-button transparent">transparent кнопка</button>
+</script></code>
+</pre>
+                </div>
+            </section>
+
+            <section class="page-section">
+                <div class="page-section-header">Заблокированная</div>
+                <div class="page-section-label">Класс .disabled[disabled]</div>
+                <div class="page-section-example">
+                    <button class="j-button disabled">default кнопка</button>
+                    <button class="j-button main disabled">main кнопка</button>
+                    <button class="j-button second" disabled>second кнопка</button>
+                    <button class="j-button transparent" disabled>white кнопка</button>
+                </div>
+                <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<button class="j-button disabled">default кнопка</button>
+<button class="j-button main disabled">main кнопка</button>
+<button class="j-button second" disabled>second кнопка</button>
+<button class="j-button transparent" disabled>white кнопка</button>
+</script></code>
+</pre>
+                </div>
+            </section>
+
+            <section class="page-section">
+                <div class="page-section-header">Большая</div>
+                <div class="page-section-label">Класс .big</div>
+                <div class="page-section-example">
+                    <button class="j-button big">default кнопка</button>
+                    <button class="j-button main big">main кнопка</button>
+                    <button class="j-button second big">second кнопка</button>
+                    <button class="j-button transparent big">white кнопка</button>
+                </div>
+                <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<button class="j-button big">default кнопка</button>
+<button class="j-button main big">main кнопка</button>
+<button class="j-button second big">second кнопка</button>
+<button class="j-button transparent big">white кнопка</button>
+</script></code>
+</pre>
+                </div>
+            </section>
+        </content>
+    </div>
+{% endblock %}

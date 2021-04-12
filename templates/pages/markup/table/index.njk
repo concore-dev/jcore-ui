@@ -1,0 +1,40 @@
+{% extends "layout_ui.njk" %}
+
+{% block content %}
+    <div class="j-container">
+        <header class="page-header">
+                <div class="page-title">Table</div>
+                <div class="page-label">компонент кнопки</div>
+        </header>
+        <content class="page-content">
+            <section class="page-section">
+                <div class="page-section-header">Правила использования.</div>
+                <div class="page-section-label">Контейнер указывается через .j-container класс</div>
+                <div class="page-section-example">
+                    <div class="j-container">
+                        <div class="j-grid">
+                            <div class="j-grid-item">Колонка 1</div>
+                            <div class="j-grid-item">Колонка 2</div>
+                            <div class="j-grid-item">Колонка 3</div>
+                            <div class="j-grid-item">Колонка 4</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<div class="j-container">
+    <div class="j-grid">
+        <div class="j-grid-item">Колонка 1</div>
+        <div class="j-grid-item">Колонка 2</div>
+        <div class="j-grid-item">Колонка 3</div>
+        <div class="j-grid-item">Колонка 4</div>
+    </div>
+</div>
+</script></code>
+</pre>
+                </div>
+            </section>
+        </content>
+    </div>
+{% endblock %}

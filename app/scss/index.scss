@@ -45,6 +45,11 @@ body {
         }
     }
 
+    &-content {
+        overflow-x: auto;
+        height: 100%;
+    }
+
     &-toggle {
         position: absolute;
         right: -40px;
@@ -65,6 +70,29 @@ body {
         &:hover {
             background: #484c54;
             color: #fff;
+        }
+    }
+
+    .#{$prefix-accordion-tab} {
+        &::after {
+            content: "";
+            display: block;
+            border: solid #fff;
+            border-width: 1px 1px 0 0;
+            display: inline-block;
+            padding: 3px;
+            position: absolute;
+            transform: rotate(45deg);
+            right: 20px;
+            top: calc(50% - 5px);
+
+            @include transition(.1s);
+        }
+
+        &[data-active] {
+            &::after {
+                transform: rotate(135deg);
+            }
         }
     }
 }

@@ -149,6 +149,12 @@ script[class^="language"] {
         color: #333;
     }
 
+    &-import {
+        color: #1990b8;
+        font-size: 14px;
+        margin: 5px 0;
+    }
+
     &-content {
         padding: 25px 0;
         display: block;

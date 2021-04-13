@@ -7,7 +7,7 @@ $prefix-button: 'button' !default;
 
 .#{$prefix}-#{$prefix-button} {
     border: 0;
-    border-radius: 3px;
+    border-radius: 1px;
     padding: 0 25px;
     height: 40px;
     border: 1px solid;
@@ -27,6 +27,12 @@ $prefix-button: 'button' !default;
         font-size: 16px;
     }
 
+    &.medium {
+        padding: 0 35px;
+        height: 45px;
+        font-size: 15px;
+    }
+
     &.main {
         @include button-color-content(
             #fff, #fff, #fff,
@@ -39,6 +45,7 @@ $prefix-button: 'button' !default;
             background: rgba($color: $red, $alpha: 0.2)!important;
             border-color: rgba($color: $red, $alpha: 0.01)!important;
             cursor: default;
+            color: #fff!important;
         }
     }
 

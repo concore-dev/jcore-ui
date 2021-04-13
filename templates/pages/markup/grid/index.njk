@@ -1,10 +1,13 @@
 {% extends "layout_ui.njk" %}
 
+{% block title %}grid{% endblock %}
+
 {% block content %}
     <div class="j-container page-grid">
         <header class="page-header">
-                <div class="page-title">Сетка</div>
-                <div class="page-label">Набор горизонтальных и вертикальных линий, создающих шаблон, по которому мы можем выстроить элементы дизайна.</div>
+            <div class="page-title">Сетка</div>
+            <div class="page-label">Набор горизонтальных и вертикальных линий, создающих шаблон, по которому мы можем выстроить элементы дизайна.</div>
+            <div class="page-import">@import <span class="token string">'node_modules/jcore-ui/lib/scss/components/grid.scss'</span>;</div>
         </header>
         <content class="page-content">
             <section class="page-section">

@@ -85,6 +85,7 @@ $prefix-checkbox-input: 'checkbox-input' !default;
 
 .#{$prefix}-#{$prefix-checkbox-wrapper} {
     display: flex;
+    align-items: center;
     user-select: none;
 
     > *:not(:last-child) {

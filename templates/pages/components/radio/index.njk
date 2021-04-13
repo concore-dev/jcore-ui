@@ -1,39 +1,104 @@
 {% extends "layout_ui.njk" %}
 
-{% block title %}container{% endblock %}
+{% block title %}accordion{% endblock %}
 
 {% block content %}
-    <div class="j-container">
+    <div class="j-container page-accordion">
         <header class="page-header">
-            <div class="page-title">Аккордеон</div>
-            <div class="page-label">компонент аккордеона</div>
-            <div class="page-import">@import <span class="token string">'node_modules/jcore-ui/lib/scss/components/accordion.scss'</span>;</div>
-            <div class="page-import">import <span class="token string">{ Accordion } from 'jcore-ui'</span>;</div>
-            <div class="page-import">import <span class="token string">Accordion from 'jcore-ui/bin/lib/components/Accordion'</span>;</div>
+            <div class="page-title">Радиокнопки</div>
+            <div class="page-label">компонент радиокнопок</div>
+            <div class="page-import">@import <span class="token string">'node_modules/jcore-ui/lib/scss/components/radio.scss'</span>;</div>
         </header>
         <content class="page-content">
             <section class="page-section">
                 <div class="page-section-header">Использование</div>
-                <div class="page-section-label">Класс .j-container </div>
+                {# <div class="page-section-label">
+                </div> #}
                 <div class="page-section-example">
-                    <div class="j-container">
-                        <div class="j-grid">
-                            <div class="j-grid-item">Колонка 1</div>
-                            <div class="j-grid-item">Колонка 2</div>
-                            <div class="j-grid-item">Колонка 3</div>
-                            <div class="j-grid-item">Колонка 4</div>
+                    <div class="j-radio">
+                        <input class="j-radio-input" name="sale" type="radio">
+                        <div class="j-radio-wrapper">
+                            <div class="j-radio-icon"></div>
+                            <div class="j-radio-label">Товары со скидкой</div>
+                        </div>
+                    </div>
+                    <div class="j-radio">
+                        <input class="j-radio-input" name="sale" type="radio">
+                        <div class="j-radio-wrapper">
+                            <div class="j-radio-icon"></div>
+                            <div class="j-radio-label">Товары за 35р</div>
                         </div>
                     </div>
                 </div>
                 <div class="page-section-code">
 <pre>
 <code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
-<div class="j-container">
-    <div class="j-grid">
-        <div class="j-grid-item">Колонка 1</div>
-        <div class="j-grid-item">Колонка 2</div>
-        <div class="j-grid-item">Колонка 3</div>
-        <div class="j-grid-item">Колонка 4</div>
+<div class="j-radio">
+    <input class="j-radio-input" name="sale" type="radio">
+    <div class="j-radio-wrapper">
+        <div class="j-radio-icon"></div>
+        <div class="j-radio-label">Товары со скидкой</div>
+    </div>
+</div>
+<div class="j-radio">
+    <input class="j-radio-input" name="sale" type="radio">
+    <div class="j-radio-wrapper">
+        <div class="j-radio-icon"></div>
+        <div class="j-radio-label">Товары за 35р</div>
+    </div>
+</div>
+</script></code>
+</pre>
+                </div>
+            </section>
+
+            <section class="page-section">
+                <div class="page-section-header">Заблокированный</div>
+                <div class="page-section-example">
+                    <div class="j-radio">
+                        <input class="j-radio-input" disabled name="sale" type="radio">
+                        <div class="j-radio-wrapper">
+                            <div class="j-radio-icon"></div>
+                            <div class="j-radio-label">Товары со скидкой</div>
+                        </div>
+                    </div>
+                    <div class="j-radio">
+                        <input class="j-radio-input" name="sale" type="radio">
+                        <div class="j-radio-wrapper">
+                            <div class="j-radio-icon"></div>
+                            <div class="j-radio-label">Товары за 35р</div>
+                        </div>
+                    </div>
+                    <div class="j-radio">
+                        <input class="j-radio-input" name="sale" type="radio">
+                        <div class="j-radio-wrapper">
+                            <div class="j-radio-icon"></div>
+                            <div class="j-radio-label">Самые дешевые</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<div class="j-radio">
+    <input class="j-radio-input" disabled name="sale" type="radio">
+    <div class="j-radio-wrapper">
+        <div class="j-radio-icon"></div>
+        <div class="j-radio-label">Товары со скидкой</div>
+    </div>
+</div>
+<div class="j-radio">
+    <input class="j-radio-input" name="sale" type="radio">
+    <div class="j-radio-wrapper">
+        <div class="j-radio-icon"></div>
+        <div class="j-radio-label">Товары за 35р</div>
+    </div>
+</div>
+<div class="j-radio">
+    <input class="j-radio-input" name="sale" type="radio">
+    <div class="j-radio-wrapper">
+        <div class="j-radio-icon"></div>
+        <div class="j-radio-label">Самые дешевые</div>
     </div>
 </div>
 </script></code>

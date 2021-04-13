@@ -20,30 +20,36 @@
             </section>
             <section class="page-section">
                 <div class="page-section-header">Использование</div>
-                <div class="page-section-label">js</div>
+                <div class="page-section-label">Вызов компонента без указания селектора смонтирует все компоненты присутствующие в разметке на момент вызова и вернет экземпляр компонента с массивом всех экземпляров (свойство components), для которых был вызван компонент
+                </div>
+                <div class="page-section-label">Все свойства options, можно указать через data атрибуты (data-name="example", data-duration="300" и т.д)
+                </div>
                 <div class="page-section-code">
 <pre>
 <code class="language-js">
-import { Modal } from "jcore-ui"
+import jcore from "jcore-ui"
 
-const modal = new Modal({
-options: {
-    mount: false
-}
+const modal = new jcore.Modal({
+    options: {
+        mount: false
+    },
+    on: {
+        mount: (ctx) => {
+            // ...
+        }
+    }
 })
 
 modal.on('mount', (ctx) => {
-...
+    // ...
 })
 
 modal.mount()
 </code>
 </pre>
-                <div class="page-section-label">scss</div>
                 <div class="page-section-code">
 <pre>
 <code class="language-css">
-@import 'node_modules/jcore-ui/lib/scss/components/modal.scss';
 @import 'node_modules/jcore-ui/lib/scss/index.scss';
 </code>
 </pre>

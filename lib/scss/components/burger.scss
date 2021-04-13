@@ -20,6 +20,12 @@ $prefix-burger-line: '#{$prefix}-burger-line' !default;
         @include transition();
     }
 
+    &.light {
+        .#{$prefix-burger-line} {
+            background: #fff;
+        }
+    }
+
     &[data-active] {
         .#{$prefix-burger-line} {
             &:first-child {

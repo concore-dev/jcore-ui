@@ -1,45 +1,271 @@
 {% extends "layout_ui.njk" %}
 
-{% block title %}container{% endblock %}
+{% block title %}accordion{% endblock %}
 
 {% block content %}
-    <div class="j-container">
+    <div class="j-container page-accordion">
         <header class="page-header">
-            <div class="page-title">Аккордеон</div>
-            <div class="page-label">компонент аккордеона</div>
-            <div class="page-import">@import <span class="token string">'node_modules/jcore-ui/lib/scss/components/accordion.scss'</span>;</div>
-            <div class="page-import">import <span class="token string">{ Accordion } from 'jcore-ui'</span>;</div>
-            <div class="page-import">import <span class="token string">Accordion from 'jcore-ui/bin/lib/components/Accordion'</span>;</div>
+            <div class="page-title">Выпадающий списк</div>
+            <div class="page-label">компонент выпадающего списка</div>
+            <div class="page-import">@import <span class="token string">'node_modules/jcore-ui/lib/scss/components/dropdown.scss'</span>;</div>
+            <div class="page-import">import <span class="token string">{ Dropdown } from 'jcore-ui'</span>;</div>
+            <div class="page-import">import <span class="token string">Dropdown from 'jcore-ui/bin/lib/components/Dropdown'</span>;</div>
         </header>
         <content class="page-content">
-            <section class="page-section">
-                <div class="page-section-header">Использование</div>
-                <div class="page-section-label">Класс .j-container </div>
-                <div class="page-section-example">
-                    <div class="j-container">
-                        <div class="j-grid">
-                            <div class="j-grid-item">Колонка 1</div>
-                            <div class="j-grid-item">Колонка 2</div>
-                            <div class="j-grid-item">Колонка 3</div>
-                            <div class="j-grid-item">Колонка 4</div>
-                        </div>
-                    </div>
+            <div class="j-tabs" data-name="content">
+                <div class="j-tabs-list">
+                    <div class="j-tab" data-target="content1" data-active>Примеры и код</div>
+                    <div class="j-tab" data-target="content2">Свойства и методы</div>
                 </div>
-                <div class="page-section-code">
+                <div class="j-tab-wrapper">
+                    <div class="j-tab-content" data-tab="content1" data-active>
+                        <section class="page-section">
+                            <div class="page-section-header">Использование</div>
+                            {# <div class="page-section-label"></div> #}
+                            <div class="page-section-example">
+                                <div class="j-dropdown" data-name="dropdown-1">
+                                    <div class="j-dropdown-header">dropdown</div>
+                                    <div class="j-dropdown-content">
+                                        <div class="j-dropdown-wrapper">
+                                            <div class="j-dropdown-arrow"></div>
+                                            <div><a href="#">dropdown-item-1</a></div>
+                                            <div><a href="#">dropdown-item-2</a></div>
+                                            <div><a href="#">dropdown-item-3</a></div>
+                                            <div><a href="#">dropdown-item-4</a></div>
+                                            <div><a href="#">dropdown-item-5</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="page-section-code">
+<pre>
+<code class="language-js">
+const dropdown = new Dropdown()
+</code>
+</pre>
+                            </div>
+                            <div class="page-section-code">
 <pre>
 <code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
-<div class="j-container">
-    <div class="j-grid">
-        <div class="j-grid-item">Колонка 1</div>
-        <div class="j-grid-item">Колонка 2</div>
-        <div class="j-grid-item">Колонка 3</div>
-        <div class="j-grid-item">Колонка 4</div>
+<div class="j-dropdown" data-name="dropdown-1">
+    <div class="j-dropdown-header">dropdown</div>
+    <div class="j-dropdown-content">
+        <div class="j-dropdown-wrapper">
+            <div class="j-dropdown-arrow"></div>
+            <div><a href="#">dropdown-item-1</a></div>
+            <div><a href="#">dropdown-item-2</a></div>
+            <div><a href="#">dropdown-item-3</a></div>
+            <div><a href="#">dropdown-item-4</a></div>
+            <div><a href="#">dropdown-item-5</a></div>
+        </div>
     </div>
 </div>
 </script></code>
 </pre>
+                            </div>
+                        </section>
+
+                        <section class="page-section">
+                            <div class="page-section-header">Направление</div>
+                            <div class="page-section-label">
+                                <p>Атрибут [data-dir="top|bottom"]</p>
+                            </div>
+                            <div class="page-section-example">
+                                <div class="j-dropdown">
+                                    <div class="j-dropdown-header">dropdown top</div>
+                                    <div class="j-dropdown-content" data-dir="top">
+                                        <div class="j-dropdown-wrapper">
+                                            <div class="j-dropdown-arrow"></div>
+                                            <div><a href="#">dropdown-item-1</a></div>
+                                            <div><a href="#">dropdown-item-2</a></div>
+                                            <div><a href="#">dropdown-item-3</a></div>
+                                            <div><a href="#">dropdown-item-4</a></div>
+                                            <div><a href="#">dropdown-item-5</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="j-dropdown">
+                                    <div class="j-dropdown-header">dropdown bottom</div>
+                                    <div class="j-dropdown-content" data-dir="bottom">
+                                        <div class="j-dropdown-wrapper">
+                                            <div class="j-dropdown-arrow"></div>
+                                            <div><a href="#">dropdown-item-1</a></div>
+                                            <div><a href="#">dropdown-item-2</a></div>
+                                            <div><a href="#">dropdown-item-3</a></div>
+                                            <div><a href="#">dropdown-item-4</a></div>
+                                            <div><a href="#">dropdown-item-5</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<div class="j-dropdown">
+    <div class="j-dropdown-header">dropdown</div>
+    <div class="j-dropdown-content" data-dir="top">
+        // ...
+    </div>
+</div>
+
+<div class="j-dropdown">
+    <div class="j-dropdown-header">dropdown</div>
+    <div class="j-dropdown-content" data-dir="bottom">
+        // ...
+    </div>
+</div>
+</script></code>
+</pre>
+                            </div>
+                        </section>
+
+                        <section class="page-section">
+                            <div class="page-section-header">Выравнивание</div>
+                            <div class="page-section-label">
+                                <p>Атрибут [data-align="left|stretch|right"]</p>
+                            </div>
+                            <div class="page-section-example">
+                                <div class="j-grid">
+                                    <div class="j-grid-item">
+                                        <div class="j-dropdown">
+                                            <div class="j-dropdown-header">dropdown left</div>
+                                            <div class="j-dropdown-content" data-align="left">
+                                                <div class="j-dropdown-wrapper">
+                                                    <div class="j-dropdown-arrow"></div>
+                                                    <div><a href="#">dropdown-item-1</a></div>
+                                                    <div><a href="#">dropdown-item-2</a></div>
+                                                    <div><a href="#">dropdown-item-3</a></div>
+                                                    <div><a href="#">dropdown-item-4</a></div>
+                                                    <div><a href="#">dropdown-item-5</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="j-grid-item">
+                                        <div class="j-dropdown">
+                                            <div class="j-dropdown-header">dropdown stretch</div>
+                                            <div class="j-dropdown-content" data-align="stretch">
+                                                <div class="j-dropdown-wrapper">
+                                                    <div class="j-dropdown-arrow"></div>
+                                                    <div><a href="#">dropdown-item-1</a></div>
+                                                    <div><a href="#">dropdown-item-2</a></div>
+                                                    <div><a href="#">dropdown-item-3</a></div>
+                                                    <div><a href="#">dropdown-item-4</a></div>
+                                                    <div><a href="#">dropdown-item-5</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="j-grid-item">
+                                        <div class="j-dropdown">
+                                            <div class="j-dropdown-header">dropdown right</div>
+                                            <div class="j-dropdown-content" data-align="right">
+                                                <div class="j-dropdown-wrapper">
+                                                    <div class="j-dropdown-arrow"></div>
+                                                    <div><a href="#">dropdown-item-1</a></div>
+                                                    <div><a href="#">dropdown-item-2</a></div>
+                                                    <div><a href="#">dropdown-item-3</a></div>
+                                                    <div><a href="#">dropdown-item-4</a></div>
+                                                    <div><a href="#">dropdown-item-5</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<div class="j-dropdown">
+    <div class="j-dropdown-header">dropdown</div>
+    <div class="j-dropdown-content" data-align="left">
+        // ...
+    </div>
+</div>
+
+<div class="j-dropdown">
+    <div class="j-dropdown-header">dropdown</div>
+    <div class="j-dropdown-content" data-align="stretch">
+        // ...
+    </div>
+</div>
+
+<div class="j-dropdown">
+    <div class="j-dropdown-header">dropdown</div>
+    <div class="j-dropdown-content" data-align="right">
+        // ...
+    </div>
+</div>
+</script></code>
+</pre>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="j-tab-content" data-tab="content2">
+                        <section class="page-section">
+                            <div class="page-section-header">Свойства и методы</div>
+                            <div class="page-section-example property">
+                                <div class="j-table-responsive">
+                                    <table class="j-table" data-border-bottom>
+                                        <caption>Параметры (Dropdown.options)</caption>
+                                        <thead>
+                                            <tr>
+                                                <th>Название</th>
+                                                <th>Значение по умолчанию</th>
+                                                <th>Тип</th>
+                                                <th>Описание</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>mount</td>
+                                                <td>true</td>
+                                                <td>boolean</td>
+                                                <td>инициализация компонента</td>
+                                            </tr>
+                                            <tr>
+                                                <td>name</td>
+                                                <td>''</td>
+                                                <td>string</td>
+                                                <td>имя компонента</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="j-table-responsive">
+                                    <table class="j-table" data-border-bottom>
+                                        <caption>Обработчик событий (Dropdown.on)</caption>
+                                        <thead>
+                                            <tr>
+                                                <th>Название</th>
+                                                <th>Значение по умолчанию</th>
+                                                <th>Тип</th>
+                                                <th>Описание</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>mount</td>
+                                                <td>(ctx) =></td>
+                                                <td>function</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>unmount</td>
+                                                <td>(ctx) =></td>
+                                                <td>function</td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
                 </div>
-            </section>
+            </div>
         </content>
     </div>
 {% endblock %}

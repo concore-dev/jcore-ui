@@ -131,6 +131,8 @@ script[class^="language"] {
 }
 
 .page {
+    padding: 25px 0;
+
     &-header {
         padding-top: 20px;
         padding-bottom: 20px;
@@ -162,11 +164,11 @@ script[class^="language"] {
         }
 
         &-label {
-            margin-bottom: 10px;
+            margin: 25px 0;
         }
 
         &-code {
-            padding: 10px 0;
+            // padding: 10px 0;
             font-size: 14px;
         }
 
@@ -174,6 +176,19 @@ script[class^="language"] {
         pre {
             border: 1px solid #e0dddb!important;
             padding: 1em;
+        }
+    }
+}
+
+.page {
+    &-grid {
+        .page-section-example {
+            .j-grid-item {
+                background-color: rgba(255,0,0,.05);
+                border: 1px solid rgba(255,0,0,.05);
+                padding: 10px;
+                text-align: center;
+            }
         }
     }
 }

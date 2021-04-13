@@ -70,7 +70,7 @@ class Accordion extends Component_1.default {
         this.emitter.emit('unmount', this);
     }
     toggle(e, cont) {
-        const tab = e instanceof HTMLElement ? e : e.target;
+        const tab = (e instanceof HTMLElement ? e : e.target).closest(this.selectors.tab);
         const panel = tab.closest(this.selectors.panel);
         const content = cont || panel.querySelector(this.selectors.content);
         // Если последний активный таб не равен текущему, сбрасываем состояние
@@ -110,8 +110,8 @@ class Accordion extends Component_1.default {
     }
     show(tab, content) {
         const height = content.scrollHeight;
+        this.$element.setAttribute('data-active', '');
         tab.setAttribute('data-active', '');
-        // this.$panels.setAttribute('active', '')
         content.setAttribute('showing', '');
         this.setHeight(`${height}px`, content);
         setTimeout(() => {
@@ -127,6 +127,7 @@ class Accordion extends Component_1.default {
     hide(tab, content) {
         content.setAttribute('hiding', '');
         tab.removeAttribute('data-active');
+        this.$element.removeAttribute('data-active');
         this.setHeight(0, content);
         setTimeout(() => {
             this.hideEnd(tab, content);

@@ -8,9 +8,12 @@ import Tab from './lib/components/Tab';
 import Tooltip from './lib/components/Tooltip';
 import Component from './lib/core/Component';
 import createTemplate from './lib/utils/createTemplate';
+import dataHref from './lib/utils/dataHref';
+import dataScroll from './lib/utils/dataScroll';
 import event from './lib/utils/event';
 import EventEmitter from './lib/utils/EventEmitter';
-export { Accordion, Collapse, Dropdown, Modal, Progress, Select, Tab, Tooltip, Component, createTemplate, event, EventEmitter };
+import waitFor from './lib/utils/waitFor';
+export { Accordion, Collapse, Dropdown, Modal, Progress, Select, Tab, Tooltip, Component, createTemplate, event, EventEmitter, dataScroll, dataHref, waitFor };
 declare const _default: {
     Accordion: typeof Accordion;
     Collapse: typeof Collapse;
@@ -27,6 +30,9 @@ declare const _default: {
         animationEnd(): any;
     };
     EventEmitter: typeof EventEmitter;
+    dataScroll: (polyfill?: () => any) => void;
+    dataHref: () => void;
+    waitFor: typeof waitFor;
 };
 export default _default;
 //# sourceMappingURL=index.d.ts.map

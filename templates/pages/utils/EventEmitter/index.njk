@@ -1,0 +1,57 @@
+{% extends "layout_ui.njk" %}
+
+{% block title %}radio{% endblock %}
+
+{% block content %}
+    <div class="j-container page-accordion">
+        <header class="page-header">
+            <div class="page-title">EventEmitter</div>
+            <div class="page-import">import <span class="token string">{ EventEmitter } from 'jcore-ui'</span>;</div>
+            <div class="page-import">import <span class="token string">EventEmitter from 'jcore-ui/bin/lib/utils/EventEmitter'</span>;</div>
+        </header>
+        </header>
+        <content class="page-content">
+            <section class="page-section">
+                <div class="page-section-header">Использование</div>
+                {# <div class="page-section-label">
+                </div> #}
+                <div class="page-section-code">
+<pre>
+<code class="language-js">
+const eventEmtiter = new EventEmitter()
+
+eventEmtiter.on('customEvent', (data) => {
+    // ...
+})
+
+eventEmtiter.emit('customEvent', {message: ''})
+</code>
+</pre>
+                </div>
+                <div class="page-section-code">
+<pre>
+<code class="language-js">
+class Component extends EventEmitter {
+    send() {
+        const data = {
+            message: 'send'
+        };
+
+        // ...
+
+        this.emit('send', data)
+    }
+}
+
+const component = new Component();
+
+component.on('send', (data) => {
+    // ...
+})
+</code>
+</pre>
+                </div>
+            </section>
+        </content>
+    </div>
+{% endblock %}

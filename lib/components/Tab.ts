@@ -41,8 +41,8 @@ interface Tab {
     // handlers?: IObject;
     options: ITabOptions;
     $list: HTMLElement
-    $tabs: NodeListOf<HTMLElement>
-    $contents: NodeListOf<HTMLElement>
+    $tabs: NodeListOf<HTMLElement> | Array<Element>
+    $contents: NodeListOf<HTMLElement> | Array<Element>
     selectors: ITabSelector
     on: ITabOn
 }
@@ -77,13 +77,13 @@ class Tab extends Component {
             change: this.change.bind(this),
         }
 
-        this.$tabs = this.$element.querySelectorAll(this.selectors.tab);
-        this.$contents = this.$element.querySelectorAll(this.selectors.content);
+        this.$tabs = Array.from(this.$element.querySelector(this.selectors.list).children);
+        this.$contents = Array.from(this.$element.querySelector(this.selectors.wrapper).children)
 
         this.addEvents()
 
         if (this.options.active) {
-            this.toggle(this.$tabs[0], Array.prototype.filter.call(this.$contents, item => item.dataset.tab === this.$tabs[0].dataset.target)[0], false)
+            this.toggle(this.$tabs[0] as HTMLElement, Array.prototype.filter.call(this.$contents, item => item.dataset.tab === this.$tabs[0].dataset.target)[0], false)
         }
 
         this.on.mount(this)
@@ -91,7 +91,7 @@ class Tab extends Component {
     }
 
     addEvents() {
-        this.$tabs.forEach(tab => tab.addEventListener('click', this.handlers.change))
+        this.$tabs.forEach((tab: Element) => tab.addEventListener('click', this.handlers.change))
     }
 
     change(e: Event) {
@@ -104,8 +104,8 @@ class Tab extends Component {
     }
 
     toggle(tab: HTMLElement, content: HTMLElement, lifeCycle: boolean = true) {
-        this.$tabs.forEach(item => item.removeAttribute('data-active'))
-        this.$contents.forEach(item => item.removeAttribute('data-active'))
+        this.$tabs.forEach((item: Element) => item.removeAttribute('data-active'))
+        this.$contents.forEach((item: Element) => item.removeAttribute('data-active'))
 
         tab.toggleAttribute('data-active')
         content.toggleAttribute('data-active')
@@ -119,7 +119,7 @@ class Tab extends Component {
     unmount() {
         super.unmount()
 
-        this.$tabs.forEach(tab => tab.removeEventListener('click', this.handlers.change))
+        this.$tabs.forEach((tab: Element) => tab.removeEventListener('click', this.handlers.change))
 
         this.on.unmount(this)
         this.emitter.emit('unmount', this)

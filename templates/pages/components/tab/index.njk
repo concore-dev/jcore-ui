@@ -1,45 +1,141 @@
 {% extends "layout_ui.njk" %}
 
-{% block title %}container{% endblock %}
+{% block title %}tab{% endblock %}
 
 {% block content %}
-    <div class="j-container">
+    <div class="j-container page-accordion">
         <header class="page-header">
-            <div class="page-title">Аккордеон</div>
-            <div class="page-label">компонент аккордеона</div>
-            <div class="page-import">@import <span class="token string">'node_modules/jcore-ui/lib/scss/components/accordion.scss'</span>;</div>
-            <div class="page-import">import <span class="token string">{ Accordion } from 'jcore-ui'</span>;</div>
-            <div class="page-import">import <span class="token string">Accordion from 'jcore-ui/bin/lib/components/Accordion'</span>;</div>
+            <div class="page-title">Вкладки</div>
+            <div class="page-label">компонент вкладок</div>
+            <div class="page-import">@import <span class="token string">'node_modules/jcore-ui/lib/scss/components/tabs.scss'</span>;</div>
+            <div class="page-import">import <span class="token string">{ Tab } from 'jcore-ui'</span>;</div>
+            <div class="page-import">import <span class="token string">Tab from 'jcore-ui/bin/lib/components/Tab'</span>;</div>
         </header>
         <content class="page-content">
-            <section class="page-section">
-                <div class="page-section-header">Использование</div>
-                <div class="page-section-label">Класс .j-container </div>
-                <div class="page-section-example">
-                    <div class="j-container">
-                        <div class="j-grid">
-                            <div class="j-grid-item">Колонка 1</div>
-                            <div class="j-grid-item">Колонка 2</div>
-                            <div class="j-grid-item">Колонка 3</div>
-                            <div class="j-grid-item">Колонка 4</div>
-                        </div>
-                    </div>
+            <div class="j-tabs" data-name="content">
+                <div class="j-tabs-list">
+                    <div class="j-tab" data-target="content1" data-active>Примеры и код</div>
+                    <div class="j-tab" data-target="content2">Свойства и методы</div>
                 </div>
-                <div class="page-section-code">
+                <div class="j-tab-wrapper">
+                    <div class="j-tab-content" data-tab="content1" data-active>
+                        <section class="page-section">
+                            <div class="page-section-header">Использование</div>
+                            {# <div class="page-section-label">
+                            </div> #}
+                            <div class="page-section-example">
+                                <div class="j-tabs">
+                                    <div class="j-tabs-list">
+                                        <div class="j-tab" data-target="tab1" data-active>tab1</div>
+                                        <div class="j-tab" data-target="tab2">tab2</div>
+                                    </div>
+                                    <div class="j-tab-wrapper">
+                                        <div class="j-tab-content" data-tab="tab1" data-active>content1</div>
+                                        <div class="j-tab-content" data-tab="tab2">content2</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="page-section-code">
+<pre>
+<code class="language-js">
+const tabs = new Tab()
+</code>
+</pre>
+                            </div>
+                            <div class="page-section-code">
 <pre>
 <code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
-<div class="j-container">
-    <div class="j-grid">
-        <div class="j-grid-item">Колонка 1</div>
-        <div class="j-grid-item">Колонка 2</div>
-        <div class="j-grid-item">Колонка 3</div>
-        <div class="j-grid-item">Колонка 4</div>
+<div class="j-tabs">
+    <div class="j-tabs-list">
+        <div class="j-tab" data-target="tab1" data-active>tab1</div>
+        <div class="j-tab" data-target="tab2">tab2</div>
+    </div>
+    <div class="j-tab-wrapper">
+        <div class="j-tab-content" data-tab="tab1" data-active>content1</div>
+        <div class="j-tab-content" data-tab="tab2">content2</div>
     </div>
 </div>
 </script></code>
 </pre>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="j-tab-content" data-tab="content2">
+                        <section class="page-section">
+                            <div class="page-section-header">Свойства и методы</div>
+                            <div class="page-section-example property">
+                                <div class="j-table-responsive">
+                                    <table class="j-table" data-border-bottom>
+                                        <caption>Параметры (Tab.options)</caption>
+                                        <thead>
+                                            <tr>
+                                                <th>Название</th>
+                                                <th>Значение по умолчанию</th>
+                                                <th>Тип</th>
+                                                <th>Описание</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>mount</td>
+                                                <td>true</td>
+                                                <td>boolean</td>
+                                                <td>инициализация компонента</td>
+                                            </tr>
+                                            <tr>
+                                                <td>name</td>
+                                                <td>''</td>
+                                                <td>string</td>
+                                                <td>имя компонента</td>
+                                            </tr>
+                                            <tr>
+                                                <td>active</td>
+                                                <td>false</td>
+                                                <td>boolean</td>
+                                                <td>если true, то будет активной первая вкладка</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="j-table-responsive">
+                                    <table class="j-table" data-border-bottom>
+                                        <caption>Обработчик событий (Tab.on)</caption>
+                                        <thead>
+                                            <tr>
+                                                <th>Название</th>
+                                                <th>Значение по умолчанию</th>
+                                                <th>Тип</th>
+                                                <th>Описание</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>mount</td>
+                                                <td>(ctx) =></td>
+                                                <td>function</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>unmount</td>
+                                                <td>(ctx) =></td>
+                                                <td>function</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>toggle</td>
+                                                <td>(ctx) =></td>
+                                                <td>function</td>
+                                                <td>срабатывает при переключение</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
                 </div>
-            </section>
+            </div>
         </content>
     </div>
 {% endblock %}

@@ -29,8 +29,9 @@ $prefix-checkbox-input: 'checkbox-input' !default;
         border-color: $blue-dark;
     }
 
-    .#{$prefix}-#{$prefix-checkbox-input} + .#{$prefix}-#{$prefix-checkbox-wrapper} .#{$prefix}-#{$prefix-checkbox-icon},
-    .#{$prefix}-#{$prefix-checkbox-input}:disabled + .#{$prefix}-#{$prefix-checkbox-wrapper} .#{$prefix}-#{$prefix-checkbox-label} {
+    // .#{$prefix}-#{$prefix-checkbox-input} + .#{$prefix}-#{$prefix-checkbox-wrapper} .#{$prefix}-#{$prefix-checkbox-icon},
+    .#{$prefix}-#{$prefix-checkbox-input}:disabled + .#{$prefix}-#{$prefix-checkbox-wrapper} .#{$prefix}-#{$prefix-checkbox-label},
+    .#{$prefix}-#{$prefix-checkbox-input}:disabled + .#{$prefix}-#{$prefix-checkbox-wrapper} .#{$prefix}-#{$prefix-checkbox-icon} {
         opacity: 0.4;
     }
 
@@ -70,8 +71,8 @@ $prefix-checkbox-input: 'checkbox-input' !default;
         display: block;
         right: 5px;
         top: 1px;
-        width: 4px;
-        height: 8px;
+        width: 5px;
+        height: 9px;
         border: solid #fff;
         background: transparent;
         border-width: 0 2px 2px 0;

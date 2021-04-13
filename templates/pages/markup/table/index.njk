@@ -3,33 +3,207 @@
 {% block content %}
     <div class="j-container">
         <header class="page-header">
-                <div class="page-title">Table</div>
-                <div class="page-label">компонент кнопки</div>
+                <div class="page-title">Таблица</div>
+                <div class="page-label">компонент таблицы</div>
         </header>
         <content class="page-content">
             <section class="page-section">
-                <div class="page-section-header">Правила использования.</div>
-                <div class="page-section-label">Контейнер указывается через .j-container класс</div>
+                <div class="page-section-header">Использование</div>
+                <div class="page-section-label">Класс .j-table</div>
                 <div class="page-section-example">
-                    <div class="j-container">
-                        <div class="j-grid">
-                            <div class="j-grid-item">Колонка 1</div>
-                            <div class="j-grid-item">Колонка 2</div>
-                            <div class="j-grid-item">Колонка 3</div>
-                            <div class="j-grid-item">Колонка 4</div>
-                        </div>
+                    <table class="j-table">
+                        <caption>Заголовок таблицы</caption>
+                        <thead>
+                            <tr>
+                                <th>Колонка 1</th>
+                                <th>Колонка 2</th>
+                                <th>Колонка 3</th>
+                                <th>Колонка 4</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Значение 1</td>
+                                <td>Значение 2</td>
+                                <td>Значение 3</td>
+                                <td>Значение 4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<table class="j-table">
+    <caption>Заголовок таблицы</caption>
+    <thead>
+        <tr>
+            <th>Колонка 1</th>
+            <th>Колонка 2</th>
+            <th>Колонка 3</th>
+            <th>Колонка 4</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Значение 1</td>
+            <td>Значение 2</td>
+            <td>Значение 3</td>
+            <td>Значение 4</td>
+        </tr>
+    </tbody>
+</table>
+</script></code>
+</pre>
+                </div>
+            </section>
+
+            <section class="page-section">
+                <div class="page-section-header">Границы</div>
+                <div class="page-section-label">Атрибуты data-border, data-border-bottom</div>
+                <div class="page-section-example">
+                    <table class="j-table" data-border>
+                        <thead>
+                            <tr>
+                                <th>Колонка 1</th>
+                                <th>Колонка 2</th>
+                                <th>Колонка 3</th>
+                                <th>Колонка 4</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Значение 1</td>
+                                <td>Значение 2</td>
+                                <td>Значение 3</td>
+                                <td>Значение 4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="j-table" data-border-bottom>
+                        <thead>
+                            <tr>
+                                <th>Колонка 1</th>
+                                <th>Колонка 2</th>
+                                <th>Колонка 3</th>
+                                <th>Колонка 4</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Значение 1</td>
+                                <td>Значение 2</td>
+                                <td>Значение 3</td>
+                                <td>Значение 4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<table class="j-table" data-border>
+    ...
+</table>
+
+<table class="j-table" data-border-bottom>
+    ...
+</table>
+</script></code>
+</pre>
+                </div>
+            </section>
+
+            <section class="page-section">
+                <div class="page-section-header">Цвет</div>
+                <div class="page-section-label">Атрибут [data-color="dark|light"]</div>
+                <div class="page-section-example">
+                    <table class="j-table" data-color="light">
+                        <thead>
+                            <tr>
+                                <th>Колонка 1</th>
+                                <th>Колонка 2</th>
+                                <th>Колонка 3</th>
+                                <th>Колонка 4</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Значение 1</td>
+                                <td>Значение 2</td>
+                                <td>Значение 3</td>
+                                <td>Значение 4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="j-table light" data-color="dark">
+                        <thead>
+                            <tr>
+                                <th>Колонка 1</th>
+                                <th>Колонка 2</th>
+                                <th>Колонка 3</th>
+                                <th>Колонка 4</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Значение 1</td>
+                                <td>Значение 2</td>
+                                <td>Значение 3</td>
+                                <td>Значение 4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<table class="j-table" data-color="light">
+    ...
+</table>
+
+<table class="j-table" data-color="dark">
+    ...
+</table>
+</script></code>
+</pre>
+                </div>
+            </section>
+
+            <section class="page-section">
+                <div class="page-section-header">Адаптивная таблица</div>
+                <div class="page-section-label">Добавить блок обертку с классом .j-table-responsive</div>
+                <div class="page-section-example">
+                    <div class="j-table-responsive">
+                        <table class="j-table" data-border-bottom>
+                            <thead>
+                                <tr>
+                                    <th>Колонка 1</th>
+                                    <th>Колонка 2</th>
+                                    <th>Колонка 3</th>
+                                    <th>Колонка 4</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Значение 1</td>
+                                    <td>Значение 2</td>
+                                    <td>Значение 3</td>
+                                    <td>Значение 4</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <div class="page-section-code">
 <pre>
 <code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
-<div class="j-container">
-    <div class="j-grid">
-        <div class="j-grid-item">Колонка 1</div>
-        <div class="j-grid-item">Колонка 2</div>
-        <div class="j-grid-item">Колонка 3</div>
-        <div class="j-grid-item">Колонка 4</div>
-    </div>
+<div class="j-table-responsive">
+    <table class="j-table" data-border-bottom>
+        ...
+    </table>
 </div>
 </script></code>
 </pre>

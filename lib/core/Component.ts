@@ -73,9 +73,10 @@ class Component {
                     newProps.$element = el;
                     return new props.Component(newProps);
                 }).filter(cpm => cpm);
-            } else {
-                console.log(Error(`Не найден HTMLElement ${this.constructor.name}`));
             }
+            // else {
+            //     console.log(Error(`Не найден HTMLElement ${this.constructor.name}`));
+            // }
 
             return this;
         }

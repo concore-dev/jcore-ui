@@ -5,105 +5,34 @@
 {% block content %}
     <div class="j-container page-accordion">
         <header class="page-header">
-            <div class="page-title">Радиокнопки</div>
-            <div class="page-label">компонент радиокнопок</div>
-            <div class="page-import">@import <span class="token string">'node_modules/jcore-ui/lib/scss/components/accordion.scss'</span>;</div>
-            <div class="page-import">import <span class="token string">{ Accordion } from 'jcore-ui'</span>;</div>
-            <div class="page-import">import <span class="token string">Accordion from 'jcore-ui/bin/lib/components/Accordion'</span>;</div>
+            <div class="page-title">createTemplate</div>
+            <div class="page-label">утилита для создание HTML элементов</div>
+            <div class="page-import">import <span class="token string">{ createTemplate } from 'jcore-ui'</span>;</div>
+            <div class="page-import">import <span class="token string">createTemplate from 'jcore-ui/bin/lib/utils/createTemplate'</span>;</div>
+        </header>
         </header>
         <content class="page-content">
             <section class="page-section">
                 <div class="page-section-header">Использование</div>
-                {# <div class="page-section-label">
-                </div> #}
-                <div class="page-section-example">
-                    <div class="j-radio">
-                        <input class="j-radio-input" name="sale" type="radio">
-                        <div class="j-radio-wrapper">
-                            <div class="j-radio-icon"></div>
-                            <div class="j-radio-label">Товары со скидкой</div>
-                        </div>
-                    </div>
-                    <div class="j-radio">
-                        <input class="j-radio-input" name="sale" type="radio">
-                        <div class="j-radio-wrapper">
-                            <div class="j-radio-icon"></div>
-                            <div class="j-radio-label">Товары за 35р</div>
-                        </div>
-                    </div>
-                </div>
+                <div class="page-section-label">Функция должна принимать только 1 родительский элемент</div>
                 <div class="page-section-code">
 <pre>
-<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
-<div class="j-radio">
-    <input class="j-radio-input" name="sale" type="radio">
-    <div class="j-radio-wrapper">
-        <div class="j-radio-icon"></div>
-        <div class="j-radio-label">Товары со скидкой</div>
-    </div>
-</div>
-<div class="j-radio">
-    <input class="j-radio-input" name="sale" type="radio">
-    <div class="j-radio-wrapper">
-        <div class="j-radio-icon"></div>
-        <div class="j-radio-label">Товары за 35р</div>
-    </div>
-</div>
-</script></code>
-</pre>
-                </div>
-            </section>
+<code class="language-js">
+const data = [
+    { id: 1, title: 'first' },
+    { id: 2, title: 'second' }
+];
 
-            <section class="page-section">
-                <div class="page-section-header">Заблокированный</div>
-                <div class="page-section-example">
-                    <div class="j-radio">
-                        <input class="j-radio-input" disabled name="sale" type="radio">
-                        <div class="j-radio-wrapper">
-                            <div class="j-radio-icon"></div>
-                            <div class="j-radio-label">Товары со скидкой</div>
-                        </div>
-                    </div>
-                    <div class="j-radio">
-                        <input class="j-radio-input" name="sale" type="radio">
-                        <div class="j-radio-wrapper">
-                            <div class="j-radio-icon"></div>
-                            <div class="j-radio-label">Товары за 35р</div>
-                        </div>
-                    </div>
-                    <div class="j-radio">
-                        <input class="j-radio-input" name="sale" type="radio">
-                        <div class="j-radio-wrapper">
-                            <div class="j-radio-icon"></div>
-                            <div class="j-radio-label">Самые дешевые</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="page-section-code">
-<pre>
-<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
-<div class="j-radio">
-    <input class="j-radio-input" disabled name="sale" type="radio">
-    <div class="j-radio-wrapper">
-        <div class="j-radio-icon"></div>
-        <div class="j-radio-label">Товары со скидкой</div>
+const $element = createTemplate(`
+    <div class="custom-list">
+        ${data.map(item => {
+            return `
+                &lt;div class="custom-list-item" data-id="${item.id}">${item.title}&lt;/div>
+            `;
+        }).join('')}
     </div>
-</div>
-<div class="j-radio">
-    <input class="j-radio-input" name="sale" type="radio">
-    <div class="j-radio-wrapper">
-        <div class="j-radio-icon"></div>
-        <div class="j-radio-label">Товары за 35р</div>
-    </div>
-</div>
-<div class="j-radio">
-    <input class="j-radio-input" name="sale" type="radio">
-    <div class="j-radio-wrapper">
-        <div class="j-radio-icon"></div>
-        <div class="j-radio-label">Самые дешевые</div>
-    </div>
-</div>
-</script></code>
+`);
+</code>
 </pre>
                 </div>
             </section>

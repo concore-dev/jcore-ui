@@ -33,6 +33,7 @@ interface EventTarget {
 
 interface Element {
     dataHref(): void
+    dataScroll(): void
 }
 
 

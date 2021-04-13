@@ -8,6 +8,7 @@ import Modal from "../../lib/components/Modal";
 import Select from "../../lib/components/Select";
 import dataHref from "../../lib/utils/dataHref";
 import 'prismjs';
+import dataScroll from "../../lib/utils/dataScroll";
 
 
 window.Tooltip = Tooltip;
@@ -31,6 +32,7 @@ try {
     })
 
     dataHref()
+    dataScroll()
 
     window.Accordions = new Accordion()
     window.Tooltips = new Tooltip();

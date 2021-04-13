@@ -1,21 +1,26 @@
-import smoothscroll from 'smoothscroll-polyfill';
-smoothscroll.polyfill();
+// import smoothscroll from 'smoothscroll-polyfill';
 
-const dataScroll = () => {
+// smoothscroll.polyfill();
+
+const dataScroll = (polyfill?: () => any) => {
+    if (polyfill) {
+        polyfill()
+    }
+
     const btns = document.querySelectorAll('[data-scroll]')
 
     btns.forEach(btn => {
         btn.addEventListener('click', e => clickHandler(e))
     })
 
-    HTMLElement.prototype.dataScroll = () => {
+    HTMLElement.prototype.dataScroll = function() {
         this.addEventListener('click', e => clickHandler(e))
     }
 
-    const clickHandler = e => {
-        const data = e.target.dataset.scroll
-        const target = document.querySelector(`[data-target-scroll="${data}"]`)
-        console.log(data)
+    const clickHandler = (e: Event) => {
+        const data = e.target.dataset.scroll;
+        const target = document.querySelector(`[data-target-scroll="${data}"]`) as HTMLElement;
+
         if (target) {
             window.scroll({
                 behavior: 'smooth',
@@ -26,5 +31,6 @@ const dataScroll = () => {
     }
 
 }
+
 
 export default dataScroll

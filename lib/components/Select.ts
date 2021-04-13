@@ -79,7 +79,7 @@ class Select extends Component {
         super.mount()
 
         this.options = Object.assign({
-            active: this.$element.dataset.active || false
+            // active: this.$element.dataset.active || false
         }, this.options)
 
         this.on = Object.assign({

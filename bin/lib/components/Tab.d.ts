@@ -20,8 +20,8 @@ interface ITab extends IComponent {
 interface Tab {
     options: ITabOptions;
     $list: HTMLElement;
-    $tabs: NodeListOf<HTMLElement>;
-    $contents: NodeListOf<HTMLElement>;
+    $tabs: NodeListOf<HTMLElement> | Array<Element>;
+    $contents: NodeListOf<HTMLElement> | Array<Element>;
     selectors: ITabSelector;
     on: ITabOn;
 }

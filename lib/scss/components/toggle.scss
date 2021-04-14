@@ -30,8 +30,8 @@ $prefix-toggle-track: '#{$prefix}-toggle-track' !default;
         cursor: pointer;
 
         &:checked + .#{$prefix-toggle-wrapper} {
-            background: $blue;
-            border-color: $blue;
+            background: $blue-dark;
+            border-color: $blue-dark;
 
             .#{$prefix-toggle-track} {
                 left: calc(100% - 19px);
@@ -58,13 +58,7 @@ $prefix-toggle-track: '#{$prefix}-toggle-track' !default;
     }
 
     &:hover {
-        .#{$prefix-toggle-input}:not([disabled])[checked] {
-            + .#{$prefix-toggle-wrapper} {
-                background: #323C64;
-            }
-        }
-
-        .#{$prefix-toggle-input}:not([disabled]) {
+        .#{$prefix-toggle-input}:not(:checked):not(:disabled) {
             + .#{$prefix-toggle-wrapper} {
                 background: #FAFAFA;
             }

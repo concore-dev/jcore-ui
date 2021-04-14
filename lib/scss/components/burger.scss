@@ -1,0 +1,44 @@
+@import '../var.scss';
+@import '../mixins/index.scss';
+
+
+$prefix-burger: '#{$prefix}-burger' !default;
+$prefix-burger-line: '#{$prefix}-burger-line' !default;
+
+
+.#{$prefix-burger} {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    @include transition();
+
+    .#{$prefix-burger-line} {
+        width: 30px;
+        height: 3px;
+        background: $black;
+        margin: 6px 0;
+        @include transition();
+    }
+
+    &.light {
+        .#{$prefix-burger-line} {
+            background: #fff;
+        }
+    }
+
+    &[data-active] {
+        .#{$prefix-burger-line} {
+            &:first-child {
+                transform: rotate(-45deg) translate(-5px,6px);
+            }
+
+            &:nth-child(2) {
+                opacity: 0;
+            }
+
+            &:nth-child(3) {
+                transform: rotate(45deg) translate(-7px,-8px);
+            }
+        }
+    }
+}

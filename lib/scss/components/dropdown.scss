@@ -18,7 +18,7 @@ $prefix-dropdown-arrow: '#{$prefix}-dropdown-arrow' !default;
             pointer-events: auto;
             visibility: visible;
 
-            &[data-direction="top"] {
+            &[data-dir="top"] {
                 margin: 0;
             }
         }
@@ -42,8 +42,8 @@ $prefix-dropdown-arrow: '#{$prefix}-dropdown-arrow' !default;
     pointer-events: none;
     transition: all .15s ease-in-out;
 
-    // DIRECTION
-    &[data-direction="top"] {
+    // dir
+    &[data-dir="top"] {
         top: 0px;
 
         .#{$prefix-dropdown-wrapper} {
@@ -76,8 +76,8 @@ $prefix-dropdown-arrow: '#{$prefix}-dropdown-arrow' !default;
     }
 
     // ALIGN BOTTOM
-    &[data-align="left"]:not([data-direction]),
-    &[data-align="left"][data-direction="bottom"] {
+    &[data-align="left"]:not([data-dir]),
+    &[data-align="left"][data-dir="bottom"] {
         left: 0;
         transform: translate(0, 0);
 
@@ -87,15 +87,15 @@ $prefix-dropdown-arrow: '#{$prefix}-dropdown-arrow' !default;
         }
     }
 
-    &[data-align="stretch"]:not([data-direction]),
-    &[data-align="stretch"][data-direction="bottom"] {
+    &[data-align="stretch"]:not([data-dir]),
+    &[data-align="stretch"][data-dir="bottom"] {
         .#{$prefix-dropdown-wrapper} {
             min-width: 100%;
         }
     }
 
-    &[data-align="right"]:not([data-direction]),
-    &[data-align="right"][data-direction="bottom"] {
+    &[data-align="right"]:not([data-dir]),
+    &[data-align="right"][data-dir="bottom"] {
         left: auto;
         right: 0;
         transform: translate(0, 0);
@@ -108,7 +108,7 @@ $prefix-dropdown-arrow: '#{$prefix}-dropdown-arrow' !default;
     }
 
     // ALIGN TOP
-    &[data-align="left"][data-direction="top"]  {
+    &[data-align="left"][data-dir="top"]  {
         left: 0;
         transform: translate(0, 0);
 
@@ -118,13 +118,13 @@ $prefix-dropdown-arrow: '#{$prefix}-dropdown-arrow' !default;
         }
     }
 
-    &[data-align="stretch"][data-direction="top"] {
+    &[data-align="stretch"][data-dir="top"] {
         .#{$prefix-dropdown-wrapper} {
             min-width: 100%;
         }
     }
 
-    &[data-align="right"][data-direction="top"] {
+    &[data-align="right"][data-dir="top"] {
         left: auto;
         right: 0;
         transform: translate(0, 0);

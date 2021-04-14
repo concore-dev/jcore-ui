@@ -128,7 +128,7 @@ class Accordion extends Component {
     }
 
     toggle(e: Event | HTMLElement, cont?: HTMLElement) {
-        const tab = e instanceof HTMLElement ? e : e.target as HTMLElement;
+        const tab = (e instanceof HTMLElement ? e : e.target as HTMLElement).closest(this.selectors.tab) as HTMLElement;
         const panel = tab.closest(this.selectors.panel);
         const content = cont || panel.querySelector<HTMLElement>(this.selectors.content);
 
@@ -175,8 +175,8 @@ class Accordion extends Component {
     show(tab: HTMLElement, content: HTMLElement) {
         const height = content.scrollHeight
 
+        this.$element.setAttribute('data-active', '')
         tab.setAttribute('data-active', '')
-        // this.$panels.setAttribute('active', '')
         content.setAttribute('showing', '')
 
         this.setHeight(`${height}px`, content)
@@ -197,6 +197,7 @@ class Accordion extends Component {
     hide(tab: HTMLElement, content: HTMLElement) {
         content.setAttribute('hiding', '')
         tab.removeAttribute('data-active')
+        this.$element.removeAttribute('data-active')
 
         this.setHeight(0, content)
 

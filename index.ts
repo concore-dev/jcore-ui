@@ -8,8 +8,12 @@ import Tab from './lib/components/Tab';
 import Tooltip from './lib/components/Tooltip';
 import Component from './lib/core/Component';
 import createTemplate from './lib/utils/createTemplate';
+import dataHref from './lib/utils/dataHref';
+import dataScroll from './lib/utils/dataScroll';
 import event from './lib/utils/event';
 import EventEmitter from './lib/utils/EventEmitter';
+import waitFor from './lib/utils/waitFor';
+
 
 
 export {
@@ -24,7 +28,10 @@ export {
     Component,
     createTemplate,
     event,
-    EventEmitter
+    EventEmitter,
+    dataScroll,
+    dataHref,
+    waitFor
 }
 
 export default {
@@ -39,5 +46,8 @@ export default {
     Component,
     createTemplate,
     event,
-    EventEmitter
+    EventEmitter,
+    dataScroll,
+    dataHref,
+    waitFor
 }

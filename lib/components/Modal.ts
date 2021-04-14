@@ -81,7 +81,6 @@ class Modal extends Component {
 
         this.options = Object.assign({
             adaptive: this.$element.dataset.adaptive || true,
-            // type: this.$element.dataset.type || 'line',
         }, this.options)
 
         this.handlers = {

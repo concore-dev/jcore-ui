@@ -12,6 +12,7 @@ $prefix-select-current: '#{$prefix}-select-current' !default;
 
 .#{$prefix-select} {
     position: relative;
+    width: 100%;
     // user-select: none;
 
     &[data-active] {
@@ -40,8 +41,8 @@ $prefix-select-current: '#{$prefix}-select-current' !default;
 }
 
 .#{$prefix-select-value} {
-    border: 1px solid $gray-light;
-    border-radius: 3px;
+    border: 1px solid $gray;
+    border-radius: 0;
     display: flex;
     width: 100%;
     outline: none;
@@ -57,8 +58,12 @@ $prefix-select-current: '#{$prefix}-select-current' !default;
     background: #fff;
     transition: all .2s ease-in-out;
 
+    &.big {
+        min-height: 50px;
+    }
+
     &[disabled] {
-        border: 1px solid $gray-light;
+        border: 1px solid $gray;
         background: #f0f0f0;
         cursor: not-allowed;
     }
@@ -100,7 +105,7 @@ $prefix-select-current: '#{$prefix}-select-current' !default;
     background: #fff;
     top: 5px;
     border: 1px solid #E6E4E1;
-    border-radius: 3px;
+    border-radius: 0;
     font-size: 14px;
     overflow: auto;
     max-height: 183px;

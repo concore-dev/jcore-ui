@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.EventEmitter = exports.event = exports.createTemplate = exports.Component = exports.Tooltip = exports.Tab = exports.Select = exports.Progress = exports.Modal = exports.Dropdown = exports.Collapse = exports.Accordion = void 0;
+exports.waitFor = exports.dataHref = exports.dataScroll = exports.EventEmitter = exports.event = exports.createTemplate = exports.Component = exports.Tooltip = exports.Tab = exports.Select = exports.Progress = exports.Modal = exports.Dropdown = exports.Collapse = exports.Accordion = void 0;
 const Accordion_1 = __importDefault(require("./lib/components/Accordion"));
 exports.Accordion = Accordion_1.default;
 const Collapse_1 = __importDefault(require("./lib/components/Collapse"));
@@ -24,10 +24,16 @@ const Component_1 = __importDefault(require("./lib/core/Component"));
 exports.Component = Component_1.default;
 const createTemplate_1 = __importDefault(require("./lib/utils/createTemplate"));
 exports.createTemplate = createTemplate_1.default;
+const dataHref_1 = __importDefault(require("./lib/utils/dataHref"));
+exports.dataHref = dataHref_1.default;
+const dataScroll_1 = __importDefault(require("./lib/utils/dataScroll"));
+exports.dataScroll = dataScroll_1.default;
 const event_1 = __importDefault(require("./lib/utils/event"));
 exports.event = event_1.default;
 const EventEmitter_1 = __importDefault(require("./lib/utils/EventEmitter"));
 exports.EventEmitter = EventEmitter_1.default;
+const waitFor_1 = __importDefault(require("./lib/utils/waitFor"));
+exports.waitFor = waitFor_1.default;
 exports.default = {
     Accordion: Accordion_1.default,
     Collapse: Collapse_1.default,
@@ -40,6 +46,9 @@ exports.default = {
     Component: Component_1.default,
     createTemplate: createTemplate_1.default,
     event: event_1.default,
-    EventEmitter: EventEmitter_1.default
+    EventEmitter: EventEmitter_1.default,
+    dataScroll: dataScroll_1.default,
+    dataHref: dataHref_1.default,
+    waitFor: waitFor_1.default
 };
 //# sourceMappingURL=index.js.map

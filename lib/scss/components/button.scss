@@ -1,4 +1,5 @@
 @import '../var.scss';
+@import '../mixins/button-color.scss';
 
 
 $prefix-button: 'button' !default;
@@ -6,9 +7,9 @@ $prefix-button: 'button' !default;
 
 .#{$prefix}-#{$prefix-button} {
     border: 0;
-    border-radius: 5px;
-    padding: 11px 25px;
-    font-size: 16px;
+    border-radius: 1px;
+    padding: 0 25px;
+    height: 40px;
     border: 1px solid;
     background: #fff;
     cursor: pointer;
@@ -18,43 +19,90 @@ $prefix-button: 'button' !default;
     transition: all .1s ease-in-out;
     user-select: none;
     border-color: #000;
+    font-size: 14px;
+
+    [data-spinner] {
+        position: relative;
+        color: transparent!important;
+    }
+
+    &.big {
+        padding: 0 40px;
+        height: 50px;
+        font-size: 16px;
+    }
+
+    &.medium {
+        padding: 0 35px;
+        height: 45px;
+        font-size: 15px;
+    }
 
     &.main {
-        background: $red;
-        color: #fff;
-        border: 1px solid $red;
+        @include button-color-content(
+            #fff, #fff, #fff,
+            $red, $red-light, $red-dark,
+            $red, $red-light, $red-dark
+        );
 
-        &:not([disabled]):hover {
-            background: $red-dark;
-            border-color: $red-dark;
+        &[disabled],
+        &.disabled {
+            background: rgba($color: $red, $alpha: 0.2)!important;
+            border-color: rgba($color: $red, $alpha: 0.01)!important;
+            cursor: default;
+            color: #fff!important;
         }
+    }
 
-        &[disabled] {
-            background: rgba($color: $red, $alpha: 0.2);
-            border-color: rgba($color: $red, $alpha: 0.01);
+    &.second {
+        @include button-color-content(
+            #fff, #fff, #fff,
+            $blue, $blue-light, $blue-dark,
+            $blue, $blue-light, $blue-dark
+        );
+
+        &[disabled],
+        &.disabled {
+            background: rgba($color: $blue, $alpha: 0.2)!important;
+            border-color: rgba($color: $blue, $alpha: 0.01)!important;
             cursor: default;
         }
     }
 
-    &.white {
-        border: 1px solid $red;
-        color: $red;
+    &.transparent {
+        @include button-color-content(
+            $red, #fff, #fff,
+            #fff, $red-light, $red-dark,
+            $red, $red-light, $red-dark
+        );
 
-        &:not([disabled]):hover {
-            background: $red;
-            color: #fff;
+        &.second {
+            @include button-color-content(
+                $blue, #fff, #fff,
+                #fff, $blue-light, $blue-dark,
+                $blue, $blue-light, $blue-dark
+            );
+
+            &[disabled],
+            &.disabled {
+                background: rgba($color: $blue, $alpha: 0.2)!important;
+                border-color: rgba($color: $blue, $alpha: 0.01)!important;
+                cursor: default;
+            }
         }
 
-        &[disabled] {
-            border-color: $gray;
-            color: $gray;
+        &[disabled],
+        &.disabled {
+            background: #fff!important;
+            border-color: $gray!important;
+            color: $gray!important;
             cursor: default;
         }
     }
 
     &.disabled {
         border-color: $gray;
-        color: $gray;
+        color: $gray!important;
         cursor: default;
     }
 }

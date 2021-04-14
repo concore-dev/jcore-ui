@@ -5,7 +5,8 @@ $prefix-table: '#{$prefix}-table';
 $prefix-table-responsive: '#{$prefix}-table-responsive';
 
 
-.#{$prefix-table-responsive} {
+.#{$prefix-table-responsive},
+.#{$prefix-table}[data-responsive] {
     display: block;
     width: 100%;
     overflow-x: auto;
@@ -52,23 +53,29 @@ $prefix-table-responsive: '#{$prefix}-table-responsive';
         }
 
         thead {
-            border-bottom: 3px solid $gray;
+            border-bottom: 2px solid $gray;
         }
     }
 
-    &[data-dark] {
+    &[data-color] {
+        thead {
+            border-bottom: 0;
+        }
+    }
+
+    &[data-color="dark"] {
         th {
             color: #fff;
-            background-color: $black;
-            border-color: $black;
+            background-color: $gray-dark;
+            border-color: $gray-dark;
         }
     }
 
-    &[data-light] {
+    &[data-color="light"] {
         th {
             color: $black;
-            background-color: $gray-dark;
-            border-color: $gray-dark;
+            background-color: $gray-light;
+            border-color: $gray-light;
         }
     }
 }

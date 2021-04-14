@@ -110,6 +110,8 @@ class Collapse extends Component {
     }
 
     toggle() {
+        this.scrollHeight = this.$wrapper.scrollHeight;
+
         if (this.isActive) {
             this.close()
         } else {

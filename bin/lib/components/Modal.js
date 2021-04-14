@@ -32,7 +32,6 @@ class Modal extends Component_1.default {
         super.mount();
         this.options = Object.assign({
             adaptive: this.$element.dataset.adaptive || true,
-            // type: this.$element.dataset.type || 'line',
         }, this.options);
         this.handlers = {
         // change: this.change.bind(this)

@@ -1,0 +1,144 @@
+{% extends "layout_ui.njk" %}
+
+{% block title %}modal{% endblock %}
+
+{% block content %}
+    <div class="j-container page-accordion">
+        <header class="page-header">
+            <div class="page-title">Модальное окно</div>
+            <div class="page-label">компонент модалки</div>
+            <div class="page-import">@import <span class="token string">'node_modules/jcore-ui/lib/scss/components/modal.scss'</span>;</div>
+            <div class="page-import">import <span class="token string">{ Modal } from 'jcore-ui'</span>;</div>
+            <div class="page-import">import <span class="token string">Modal from 'jcore-ui/bin/lib/components/Modal'</span>;</div>
+        </header>
+        <content class="page-content">
+            <div class="j-tabs" data-name="content">
+                <div class="j-tabs-list">
+                    <div class="j-tab" data-target="content1" data-active>Примеры и код</div>
+                    <div class="j-tab" data-target="content2">Свойства и методы</div>
+                </div>
+                <div class="j-tab-wrapper">
+                    <div class="j-tab-content" data-tab="content1" data-active>
+                        <section class="page-section">
+                            <div class="page-section-header">Использование</div>
+                            <div class="page-section-label">Для открытия модалки необходимо вызвать метод render у экземпляра компонента, либо добавить target кнопку с тем же именем модалки</div>
+                            <div class="page-section-example">
+                                <div class="j-accordion">
+                                    <div class="j-modal" data-name="modal-1">
+                                        <div class="j-modal-close"></div>
+                                        <div class="j-modal-content">
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. At tempora ipsa delectus maiores quas, reiciendis, odit possimus odio ea sapiente inventore incidunt deserunt culpa. Nostrum animi iure aliquam deserunt repellat atque minima aperiam officiis facilis!
+                                        </div>
+                                    </div>
+                                    <button class="j-button main" data-modal-target="modal-1">modal</button>
+                                </div>
+                            </div>
+                            <div class="page-section-code">
+<pre>
+<code class="language-js">
+const modal = new Modal({
+    $element: document.querySelector('.j-modal[data-name="modal"]')
+})
+</code>
+</pre>
+                            </div>
+                            <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<div class="j-modal" data-name="modal-1">
+    <div class="j-modal-close"></div>
+    <div class="j-modal-content">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </div>
+</div>
+<button class="j-button main" data-modal-target="modal-1">modal</button>
+</script></code>
+</pre>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="j-tab-content" data-tab="content2">
+                        <section class="page-section">
+                            <div class="page-section-header">Свойства и методы</div>
+                            <div class="page-section-example property">
+                                <div class="j-table-responsive">
+                                    <table class="j-table" data-border-bottom>
+                                        <caption>Параметры (Accordion.options)</caption>
+                                        <thead>
+                                            <tr>
+                                                <th>Название</th>
+                                                <th>Значение по умолчанию</th>
+                                                <th>Тип</th>
+                                                <th>Описание</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>mount</td>
+                                                <td>true</td>
+                                                <td>boolean</td>
+                                                <td>инициализация компонента</td>
+                                            </tr>
+                                            <tr>
+                                                <td>name</td>
+                                                <td>''</td>
+                                                <td>string</td>
+                                                <td>имя компонента</td>
+                                            </tr>
+                                            <tr>
+                                                <td>adaptive</td>
+                                                <td>true</td>
+                                                <td>boolean</td>
+                                                <td>если true, то модалки будет адаптивной</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="j-table-responsive">
+                                    <table class="j-table" data-border-bottom>
+                                        <caption>Обработчик событий (Accordion.on)</caption>
+                                        <thead>
+                                            <tr>
+                                                <th>Название</th>
+                                                <th>Значение по умолчанию</th>
+                                                <th>Тип</th>
+                                                <th>Описание</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>mount</td>
+                                                <td>(ctx) =></td>
+                                                <td>function</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>unmount</td>
+                                                <td>(ctx) =></td>
+                                                <td>function</td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>render</td>
+                                                <td>(ctx) =></td>
+                                                <td>function</td>
+                                                <td>срабатывает при открытие</td>
+                                            </tr>
+                                            <tr>
+                                                <td>destroy</td>
+                                                <td>(ctx) =></td>
+                                                <td>function</td>
+                                                <td>срабатывает при закрытие</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </content>
+    </div>
+{% endblock %}

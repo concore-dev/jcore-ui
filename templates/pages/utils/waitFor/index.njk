@@ -1,0 +1,40 @@
+{% extends "layout_ui.njk" %}
+
+{% block title %}radio{% endblock %}
+
+{% block content %}
+    <div class="j-container page-accordion">
+        <header class="page-header">
+            <div class="page-title">waitFor</div>
+            <div class="page-label">функция ожидания</div>
+            <div class="page-import">import <span class="token string">{ waitFor } from 'jcore-ui'</span>;</div>
+            <div class="page-import">import <span class="token string">waitFor from 'jcore-ui/bin/lib/utils/waitFor'</span>;</div>
+        </header>
+        </header>
+        <content class="page-content">
+            <section class="page-section">
+                <div class="page-section-header">Использование</div>
+                <div class="page-section-code">
+<pre>
+<code class="language-js">
+setTimeout(() => {
+    window.foo = 'bar';
+}, 3000)
+
+
+// Будет проверять 5 раз каждые 1000мс и если вернет true, выполниться вторая callback функция
+waitfor(() => {
+    return window.foo
+}, () => {
+    // ...
+}, {
+    count: 5,
+    time: 1000
+})
+</code>
+</pre>
+                </div>
+            </section>
+        </content>
+    </div>
+{% endblock %}

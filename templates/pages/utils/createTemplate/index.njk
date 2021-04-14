@@ -1,0 +1,41 @@
+{% extends "layout_ui.njk" %}
+
+{% block title %}radio{% endblock %}
+
+{% block content %}
+    <div class="j-container page-accordion">
+        <header class="page-header">
+            <div class="page-title">createTemplate</div>
+            <div class="page-label">утилита для создание HTML элементов</div>
+            <div class="page-import">import <span class="token string">{ createTemplate } from 'jcore-ui'</span>;</div>
+            <div class="page-import">import <span class="token string">createTemplate from 'jcore-ui/bin/lib/utils/createTemplate'</span>;</div>
+        </header>
+        </header>
+        <content class="page-content">
+            <section class="page-section">
+                <div class="page-section-header">Использование</div>
+                <div class="page-section-label">Функция должна принимать только 1 родительский элемент</div>
+                <div class="page-section-code">
+<pre>
+<code class="language-js">
+const data = [
+    { id: 1, title: 'first' },
+    { id: 2, title: 'second' }
+];
+
+const $element = createTemplate(`
+    <div class="custom-list">
+        ${data.map(item => {
+            return `
+                &lt;div class="custom-list-item" data-id="${item.id}">${item.title}&lt;/div>
+            `;
+        }).join('')}
+    </div>
+`);
+</code>
+</pre>
+                </div>
+            </section>
+        </content>
+    </div>
+{% endblock %}

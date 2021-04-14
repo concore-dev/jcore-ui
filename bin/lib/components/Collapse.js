@@ -60,6 +60,7 @@ class Collapse extends Component_1.default {
         this.emitter.emit('unmount', this);
     }
     toggle() {
+        this.scrollHeight = this.$wrapper.scrollHeight;
         if (this.isActive) {
             this.close();
         }

@@ -1,0 +1,110 @@
+{% extends "layout_ui.njk" %}
+
+{% block title %}toggle{% endblock %}
+
+{% block content %}
+    <div class="j-container page-accordion">
+        <header class="page-header">
+            <div class="page-title">Переключатель</div>
+            <div class="page-label">компонент переключатель</div>
+            <div class="page-import">@import <span class="token string">'node_modules/jcore-ui/lib/scss/components/toggle.scss'</span>;</div>
+        </header>
+        <content class="page-content">
+            <section class="page-section">
+                <div class="page-section-header">Использование</div>
+                {# <div class="page-section-label">
+                </div> #}
+                <div class="page-section-example">
+                    <div class="j-toggle">
+                        <input class="j-toggle-input" name="sale" type="checkbox">
+                        <div class="j-toggle-wrapper">
+                            <div class="j-toggle-track"></div>
+                        </div>
+                        <div class="j-toggle-label">Товары со скидкой</div>
+                    </div>
+
+                    <div class="j-toggle">
+                        <div class="j-toggle-label">Товары со скидкой</div>
+                        <input class="j-toggle-input" name="sale" type="checkbox">
+                        <div class="j-toggle-wrapper">
+                            <div class="j-toggle-track"></div>
+                        </div>
+                    </div>
+
+                    <div class="j-toggle">
+                        <input class="j-toggle-input" name="sale" type="checkbox">
+                        <div class="j-toggle-wrapper">
+                            <div class="j-toggle-track"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<div class="j-toggle">
+    <input class="j-toggle-input" name="sale" type="checkbox"/>
+    <div class="j-toggle-wrapper">
+        <div class="j-toggle-track"></div>
+    </div>
+    <div class="j-toggle-label">Товары со скидкой</div>
+</div>
+
+<div class="j-toggle">
+    <div class="j-toggle-label">Товары со скидкой</div>
+    <input class="j-toggle-input" name="sale" type="checkbox"/>
+    <div class="j-toggle-wrapper">
+        <div class="j-toggle-track"></div>
+    </div>
+</div>
+
+<div class="j-toggle">
+    <input class="j-toggle-input" name="sale" type="checkbox"/>
+    <div class="j-toggle-wrapper">
+        <div class="j-toggle-track"></div>
+    </div>
+</div>
+</script></code>
+</pre>
+                </div>
+            </section>
+
+            <section class="page-section">
+                <div class="page-section-header">Заблокированный</div>
+                <div class="page-section-example">
+                    <div class="j-toggle" disabled>
+                        <input class="j-toggle-input" disabled name="sale" type="checkbox">
+                        <div class="j-toggle-wrapper">
+                            <div class="j-toggle-track"></div>
+                        </div>
+                        <div class="j-toggle-label">Товары со скидкой</div>
+                    </div>
+
+                    <div class="j-toggle" disabled>
+                        <div class="j-toggle-label">Товары со скидкой</div>
+                        <input class="j-toggle-input" disabled name="sale" type="checkbox">
+                        <div class="j-toggle-wrapper">
+                            <div class="j-toggle-track"></div>
+                        </div>
+                    </div>
+
+                    <div class="j-toggle" disabled>
+                        <input class="j-toggle-input" disabled name="sale" type="checkbox">
+                        <div class="j-toggle-wrapper">
+                            <div class="j-toggle-track"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<div class="j-toggle" disabled>
+    <input class="j-toggle-input" disabled name="sale" type="checkbox"/>
+    // ...
+</div>
+</script></code>
+</pre>
+                </div>
+            </section>
+        </content>
+    </div>
+{% endblock %}

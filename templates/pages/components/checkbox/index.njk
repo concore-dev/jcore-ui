@@ -1,0 +1,70 @@
+{% extends "layout_ui.njk" %}
+
+{% block title %}checkbox{% endblock %}
+
+{% block content %}
+    <div class="j-container page-accordion">
+        <header class="page-header">
+            <div class="page-title">Чекбокс</div>
+            <div class="page-label">компонент чекбокса</div>
+            <div class="page-import">@import <span class="token string">'node_modules/jcore-ui/lib/scss/components/checkbox.scss'</span>;</div>
+        </header>
+        <content class="page-content">
+            <section class="page-section">
+                <div class="page-section-header">Использование</div>
+                {# <div class="page-section-label">
+                </div> #}
+                <div class="page-section-example">
+                    <div class="j-checkbox">
+                        <input class="j-checkbox-input" name="sale" type="checkbox">
+                        <div class="j-checkbox-wrapper">
+                            <div class="j-checkbox-icon"></div>
+                            <div class="j-checkbox-label">Товары со скидкой</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<div class="j-checkbox">
+    <input class="j-checkbox-input" name="sale" type="checkbox"/>
+    <div class="j-checkbox-wrapper">
+        <div class="j-checkbox-icon"></div>
+        <div class="j-checkbox-label">Товары со скидкой</div>
+    </div>
+</div>
+</script></code>
+</pre>
+                </div>
+            </section>
+
+            <section class="page-section">
+                <div class="page-section-header">Заблокированный</div>
+                {# <div class="page-section-label">
+                </div> #}
+                <div class="page-section-example">
+                    <div class="j-checkbox" disabled>
+                        <input class="j-checkbox-input" disabled name="sale" type="checkbox">
+                        <div class="j-checkbox-wrapper">
+                            <div class="j-checkbox-icon"></div>
+                            <div class="j-checkbox-label">Товары со скидкой</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<div class="j-checkbox" disabled>
+    <input class="j-checkbox-input" disabled name="sale" type="checkbox"/>
+    <div class="j-checkbox-wrapper">
+        <div class="j-checkbox-icon"></div>
+        <div class="j-checkbox-label">Товары со скидкой</div>
+    </div>
+</div>
+</script></code>
+</pre>
+                </div>
+            </section>
+        </content>
+    </div>
+{% endblock %}

@@ -1,0 +1,165 @@
+{% extends "layout_ui.njk" %}
+
+{% block content %}
+    <div class="j-container">
+        <header class="page-header">
+            <div class="page-title">Form</div>
+            <div class="page-label">компонент формы</div>
+            <div class="page-import">@import <span class="token string">'node_modules/jcore-ui/lib/scss/components/form.scss'</span>;</div>
+        </header>
+        <content class="page-content">
+            <section class="page-section">
+                <div class="page-section-header">Правила использования.</div>
+                <div class="page-section-label">Контейнер указывается через .j-container класс</div>
+                <div class="page-section-example">
+                    <form action="#" class="j-form">
+                        <div class="j-form-field">
+                            <div class="j-input big">
+                                <div class="j-input-group">
+                                    <input type="text" placeholder=" ">
+                                    <label for="name" class="j-input-hint placeholder">Имя</label>
+                                </div>
+                            </div>
+
+                            <div class="j-input big">
+                                <div class="j-input-group">
+                                    <input type="text" placeholder=" ">
+                                    <label for="name" class="j-input-hint placeholder">Фамилия</label>
+                                </div>
+                            </div>
+
+                            <div class="j-input big">
+                                <div class="j-input-group">
+                                    <input type="text" placeholder=" ">
+                                    <label for="name" class="j-input-hint placeholder">Отчество</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="j-form-field">
+                            <div class="j-input big">
+                                <div class="j-input-group">
+                                    <input type="text" placeholder=" ">
+                                    <label for="name" class="j-input-hint placeholder">Телефон</label>
+                                </div>
+                            </div>
+                            <div class="j-input big">
+                                <div class="j-input-group">
+                                    <input type="text" placeholder=" ">
+                                    <label for="name" class="j-input-hint placeholder">Емейл</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="j-form-field">
+                            <div class="j-select" data-name="select-1">
+                                <input class="j-select-input" name="city" value="0">
+                                <div class="j-select-value big">Выберите город</div>
+                                <div class="j-select-wrapper">
+                                    <div class="j-select-items">
+                                        <div class="j-select-item" data-value="0">Все города</div>
+                                        <div class="j-select-item" data-value="1">Москва</div>
+                                        <div class="j-select-item" data-value="2">Самара</div>
+                                        <div class="j-select-item" data-value="3">Тольятти</div>
+                                        <div class="j-select-item" data-value="4">Казань</div>
+                                        <div class="j-select-item" data-value="5">Сызрань</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="j-form-field">
+                            <div class="j-checkbox">
+                                <input class="j-checkbox-input" name="sale" type="checkbox">
+                                <div class="j-checkbox-wrapper">
+                                    <div class="j-checkbox-icon"></div>
+                                    <div class="j-checkbox-label">Товары со скидкой</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="j-form-field">
+                            <button class="j-button main medium" type="submit">Отправить</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<form action="#" class="j-form">
+    <div class="j-form-field">
+        <div class="j-input big">
+            <div class="j-input-group">
+                <input type="text" placeholder=" ">
+                <label for="name" class="j-input-hint placeholder">Имя</label>
+            </div>
+        </div>
+
+        <div class="j-input big">
+            <div class="j-input-group">
+                <input type="text" placeholder=" ">
+                <label for="name" class="j-input-hint placeholder">Фамилия</label>
+            </div>
+        </div>
+
+        <div class="j-input big">
+            <div class="j-input-group">
+                <input type="text" placeholder=" ">
+                <label for="name" class="j-input-hint placeholder">Отчество</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="j-form-field">
+        <div class="j-input big">
+            <div class="j-input-group">
+                <input type="text" placeholder=" ">
+                <label for="name" class="j-input-hint placeholder">Телефон</label>
+            </div>
+        </div>
+        <div class="j-input big">
+            <div class="j-input-group">
+                <input type="text" placeholder=" ">
+                <label for="name" class="j-input-hint placeholder">Емейл</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="j-form-field">
+        <div class="j-select" data-name="select-1">
+            <input class="j-select-input" name="city" value="0">
+            <div class="j-select-value big">Выберите город</div>
+            <div class="j-select-wrapper">
+                <div class="j-select-items">
+                    <div class="j-select-item" data-value="0">Все города</div>
+                    <div class="j-select-item" data-value="1">Москва</div>
+                    <div class="j-select-item" data-value="2">Самара</div>
+                    <div class="j-select-item" data-value="3">Тольятти</div>
+                    <div class="j-select-item" data-value="4">Казань</div>
+                    <div class="j-select-item" data-value="5">Сызрань</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="j-form-field">
+        <div class="j-checkbox">
+            <input class="j-checkbox-input" name="sale" type="checkbox">
+            <div class="j-checkbox-wrapper">
+                <div class="j-checkbox-icon"></div>
+                <div class="j-checkbox-label">Товары со скидкой</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="j-form-field">
+        <button class="j-button main" type="submit">Отправить</button>
+    </div>
+</form>
+</script></code>
+</pre>
+                </div>
+            </section>
+        </content>
+    </div>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "layout_ui.njk" %}
+
+{% block title %}spinner{% endblock %}
+
+{% block content %}
+    <div class="j-container page-accordion">
+        <header class="page-header">
+            <div class="page-title">Спиннер</div>
+            <div class="page-label">компонент спиннера</div>
+            <div class="page-import">@import <span class="token string">'node_modules/jcore-ui/lib/scss/components/spinner.scss'</span>;</div>
+        </header>
+        <content class="page-content">
+            <section class="page-section">
+                <div class="page-section-header">Использование</div>
+                {# <div class="page-section-label">
+                </div> #}
+                <div class="page-section-example" style="display:flex;justify-content: space-around; align-items:center;">
+                    <div class="j-spinner small"></div>
+                    <div class="j-spinner"></div>
+                    <div class="j-spinner large"></div>
+                </div>
+                <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<div class="j-spinner small"></div>
+<div class="j-spinner"></div>
+<div class="j-spinner large"></div>
+</script></code>
+</pre>
+                </div>
+            </section>
+
+            <section class="page-section">
+                <div class="page-section-header">inverted</div>
+                {# <div class="page-section-label">
+                </div> #}
+                <div class="page-section-example" style="display:flex;justify-content: space-around; align-items:center;background: rgb(150, 150, 150);">
+                    <div class="j-spinner small inverted"></div>
+                    <div class="j-spinner inverted"></div>
+                    <div class="j-spinner large inverted"></div>
+                </div>
+                <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<div class="j-spinner small"></div>
+<div class="j-spinner"></div>
+<div class="j-spinner large"></div>
+</script></code>
+</pre>
+                </div>
+            </section>
+
+            <section class="page-section">
+                <div class="page-section-header">С кнопкой</div>
+                {# <div class="page-section-label">
+                </div> #}
+                <div class="page-section-example" style="display:flex;justify-content: space-around; align-items:center;">
+                    <button class="j-button main" data-spinner>
+                        Кнопка
+                        <div class="j-spinner small inverted"></div>
+                    </button>
+                </div>
+                <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<button class="j-button main" data-spinner>
+    Кнопка
+    <div class="j-spinner small inverted"></div>
+</button>
+</script></code>
+</pre>
+                </div>
+            </section>
+        </content>
+    </div>
+{% endblock %}

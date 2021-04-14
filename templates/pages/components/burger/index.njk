@@ -1,0 +1,48 @@
+{% extends "layout_ui.njk" %}
+
+{% block title %}radio{% endblock %}
+
+{% block content %}
+    <div class="j-container page-accordion">
+        <header class="page-header">
+            <div class="page-title">Бургер кнопка</div>
+            <div class="page-label">компонент бургер кнопки</div>
+            <div class="page-import">@import <span class="token string">'node_modules/jcore-ui/lib/scss/components/burger.scss'</span>;</div>
+        </header>
+        <content class="page-content">
+            <section class="page-section">
+                <div class="page-section-header">Использование</div>
+                {# <div class="page-section-label">
+                </div> #}
+                <div class="page-section-example">
+                    <div class="j-burger">
+                        <div class="j-burger-line"></div>
+                        <div class="j-burger-line"></div>
+                        <div class="j-burger-line"></div>
+                    </div>
+                    <div class="j-burger" data-active>
+                        <div class="j-burger-line"></div>
+                        <div class="j-burger-line"></div>
+                        <div class="j-burger-line"></div>
+                    </div>
+                </div>
+                <div class="page-section-code">
+<pre>
+<code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
+<div class="j-burger">
+    <div class="j-burger-line"></div>
+    <div class="j-burger-line"></div>
+    <div class="j-burger-line"></div>
+</div>
+<div class="j-burger" data-active>
+    <div class="j-burger-line"></div>
+    <div class="j-burger-line"></div>
+    <div class="j-burger-line"></div>
+</div>
+</script></code>
+</pre>
+                </div>
+            </section>
+        </content>
+    </div>
+{% endblock %}

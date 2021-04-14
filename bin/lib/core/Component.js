@@ -23,9 +23,9 @@ class Component {
                     return new props.Component(newProps);
                 }).filter(cpm => cpm);
             }
-            else {
-                throw Error(`Не найден HTMLElement ${this.constructor.name}`);
-            }
+            // else {
+            //     console.log(Error(`Не найден HTMLElement ${this.constructor.name}`));
+            // }
             return this;
         }
         /**
@@ -40,7 +40,8 @@ class Component {
         }
         this.$element = props.$element instanceof Element ? props.$element : document.querySelector(props.$element);
         if (!this.$element) {
-            throw Error(`Не найден HTMLElement ${this.constructor.name}`);
+            // throw Error(`Не найден HTMLElement ${this.constructor.name}`)
+            console.log(Error(`Не найден HTMLElement ${this.constructor.name}`));
         }
         this.options = {
             mount: true,

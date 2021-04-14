@@ -36,8 +36,8 @@ class Tab extends Component_1.default {
         this.handlers = {
             change: this.change.bind(this),
         };
-        this.$tabs = this.$element.querySelectorAll(this.selectors.tab);
-        this.$contents = this.$element.querySelectorAll(this.selectors.content);
+        this.$tabs = Array.from(this.$element.querySelector(this.selectors.list).children);
+        this.$contents = Array.from(this.$element.querySelector(this.selectors.wrapper).children);
         this.addEvents();
         if (this.options.active) {
             this.toggle(this.$tabs[0], Array.prototype.filter.call(this.$contents, item => item.dataset.tab === this.$tabs[0].dataset.target)[0], false);
@@ -46,7 +46,7 @@ class Tab extends Component_1.default {
         this.emitter.emit('mount', this);
     }
     addEvents() {
-        this.$tabs.forEach(tab => tab.addEventListener('click', this.handlers.change));
+        this.$tabs.forEach((tab) => tab.addEventListener('click', this.handlers.change));
     }
     change(e) {
         const tab = e.target;
@@ -56,8 +56,8 @@ class Tab extends Component_1.default {
         }
     }
     toggle(tab, content, lifeCycle = true) {
-        this.$tabs.forEach(item => item.removeAttribute('data-active'));
-        this.$contents.forEach(item => item.removeAttribute('data-active'));
+        this.$tabs.forEach((item) => item.removeAttribute('data-active'));
+        this.$contents.forEach((item) => item.removeAttribute('data-active'));
         tab.toggleAttribute('data-active');
         content.toggleAttribute('data-active');
         if (lifeCycle) {
@@ -67,7 +67,7 @@ class Tab extends Component_1.default {
     }
     unmount() {
         super.unmount();
-        this.$tabs.forEach(tab => tab.removeEventListener('click', this.handlers.change));
+        this.$tabs.forEach((tab) => tab.removeEventListener('click', this.handlers.change));
         this.on.unmount(this);
         this.emitter.emit('unmount', this);
     }

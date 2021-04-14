@@ -26,7 +26,7 @@
         "noImplicitThis": true,
         "rootDir": ".",
         // "baseUrl": "."
-        "outDir": "./bin",
+        "outDir": "./dist/bin",
         // "outFile": "./bin/index.js",
         "declaration": true,
         "declarationMap": true,
@@ -43,6 +43,7 @@
         // "**/*.ts",
         "./typings/**/*.ts",
         "./lib/**/*.ts",
+        "./app/**/*.ts",
         "index.ts",
         // "./tests/**/*.ts"
     ]

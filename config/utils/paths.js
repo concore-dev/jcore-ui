@@ -6,7 +6,7 @@ const rootPath = path.join(__dirname, '..', '..')
 
 const paths = {
     root: rootPath,
-    src: path.join(rootPath, 'src'),
+    src: path.join(rootPath, 'app'),
     dist: path.join(rootPath, 'dist'),
     templates: path.join(rootPath, 'templates'),
     pages: path.join(rootPath, 'templates', 'pages'),

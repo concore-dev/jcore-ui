@@ -1,3 +1,14 @@
+/*!
+ * Jcore-ui v1.0.1
+ * Native javascript ui components
+ * https://github.com/concore-dev/jcore-ui
+ *
+ * Copyright 2021 Eryomin Nickolay
+ * Published under MIT License
+ *
+ */
+
+
 import Accordion from './lib/components/Accordion';
 import Collapse from './lib/components/Collapse';
 import Dropdown from './lib/components/Dropdown';
@@ -13,7 +24,6 @@ import dataScroll from './lib/utils/dataScroll';
 import event from './lib/utils/event';
 import EventEmitter from './lib/utils/EventEmitter';
 import waitFor from './lib/utils/waitFor';
-
 
 
 export {
@@ -33,6 +43,7 @@ export {
     dataHref,
     waitFor
 }
+
 
 export default {
     Accordion,

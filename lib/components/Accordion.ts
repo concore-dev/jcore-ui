@@ -1,3 +1,13 @@
+/*!
+ * Jcore-ui v1.0.1 - Accordion
+ * https://github.com/concore-dev/jcore-ui
+ *
+ * Copyright 2021 Eryomin Nickolay
+ * Published under MIT License
+ *
+ */
+
+
 import Component, { IComponent, IComponentOn, IComponentOptions, IComponentSelector } from "../core/Component";
 import config from '../../config';
 import { IObject } from "../interfaces";

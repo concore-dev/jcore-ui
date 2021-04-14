@@ -17,11 +17,12 @@ module.exports = (env, argv) => {
     const utils = argv.utils || util;
     const db = argv.db || {};
     let pathHtml = argv.pathHtml || paths.html;
+    let publicPath = '/';
 
     if (docs) {
         paths.dist = path.join(__dirname, '..', 'docs');
         pathHtml = '';
-        paths.bundles = 'jcore-ui/bundles';
+        publicPath = '/jcore-ui';
         db.href = '/jcore-ui';
     }
 
@@ -44,7 +45,7 @@ module.exports = (env, argv) => {
                 return `${paths.bundles}/js/[name].${prod ? '[chunkhash:5].' : ''}js`;
             },
             chunkFilename: `${paths.bundles}/js/[name].${prod ? '[chunkhash:5].' : ''}js`,
-            publicPath: "/"
+            publicPath
         },
         externals: {
             paths: paths

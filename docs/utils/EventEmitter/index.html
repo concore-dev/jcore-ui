@@ -1,0 +1,31 @@
+<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>jcore-ui | radio</title><link href="//bundles/css/app.90f0f.css" rel="stylesheet"><link href="//bundles/css/lib.74a7c.css" rel="stylesheet"></head><body data-menu><div class="menu" data-active><div class="menu-content"><div class="menu-item"><div class="menu-link" data-href="/">Начало</div></div><div class="menu-item"><div class="j-accordion"><div class="j-accordion-panel"><div class="j-accordion-tab"><div class="menu-link">Разметка</div></div><div class="j-accordion-content"><div class="menu-link" data-href="/markup/grid">Сетка</div><div class="menu-link" data-href="/markup/container">Контейнер</div><div class="menu-link" data-href="/markup/button">Кнопка</div><div class="menu-link" data-href="/markup/input">Поля ввода</div><div class="menu-link" data-href="/markup/form">Форма</div><div class="menu-link" data-href="/markup/table">Таблица</div></div></div></div></div><div class="menu-item"><div class="j-accordion"><div class="j-accordion-panel"><div class="j-accordion-tab"><div class="menu-link">Компоненты</div></div><div class="j-accordion-content"><div class="menu-link" data-href="/components/accordion/">Аккордеон</div><div class="menu-link" data-href="/components/checkbox/">Чекбокс</div><div class="menu-link" data-href="/components/collapse/">Коллапс</div><div class="menu-link" data-href="/components/dropdown/">Выпадающий список</div><div class="menu-link" data-href="/components/tooltip/">Всплывающий список</div><div class="menu-link" data-href="/components/modal/">Модальное окно</div><div class="menu-link" data-href="/components/progress/">Индикатор</div><div class="menu-link" data-href="/components/radio/">Радиокнопки</div><div class="menu-link" data-href="/components/select/">Список</div><div class="menu-link" data-href="/components/spinner/">Спиннер</div><div class="menu-link" data-href="/components/tab/">Вкладки</div><div class="menu-link" data-href="/components/toggle/">Переключатель</div><div class="menu-link" data-href="/components/burger/">Бургер кнопка</div></div></div></div></div><div class="menu-item"><div class="j-accordion"><div class="j-accordion-panel"><div class="j-accordion-tab"><div class="menu-link">Утилиты</div></div><div class="j-accordion-content"><div class="menu-link" data-href="/utils/EventEmitter/">EventEmitter</div><div class="menu-link" data-href="/utils/createTemplate/">createTemplate</div><div class="menu-link" data-href="/utils/dataHref/">dataHref</div><div class="menu-link" data-href="/utils/dataScroll/">dataScroll</div><div class="menu-link" data-href="/utils/waitFor/">waitFor</div></div></div></div></div></div><div class="menu-toggle j-burger" data-active><div class="j-burger-line"></div><div class="j-burger-line"></div><div class="j-burger-line"></div></div></div><main class="page"><div class="j-container page-accordion"><header class="page-header"><div class="page-title">EventEmitter</div><div class="page-label">класс для создания событий</div><div class="page-import">import <span class="token string">{ EventEmitter } from 'jcore-ui'</span>;</div><div class="page-import">import <span class="token string">EventEmitter from 'jcore-ui/bin/lib/utils/EventEmitter'</span>;</div></header><content class="page-content"><section class="page-section"><div class="page-section-header">Использование</div><div class="page-section-code"><pre>
+<code class="language-js">
+const eventEmtiter = new EventEmitter()
+
+eventEmtiter.on('customEvent', (data) => {
+    // ...
+})
+
+eventEmtiter.emit('customEvent', {message: ''})
+</code>
+</pre></div><div class="page-section-code"><pre>
+<code class="language-js">
+class Component extends EventEmitter {
+    send() {
+        const data = {
+            message: 'send'
+        };
+
+        // ...
+
+        this.emit('send', data)
+    }
+}
+
+const component = new Component();
+
+component.on('send', (data) => {
+    // ...
+})
+</code>
+</pre></div></section></content></div></main><footer class="footer"><div class="j-container"><div class="footer-copyright">© 2021 Eryomin Nickolay.</div></div></footer><script src="/bundles/js/app.47279.js"></script><script src="/bundles/js/lib.cc353.js"></script></body></html>

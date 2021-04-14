@@ -13,7 +13,8 @@ chromedriver.log
 
 # production
 dist
-# bin
+app
+templates
 
 # misc
 .vscode

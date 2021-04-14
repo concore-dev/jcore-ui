@@ -21,6 +21,7 @@ module.exports = (env, argv) => {
     if (docs) {
         paths.dist = path.join(__dirname, '..', 'docs');
         pathHtml = '';
+        paths.bundles = 'jcore-ui/bundles';
     }
 
     let entry = {

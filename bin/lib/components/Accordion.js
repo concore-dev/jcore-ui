@@ -1,4 +1,12 @@
 "use strict";
+/*!
+ * Jcore-ui v1.0.1 - Accordion
+ * https://github.com/concore-dev/jcore-ui
+ *
+ * Copyright 2021 Eryomin Nickolay
+ * Published under MIT License
+ *
+ */
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };

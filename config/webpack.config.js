@@ -13,9 +13,15 @@ const paths = require('./utils/paths');
 module.exports = (env, argv) => {
     const prod = argv.mode === 'production';
     const dev = argv.mode === 'development';
+    const docs = argv.docs || false;
     const utils = argv.utils || util;
-    const pathHtml = argv.pathHtml || paths.html;
     const db = argv.db || {};
+    let pathHtml = argv.pathHtml || paths.html;
+
+    if (docs) {
+        paths.dist = path.join(__dirname, '..', 'docs');
+        pathHtml = '';
+    }
 
     let entry = {
         app: [
@@ -23,16 +29,6 @@ module.exports = (env, argv) => {
             `${paths.src}/scss/index.scss`,
         ]
     };
-
-    if (prod) {
-        entry['lib'] = [
-            `${paths.root}/index.ts`,
-            `${paths.root}/lib/scss/index.scss`,
-        ]
-        // entry['lib.utils'] = [
-        //     `${paths.root}/lib/utils/index.ts`,
-        // ]
-    }
 
     const config = {
         entry,
@@ -153,9 +149,9 @@ module.exports = (env, argv) => {
                     //     return `../bin/[name].css`;
                     // }
 
-                    return `/${paths.bundles}/css/[name].${prod ? '[contenthash:5].' : ''}css`;
+                    return `${paths.bundles}/css/[name].${prod ? '[contenthash:5].' : ''}css`;
                 },
-                chunkFilename: `/${paths.bundles}/css/[id].${prod ? '[contenthash:5].' : ''}css`
+                chunkFilename: `${paths.bundles}/css/[id].${prod ? '[contenthash:5].' : ''}css`
             })
         ]
             .concat(generateHtmlPlugin(paths.pages, {

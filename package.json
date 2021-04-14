@@ -13,6 +13,7 @@
         "jest:coverage": "cross-env NODE_ENV=test jest --coverage --config ./config/jest.config.js",
         "start": "webpack-dev-server --mode development --config ./config/webpack.config.js",
         "build": "webpack --mode production --config ./config/webpack.config.js",
+        "build:docs": "webpack --mode production --docs --config ./config/webpack.config.js",
         "watch": "webpack --watch --mode development --config ./config/webpack.config.js"
     },
     "repository": {

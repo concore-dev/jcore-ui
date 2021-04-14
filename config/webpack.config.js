@@ -22,6 +22,7 @@ module.exports = (env, argv) => {
         paths.dist = path.join(__dirname, '..', 'docs');
         pathHtml = '';
         paths.bundles = 'jcore-ui/bundles';
+        db.href = '/jcore-ui';
     }
 
     let entry = {

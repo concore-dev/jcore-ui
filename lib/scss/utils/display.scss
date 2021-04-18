@@ -1,0 +1,22 @@
+@import '../var.scss';
+
+
+// display
+[data-display="inline"] {display: inline!important;}
+[data-display="block"] {display: block!important;}
+[data-display="inline-block"] {display: inline-block!important;}
+[data-display="flex"] {display: flex!important;}
+[data-display="none"] {display: none!important;}
+
+
+[data-display] {
+    @each $point, $value in $breakpoints {
+        @include j-media($point, 'max') {
+            &[data-#{$point}="inline"] {display: inline!important;}
+            &[data-#{$point}="block"] {display: block!important;}
+            &[data-#{$point}="inline-block"] {display: inline-block!important;}
+            &[data-#{$point}="flex"] {display: flex!important;}
+            &[data-#{$point}="none"] {display: none!important;}
+        }
+    }
+}

@@ -1,0 +1,26 @@
+
+@import '../var.scss';
+@import '../mixins/media.scss';
+
+
+$prefix-br: 'br' !default;
+
+
+[data-#{$prefix-br}="inline"] {
+    display: inline;
+}
+
+[data-#{$prefix-br}] {
+    display: block;
+
+    @each $point, $value in $breakpoints {
+        @include j-media($point, 'max') {
+            &[data-#{$point}="inline"] {
+                display: inline;
+            }
+            &[data-#{$point}="block"] {
+                display: block;
+            }
+        }
+    }
+}

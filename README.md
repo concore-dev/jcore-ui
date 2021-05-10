@@ -75,7 +75,7 @@ Select | [Select-docs](https://concore-dev.github.io/jcore-ui/components/select/
 Tab | [Tab-docs](https://concore-dev.github.io/jcore-ui/components/tab/)
 Tooltip | [Tooltip-docs](https://concore-dev.github.io/jcore-ui/components/tooltip/)
 
-#### остальные
+#### html компоненты
 
 Название | Ссылка на документацию |
 --- | --- |

@@ -1,29 +1,34 @@
-import canusewebp from './canusewebp.js';
+import canusewebp from './canusewebp';
 
-const lazyLoad = () => {
-    const images = document.querySelectorAll('[lazy-load]');
+const lazyLoad = function(element: HTMLElement | NodeListOf<HTMLElement> | string) {
+    let images;
+
+    if (typeof element === "string") {
+        images = document.querySelectorAll<HTMLElement>('[data-lazy]');
+    } else if (element instanceof HTMLElement) {
+        images = [element];
+    } else if (element instanceof NodeList) {
+        images = element;
+    }
 
     images.forEach(function(item) {
-        let format = false;
+        let format: string;
 
-        if (item.getAttribute('lazy-load') === 'format') {
+        if (item.hasAttribute('data-format')) {
             format = canusewebp() ? '.webp' : '.jpg';
         }
 
         lazy(item, format);
+
         window.addEventListener('scroll', function() {
             lazy(item, format);
         });
     });
 }
+
 export default lazyLoad
 
-/**
- * Устанавливает src для img или source из data-lazy, если элемент в области видимости
- * @param {HTMLImageElement} item img элемент
- * @param {String} format расширение картинки
- */
-export function lazy(item, format = false) {
+export function lazy(item:HTMLElement, format:string = null) {
     let windowHeight = document.documentElement.clientHeight || document.body.clientHeight,
         windowScroll = document.documentElement.scrollTop || document.body.scrollTop,
         elemRect = windowScroll + item.getBoundingClientRect().top,
@@ -32,17 +37,17 @@ export function lazy(item, format = false) {
         elemCordStart = windowScroll + item.getBoundingClientRect().top,
         elemCordEnd = elemRect + item.clientHeight;
 
-    if (elemCordStart - 300 <= windowCordEnd && windowCordStart <= elemCordEnd + 300 && item.getAttribute('lazy-load') !== 'loaded') {
+    if (elemCordStart - 300 <= windowCordEnd && windowCordStart <= elemCordEnd + 300 && item.getAttribute('data-lazy') !== 'loaded') {
 
         if (item.localName == 'img') {
-            if (item.parentNode.localName != 'picture') {
+            if (item.parentElement.localName != 'picture') {
                 if (format) {
                     item.setAttribute('src', item.dataset.lazy + format);
                 } else {
                     item.setAttribute('src', item.dataset.lazy);
                 }
 
-                item.setAttribute('lazy-load', 'loaded')
+                item.setAttribute('data-lazy', 'loaded')
 
                 return false;
             }

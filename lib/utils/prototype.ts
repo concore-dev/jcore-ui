@@ -1,7 +1,17 @@
-function prototypes() {
-    /**
-     * Устанавливает атрибуты элемента
-     */
+import { IFunction } from '../interfaces/index';
+
+declare global {
+    interface Element{
+        setAttributes: IFunction
+        removeAttributes: IFunction
+        matchesSelector: any
+        mozMatchesSelector: any
+        msMatchesSelector: any
+    }
+}
+
+
+function prototype() {
     if (!Element.prototype.setAttributes) {
         Element.prototype.setAttributes = function(attr) {
             var node = this;
@@ -14,9 +24,6 @@ function prototypes() {
         };
     }
 
-    /**
-     * Удаляет атрибуты элемента
-     */
     if (!Element.prototype.removeAttributes) {
         Element.prototype.removeAttributes = function(...agrs) {
             var node = this;
@@ -37,7 +44,7 @@ function prototypes() {
     }
 
     if (!Element.prototype.closest) {
-        Element.prototype.closest = function(css) {
+        Element.prototype.closest = function(css: string) {
             var node = this;
 
             while (node) {
@@ -58,5 +65,4 @@ function prototypes() {
     }
 }
 
-
-export default prototypes
+export default prototype

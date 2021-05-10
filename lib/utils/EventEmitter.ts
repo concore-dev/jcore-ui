@@ -1,9 +1,6 @@
-import { IObject } from './../interfaces/index';
-import { TFunction } from '../interfaces/index';
-
+import { IObject, TFunction } from '../interfaces/index';
 
 export type TEventEmitter = EventEmitter;
-
 
 class EventEmitter {
     events: IObject

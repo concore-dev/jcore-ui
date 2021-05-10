@@ -1,11 +1,11 @@
-function numberFormat(number, decimals, dec_point, separator ) {
+function numberFormat(number: any, decimals: any, dec_point: any, separator: any) {
     number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
-    var n = !isFinite(+number) ? 0 : +number,
-      prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-      sep = (typeof separator === 'undefined') ? ',' : separator ,
-      dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
-      s = '',
-      toFixedFix = function(n, prec) {
+    var n: any = !isFinite(+number) ? 0 : +number,
+      prec: any = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+      sep: any = (typeof separator === 'undefined') ? ',' : separator ,
+      dec: any = (typeof dec_point === 'undefined') ? '.' : dec_point,
+      s: any = '',
+      toFixedFix = function(n: any, prec: any) {
         var k = Math.pow(10, prec);
         return '' + (Math.round(n * k) / k)
           .toFixed(prec);

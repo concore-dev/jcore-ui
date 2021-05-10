@@ -1,14 +1,16 @@
-function inScreen(item, callback) {
+import { IFunction } from "../interfaces";
+
+function inScreen(element: Element, callback: IFunction) {
     let init = false;
 
     function check() {
         let windowHeight = document.documentElement.clientHeight || document.body.clientHeight,
         windowScroll = document.documentElement.scrollTop || document.body.scrollTop,
-        elemRect = windowScroll + item.getBoundingClientRect().top,
+        elemRect = windowScroll + element.getBoundingClientRect().top,
         windowCordStart = windowScroll,
         windowCordEnd = windowHeight + windowScroll,
-        elemCordStart = windowScroll + item.getBoundingClientRect().top,
-        elemCordEnd = elemRect + item.clientHeight;
+        elemCordStart = windowScroll + element.getBoundingClientRect().top,
+        elemCordEnd = elemRect + element.clientHeight;
 
         if (elemCordStart - 300 <= windowCordEnd && windowCordStart <= elemCordEnd + 300 && init !== true) {
             init = true;

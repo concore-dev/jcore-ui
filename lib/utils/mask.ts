@@ -1,63 +1,59 @@
 const mask = {
-    /**
-     * Маска для текста
-     * @param {HTMLElement} element 
-     */
-    string(element) {
-        function mask(elem) {
-            const element = elem.constructor == InputEvent || elem.constructor == KeyboardEvent ? elem.target : elem;
+    string(element: any) {
+        function mask(element: any) {
             element.value = element.value.replace(/[^a-zA-ZА-Яа-яЁё]/gi,'').replace(/\s+/gi,'').trim();
         }
 
-        element.addEventListener('input', mask)
-        element.addEventListener('keydown', mask)
+        element.addEventListener('input', function() {
+            mask(element)
+        })
+
+        element.addEventListener('keydown', function() {
+            mask(element)
+        })
+
         mask(element)
 
         return element
     },
-
-    /**
-     * маска для чисел
-     * @param {HTMLElement} element 
-     */
-    number(element) {
-        function mask(elem) {
-            const element = elem.constructor == InputEvent || elem.constructor == KeyboardEvent ? elem.target : elem;
+    number(element: any) {
+        function mask(element: any) {
             element.value = element.value.replace(/^\.|[^\d\.]|\.(?=.*\.)|^0+(?=\d)/g,'').trim();
         }
 
-        element.addEventListener('input', mask)
-        element.addEventListener('keydown', mask)
+        element.addEventListener('input', function() {
+            mask(element)
+        })
+
+        element.addEventListener('keydown', function() {
+            mask(element)
+        })
+
         mask(element)
 
         return element
     },
-
-    /**
-     * Маска дл чисел с плавающей запятой
-     * @param {HTMLElement} element 
-     */
-    float(element) {
-        function mask(elem) {
-            const element = elem.constructor == InputEvent || elem.constructor == KeyboardEvent ? elem.target : elem;
+    float(element: any) {
+        function mask(element: any) {
             element.value = element.value.replace(/[^\d+.\d+]/g,'').trim();
         }
 
-        element.addEventListener('input', mask)
-        element.addEventListener('keydown', mask)
+        element.addEventListener('input', function() {
+            mask(element)
+        })
+
+        element.addEventListener('keydown', function() {
+            mask(element)
+        })
+
         mask(element)
 
         return element
     },
-    
-    /**
-     * Маска для телефона
-     * @param {HTMLElement} element 
-     */
-    phone(element) {
-        let keyCode;
+    phone(element: any) {
+        let keyCode: number;
 
-        const mask = (event) => {
+        const mask = (event: any) => {
             event.keyCode && (keyCode = event.keyCode);
             const position = element.selectionStart;
             if (position < 3 && event.keyCode != 35 && event.keyCode != 39) {
@@ -76,7 +72,7 @@ const mask = {
             }
         }
 
-        const checkMask = (event, value) => {
+        const checkMask = (event: any, value: any) => {
             const matrix = "+7 (___) ___-____";
             let i = 0;
             const defaulthMask = matrix.replace(/\D/g, "");
@@ -88,12 +84,13 @@ const mask = {
             if (i != -1) {
                 newElementValue = newElementValue.slice(0, i);
             }
-            let reg = matrix.substr(0, value.length).replace(/_+/g, (a) => {
+            let reg: any = matrix.substr(0, value.length).replace(/_+/g, (a) => {
                 return "\\d{1," + a.length + "}";
             })
                 .replace(/[+()]/g, "\\$&");
 
             reg = new RegExp("^" + reg + "$");
+
             if (!reg.test(value) || value.length < 5 || keyCode > 47 && keyCode < 58) {
                 value = newElementValue;
             }

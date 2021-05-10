@@ -4,3 +4,5 @@ export interface IObject {
 
 
 export type TFunction = (...args: any) => any
+
+export type IFunction = (...args: any) => any

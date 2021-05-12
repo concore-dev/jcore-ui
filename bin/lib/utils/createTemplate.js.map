@@ -1,1 +1,0 @@
-{"version":3,"file":"createTemplate.js","sourceRoot":"","sources":["../../../lib/utils/createTemplate.ts"],"names":[],"mappings":";;AAAA,MAAM,cAAc,GAAG,CAAC,OAAe,EAAe,EAAE;IACpD,MAAM,QAAQ,GAAG,QAAQ,CAAC,aAAa,CAAC,UAAU,CAAC,CAAC;IACpD,QAAQ,CAAC,kBAAkB,CAAC,YAAY,EAAE,OAAO,CAAC,CAAC;IACnD,OAAO,QAAQ,CAAC,gBAA+B,CAAA;AACnD,CAAC,CAAA;AAGD,kBAAe,cAAc,CAAA"}

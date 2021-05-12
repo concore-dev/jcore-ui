@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Component_1 = __importDefault(require("../core/Component"));
 const config_1 = __importDefault(require("../../config"));
-const createTemplate_1 = __importDefault(require("../utils/createTemplate"));
+const createElement_1 = __importDefault(require("../utils/createElement"));
 const event_1 = __importDefault(require("../utils/event"));
 const selectors = {
     element: `.${config_1.default.prefix}-modal`,
@@ -37,7 +37,7 @@ class Modal extends Component_1.default {
         // change: this.change.bind(this)
         };
         this.isRender = false;
-        this.$overlay = createTemplate_1.default(`<div class="${this.selectors.overlay.replace('.', '')}"></div>`);
+        this.$overlay = createElement_1.default(`<div class="${this.selectors.overlay.replace('.', '')}"></div>`);
         this.$close = this.$element.querySelector(this.selectors.close);
         this.$btnTarget = this.props.elements && this.props.elements.$btnTarget || document.querySelector(`[${this.selectors.btnTarget}="${this.options.name}"]`);
         this.$container = this.props.elements && this.props.elements.$container || document.querySelector(`body`);

@@ -1,5 +1,5 @@
 /*!
- * Jcore-ui v1.0.1
+ * Jcore-ui v1.0.4
  * Native javascript ui components
  * https://github.com/concore-dev/jcore-ui
  *
@@ -7,7 +7,6 @@
  * Published under MIT License
  *
  */
-
 
 import Accordion from './lib/components/Accordion';
 import Collapse from './lib/components/Collapse';

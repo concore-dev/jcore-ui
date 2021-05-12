@@ -1,7 +1,5 @@
 import { IObject } from "../interfaces";
 import { TEventEmitter } from "../utils/EventEmitter";
-import Tooltip from "../components/Tooltip";
-export declare type TComponentsClass = typeof Tooltip;
 export interface IComponentSelector {
     element: string;
 }

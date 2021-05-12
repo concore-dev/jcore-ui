@@ -12,7 +12,6 @@ const selectors = {
     header: `.${config_1.default.prefix}-tooltip-header`
 };
 class Tooltip extends Component_1.default {
-    // options: ITooltipOptions;
     constructor(props = {}) {
         super({
             ...props,

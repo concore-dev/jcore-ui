@@ -1,7 +1,5 @@
-import { IObject } from './../interfaces/index';
 import config from "../../config";
 import Component, { IComponent, IComponentSelector } from "../core/Component";
-
 
 const selectors = {
     element: `.${config.prefix}-dropdown`,
@@ -10,13 +8,11 @@ const selectors = {
     header: `.${config.prefix}-dropdown-header`
 }
 
-
 interface IDropdownSelector extends IComponentSelector {
     content: string
     wrapper: string
     header: string
 }
-
 
 interface IDropdown extends IComponent {
     selectors?: IDropdownSelector
@@ -87,6 +83,5 @@ class Dropdown extends Component {
         this.emitter.emit('unmount', this)
     }
 }
-
 
 export default Dropdown

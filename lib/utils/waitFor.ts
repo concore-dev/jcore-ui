@@ -1,12 +1,10 @@
-import { TFunction } from './../interfaces/index';
-
+import { IFunction } from './../interfaces/index';
 
 export interface IWaitFor {
     count?: number, time?: number
 }
 
-
-export default function waitFor (source: TFunction, callback: TFunction, opt?: IWaitFor) {
+export default function waitFor (source: IFunction, callback: IFunction, opt?: IWaitFor) {
     const options: IWaitFor = Object.assign({count: 10, time:  1000}, opt);
 
     (function check() {

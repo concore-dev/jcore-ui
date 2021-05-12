@@ -29,8 +29,6 @@ const dataScroll = (polyfill?: () => any) => {
             });
         }
     }
-
 }
-
 
 export default dataScroll

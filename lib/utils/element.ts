@@ -12,11 +12,6 @@ const element = {
             clientWidth: document.documentElement.clientWidth,
         }
     },
-    create(content: string) {
-        const template = document.createElement('template');
-        template.insertAdjacentHTML('afterbegin', content);
-        return template.lastElementChild
-    }
     // create(tag: string, attributes: IObject, children: Array<Element>, text: string, ns:string = null) {
     //     attributes = attributes || null;
     //     children = children || null;

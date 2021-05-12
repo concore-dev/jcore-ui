@@ -1,4 +1,4 @@
-import { IObject, TFunction } from '../interfaces/index';
+import { IObject, IFunction } from '../interfaces/index';
 
 export type TEventEmitter = EventEmitter;
 
@@ -9,7 +9,7 @@ class EventEmitter {
         this.events = {};
     }
 
-    on(event: string, listener: TFunction) {
+    on(event: string, listener: IFunction) {
         if (typeof this.events[event] !== 'object') {
             this.events[event] = [];
         }
@@ -17,7 +17,7 @@ class EventEmitter {
         return () => this.removeListener(event, listener);
     }
 
-    removeListener(event: string, listener: TFunction) {
+    removeListener(event: string, listener: IFunction) {
         if (typeof this.events[event] === 'object') {
             const idx = this.events[event].indexOf(listener);
             if (idx > -1) {
@@ -28,11 +28,11 @@ class EventEmitter {
 
     emit(event: string, ...args: any) {
         if (typeof this.events[event] === 'object') {
-            this.events[event].forEach((listener: TFunction) => listener.apply(this, args));
+            this.events[event].forEach((listener: IFunction) => listener.apply(this, args));
         }
     }
 
-    once(event: string, listener: TFunction) {
+    once(event: string, listener: IFunction) {
         const remove = this.on(event, (...args) => {
             remove();
             listener.apply(this, args);

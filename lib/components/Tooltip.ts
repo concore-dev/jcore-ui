@@ -1,7 +1,6 @@
 import config from "../../config";
 import Component, { IComponent, IComponentOptions, IComponentSelector } from "../core/Component";
 
-
 const selectors = {
     element: `.${config.prefix}-tooltip`,
     content: `.${config.prefix}-tooltip-content`,
@@ -9,28 +8,22 @@ const selectors = {
     header: `.${config.prefix}-tooltip-header`
 }
 
-
 interface ITooltipSelector extends IComponentSelector {
     content: string
     wrapper: string
     header: string
 }
 
-
 interface ITooltipOptions extends IComponentOptions {
 
 }
-
 
 interface ITooltip extends IComponent {
     selectors?: ITooltipSelector,
     options?: ITooltipOptions
 }
 
-
 class Tooltip extends Component {
-    // options: ITooltipOptions;
-
     constructor(props: ITooltip = {}) {
         super({
             ...props,
@@ -103,6 +96,5 @@ class Tooltip extends Component {
         this.emitter.emit('unmount', this)
     }
 }
-
 
 export default Tooltip

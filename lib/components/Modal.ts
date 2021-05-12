@@ -1,8 +1,7 @@
 import Component, { IComponent, IComponentOn, IComponentOptions, IComponentSelector } from "../core/Component";
 import config from '../../config';
-import createTemplate from "../utils/createTemplate";
+import createElement from "../utils/createElement";
 import event from "../utils/event";
-
 
 const selectors = {
     element: `.${config.prefix}-modal`,
@@ -11,7 +10,6 @@ const selectors = {
     close: `.${config.prefix}-modal-close`,
     btnTarget: `data-modal-target`,
 }
-
 
 interface IModalSelector extends IComponentSelector {
     overlay: string
@@ -27,11 +25,9 @@ interface IModalOptions extends IComponentOptions {
     children?: HTMLElement[]
 }
 
-
 interface IModalOn extends IComponentOn {
     // change?: (ctx?: Component) => void;
 }
-
 
 interface IModalElements {
     // $close?: HTMLElement
@@ -39,14 +35,12 @@ interface IModalElements {
     $container?: HTMLElement
 }
 
-
 interface IModal extends IComponent {
     selectors?: IModalSelector
     options?: IModalOptions
     on?: IModalOn
     elements?: IModalElements
 }
-
 
 interface Modal {
     selectors: IModalSelector
@@ -59,7 +53,6 @@ interface Modal {
     props: IModal
     isRender: boolean
 }
-
 
 class Modal extends Component {
     constructor(props: IModal = {}) {
@@ -89,7 +82,7 @@ class Modal extends Component {
 
         this.isRender = false;
 
-        this.$overlay = createTemplate(`<div class="${this.selectors.overlay.replace('.', '')}"></div>`)
+        this.$overlay = createElement(`<div class="${this.selectors.overlay.replace('.', '')}"></div>`)
         this.$close = this.$element.querySelector(this.selectors.close);
         this.$btnTarget = this.props.elements && this.props.elements.$btnTarget || document.querySelector(`[${this.selectors.btnTarget}="${this.options.name}"]`);
         this.$container = this.props.elements && this.props.elements.$container || document.querySelector(`body`);
@@ -164,6 +157,5 @@ class Modal extends Component {
         document.querySelector('body').style.removeProperty('overflow')
     }
 }
-
 
 export default Modal

@@ -1,7 +1,6 @@
 import Component, { IComponent, IComponentOn, IComponentOptions, IComponentSelector } from '../core/Component';
 import config from '../../config';
 
-
 const selectors = {
     element: `.${config.prefix}-select`,
     wrapper: `.${config.prefix}-select-wrapper`,
@@ -12,7 +11,6 @@ const selectors = {
     current: `.${config.prefix}-select-current`,
 }
 
-
 interface ISelectSelector extends IComponentSelector {
     wrapper: string;
     value: string;
@@ -22,18 +20,15 @@ interface ISelectSelector extends IComponentSelector {
     current: string;
 }
 
-
 interface ISelectValue {
     value: string| number;
     label: string| number;
 }
 
-
 interface ISelectOptions extends IComponentOptions {
     value?: ISelectValue
     items?: ISelectValue[]
 }
-
 
 interface ISelectOn extends IComponentOn {
     toggle?: (ctx?: Component) => void;
@@ -47,7 +42,6 @@ interface ISelect extends IComponent {
     on?: ISelectOn
 }
 
-
 interface Select {
     selectors: ISelectSelector
     options: ISelectOptions
@@ -59,7 +53,6 @@ interface Select {
     $itemList: NodeListOf<HTMLElement>
     on: ISelectOn
 }
-
 
 class Select extends Component {
     constructor(props: ISelect = {}) {
@@ -171,6 +164,5 @@ class Select extends Component {
         this.emitter.emit('unmount', this)
     }
 }
-
 
 export default Select

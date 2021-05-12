@@ -1,20 +1,174 @@
-<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>jcore-ui | spinner</title><link href="/jcore-ui/bundles/css/app.90f0f.css" rel="stylesheet"></head><body data-menu><div class="menu" data-active><div class="menu-content"><div class="menu-item"><div class="menu-link" data-href="/jcore-ui/">Начало</div></div><div class="menu-item"><div class="j-accordion"><div class="j-accordion-panel"><div class="j-accordion-tab"><div class="menu-link">Разметка</div></div><div class="j-accordion-content"><div class="menu-link" data-href="/jcore-ui/markup/grid">Сетка</div><div class="menu-link" data-href="/jcore-ui/markup/container">Контейнер</div><div class="menu-link" data-href="/jcore-ui/markup/button">Кнопка</div><div class="menu-link" data-href="/jcore-ui/markup/input">Поля ввода</div><div class="menu-link" data-href="/jcore-ui/markup/form">Форма</div><div class="menu-link" data-href="/jcore-ui/markup/table">Таблица</div></div></div></div></div><div class="menu-item"><div class="j-accordion"><div class="j-accordion-panel"><div class="j-accordion-tab"><div class="menu-link">Компоненты</div></div><div class="j-accordion-content"><div class="menu-link" data-href="/jcore-ui/components/accordion/">Аккордеон</div><div class="menu-link" data-href="/jcore-ui/components/checkbox/">Чекбокс</div><div class="menu-link" data-href="/jcore-ui/components/collapse/">Коллапс</div><div class="menu-link" data-href="/jcore-ui/components/dropdown/">Выпадающий список</div><div class="menu-link" data-href="/jcore-ui/components/tooltip/">Всплывающий список</div><div class="menu-link" data-href="/jcore-ui/components/modal/">Модальное окно</div><div class="menu-link" data-href="/jcore-ui/components/progress/">Индикатор</div><div class="menu-link" data-href="/jcore-ui/components/radio/">Радиокнопки</div><div class="menu-link" data-href="/jcore-ui/components/select/">Список</div><div class="menu-link" data-href="/jcore-ui/components/spinner/">Спиннер</div><div class="menu-link" data-href="/jcore-ui/components/tab/">Вкладки</div><div class="menu-link" data-href="/jcore-ui/components/toggle/">Переключатель</div><div class="menu-link" data-href="/jcore-ui/components/burger/">Бургер кнопка</div></div></div></div></div><div class="menu-item"><div class="j-accordion"><div class="j-accordion-panel"><div class="j-accordion-tab"><div class="menu-link">Утилиты</div></div><div class="j-accordion-content"><div class="menu-link" data-href="/jcore-ui/utils/EventEmitter/">EventEmitter</div><div class="menu-link" data-href="/jcore-ui/utils/createTemplate/">createTemplate</div><div class="menu-link" data-href="/jcore-ui/utils/dataHref/">dataHref</div><div class="menu-link" data-href="/jcore-ui/utils/dataScroll/">dataScroll</div><div class="menu-link" data-href="/jcore-ui/utils/waitFor/">waitFor</div></div></div></div></div></div><div class="menu-toggle j-burger" data-active><div class="j-burger-line"></div><div class="j-burger-line"></div><div class="j-burger-line"></div></div></div><main class="page"><div class="j-container page-accordion"><header class="page-header"><div class="page-title">Спиннер</div><div class="page-label">компонент спиннера</div><div class="page-import">@import <span class="token string">'node_modules/jcore-ui/lib/scss/components/spinner.scss'</span>;</div></header><content class="page-content"><section class="page-section"><div class="page-section-header">Использование</div><div class="page-section-example" style="display:flex;justify-content:space-around;align-items:center"><div class="j-spinner small"></div><div class="j-spinner"></div><div class="j-spinner large"></div></div><div class="page-section-code"><pre>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>jcore-ui | spinner</title>
+</head>
+<body data-menu>
+    
+        <div class="menu" data-active>
+    <div class="menu-content">
+        <div class="menu-item">
+            <div class="menu-link" data-href="/">Начало</div>
+        </div>
+        <div class="menu-item">
+            <div class="j-accordion">
+                <div class="j-accordion-panel">
+                    <div class="j-accordion-tab">
+                        <div class="menu-link">Разметка</div>
+                    </div>
+                    <div class="j-accordion-content">
+                        <div class="menu-link" data-href="/markup/grid">Сетка</div>
+                        <div class="menu-link" data-href="/markup/container">Контейнер</div>
+                        <div class="menu-link" data-href="/markup/button">Кнопка</div>
+                        <div class="menu-link" data-href="/markup/input">Поля ввода</div>
+                        <div class="menu-link" data-href="/markup/form">Форма</div>
+                        <div class="menu-link" data-href="/markup/table">Таблица</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="menu-item">
+            <div class="j-accordion">
+                <div class="j-accordion-panel">
+                    <div class="j-accordion-tab">
+                        <div class="menu-link">Компоненты</div>
+                    </div>
+                    <div class="j-accordion-content">
+                        <div class="menu-link" data-href="/components/accordion/">Аккордеон</div>
+                        <div class="menu-link" data-href="/components/checkbox/">Чекбокс</div>
+                        <div class="menu-link" data-href="/components/collapse/">Коллапс</div>
+                        <div class="menu-link" data-href="/components/dropdown/">Выпадающий список</div>
+                        <div class="menu-link" data-href="/components/tooltip/">Всплывающий список</div>
+                        <div class="menu-link" data-href="/components/modal/">Модальное окно</div>
+                        <div class="menu-link" data-href="/components/progress/">Индикатор</div>
+                        <div class="menu-link" data-href="/components/radio/">Радиокнопки</div>
+                        <div class="menu-link" data-href="/components/select/">Список</div>
+                        <div class="menu-link" data-href="/components/spinner/">Спиннер</div>
+                        <div class="menu-link" data-href="/components/tab/">Вкладки</div>
+                        <div class="menu-link" data-href="/components/toggle/">Переключатель</div>
+                        <div class="menu-link" data-href="/components/burger/">Бургер кнопка</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="menu-item">
+            <div class="j-accordion">
+                <div class="j-accordion-panel">
+                    <div class="j-accordion-tab">
+                        <div class="menu-link">Утилиты</div>
+                    </div>
+                    <div class="j-accordion-content">
+                        <div class="menu-link" data-href="/utils/EventEmitter/">EventEmitter</div>
+                        
+                        <div class="menu-link" data-href="/utils/createTemplate/">createTemplate</div>
+                        <div class="menu-link" data-href="/utils/dataHref/">dataHref</div>
+                        <div class="menu-link" data-href="/utils/dataScroll/">dataScroll</div>
+                        
+                        
+                        <div class="menu-link" data-href="/utils/waitFor/">waitFor</div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+    <div class="menu-toggle j-burger" data-active>
+        <div class="j-burger-line"></div>
+        <div class="j-burger-line"></div>
+        <div class="j-burger-line"></div>
+    </div>
+</div>
+
+    
+
+
+    <main class="page">
+        
+    <div class="j-container page-accordion">
+        <header class="page-header">
+            <div class="page-title">Спиннер</div>
+            <div class="page-label">компонент спиннера</div>
+            <div class="page-import">@import <span class="token string">'node_modules/jcore-ui/lib/scss/components/spinner.scss'</span>;</div>
+        </header>
+        <content class="page-content">
+            <section class="page-section">
+                <div class="page-section-header">Использование</div>
+                
+                <div class="page-section-example" style="display:flex;justify-content: space-around; align-items:center;">
+                    <div class="j-spinner small"></div>
+                    <div class="j-spinner"></div>
+                    <div class="j-spinner large"></div>
+                </div>
+                <div class="page-section-code">
+<pre>
 <code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
 <div class="j-spinner small"></div>
 <div class="j-spinner"></div>
 <div class="j-spinner large"></div>
 </script></code>
-</pre></div></section><section class="page-section"><div class="page-section-header">inverted</div><div class="page-section-example" style="display:flex;justify-content:space-around;align-items:center;background:#969696"><div class="j-spinner small inverted"></div><div class="j-spinner inverted"></div><div class="j-spinner large inverted"></div></div><div class="page-section-code"><pre>
+</pre>
+                </div>
+            </section>
+
+            <section class="page-section">
+                <div class="page-section-header">inverted</div>
+                
+                <div class="page-section-example" style="display:flex;justify-content: space-around; align-items:center;background: rgb(150, 150, 150);">
+                    <div class="j-spinner small inverted"></div>
+                    <div class="j-spinner inverted"></div>
+                    <div class="j-spinner large inverted"></div>
+                </div>
+                <div class="page-section-code">
+<pre>
 <code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
 <div class="j-spinner small"></div>
 <div class="j-spinner"></div>
 <div class="j-spinner large"></div>
 </script></code>
-</pre></div></section><section class="page-section"><div class="page-section-header">С кнопкой</div><div class="page-section-example" style="display:flex;justify-content:space-around;align-items:center"><button class="j-button main" data-spinner>Кнопка<div class="j-spinner small inverted"></div></button></div><div class="page-section-code"><pre>
+</pre>
+                </div>
+            </section>
+
+            <section class="page-section">
+                <div class="page-section-header">С кнопкой</div>
+                
+                <div class="page-section-example" style="display:flex;justify-content: space-around; align-items:center;">
+                    <button class="j-button main" data-spinner>
+                        Кнопка
+                        <div class="j-spinner small inverted"></div>
+                    </button>
+                </div>
+                <div class="page-section-code">
+<pre>
 <code class="language-markup" type="text/plain"><script type="text/plain" class="language-markup">
 <button class="j-button main" data-spinner>
     Кнопка
     <div class="j-spinner small inverted"></div>
 </button>
 </script></code>
-</pre></div></section></content></div></main><footer class="footer"><div class="j-container"><div class="footer-copyright">© 2021 Eryomin Nickolay.</div></div></footer><script src="/jcore-ui/bundles/js/app.51d2e.js"></script></body></html>
+</pre>
+                </div>
+            </section>
+        </content>
+    </div>
+
+    </main>
+
+
+    
+        <footer class="footer">
+            <div class="j-container">
+                <div class="footer-copyright">
+                    © 2021 Eryomin Nickolay.
+                </div>
+            </div>
+        </footer>
+    
+<script src="/bundles/js/app.js"></script></body>
+</html>

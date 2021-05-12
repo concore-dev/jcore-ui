@@ -10,7 +10,6 @@ import dataHref from "../../lib/utils/dataHref";
 import 'prismjs';
 import dataScroll from "../../lib/utils/dataScroll";
 
-
 window.Tooltip = Tooltip;
 window.Dropdown = Dropdown;
 window.Tab = Tab;
@@ -19,7 +18,6 @@ window.Collapse = Collapse;
 window.Progress = Progress;
 window.Modal = Modal;
 window.Select = Select;
-
 
 try {
     const $menu = document.querySelector('.menu');
@@ -45,6 +43,5 @@ try {
 } catch (e) {
     console.log(e);
 }
-
 
 export {}

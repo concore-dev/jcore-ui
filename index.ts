@@ -18,15 +18,14 @@ import Select from './lib/components/Select';
 import Tab from './lib/components/Tab';
 import Tooltip from './lib/components/Tooltip';
 import Component from './lib/core/Component';
-import createTemplate from './lib/utils/createTemplate';
+import createElement from './lib/utils/createElement';
 import dataHref from './lib/utils/dataHref';
 import dataScroll from './lib/utils/dataScroll';
 import event from './lib/utils/event';
 import EventEmitter from './lib/utils/EventEmitter';
 import waitFor from './lib/utils/waitFor';
 
-
-export {
+export = {
     Accordion,
     Collapse,
     Dropdown,
@@ -36,26 +35,7 @@ export {
     Tab,
     Tooltip,
     Component,
-    createTemplate,
-    event,
-    EventEmitter,
-    dataScroll,
-    dataHref,
-    waitFor
-}
-
-
-export default {
-    Accordion,
-    Collapse,
-    Dropdown,
-    Modal,
-    Progress,
-    Select,
-    Tab,
-    Tooltip,
-    Component,
-    createTemplate,
+    createElement,
     event,
     EventEmitter,
     dataScroll,

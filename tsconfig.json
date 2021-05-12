@@ -28,9 +28,10 @@
         // "baseUrl": "."
         "outDir": "./dist/bin",
         // "outFile": "./bin/index.js",
-        "declaration": true,
-        "declarationMap": true,
-        "sourceMap": true
+        "emitDeclarationOnly": false,
+        "declaration": false,
+        "declarationMap": false,
+        "sourceMap": false
     },
     "exclude": [
         "node_modules",

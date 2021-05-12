@@ -1,7 +1,6 @@
 import { IFunction } from '../interfaces/index';
-
 declare global {
-    interface Element{
+    interface Element {
         setAttributes: IFunction
         removeAttributes: IFunction
         matchesSelector: any
@@ -9,7 +8,6 @@ declare global {
         msMatchesSelector: any
     }
 }
-
 
 function prototype() {
     if (!Element.prototype.setAttributes) {

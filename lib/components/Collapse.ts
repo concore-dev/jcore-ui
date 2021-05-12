@@ -1,37 +1,31 @@
 import Component, { IComponent, IComponentOn, IComponentOptions, IComponentSelector } from "../core/Component";
 import config from '../../config';
 
-
 const selectors = {
     element: `.${config.prefix}-collapse`,
     wrapper: `.${config.prefix}-collapse-wrapper`,
     button: `.${config.prefix}-collapse-button`
 }
 
-
 interface ICollapseSelector extends IComponentSelector {
     wrapper: string
     button: string
 }
-
 
 interface ICollapseOptions extends IComponentOptions {
     height?: number
     duration?: number
 }
 
-
 interface ICollapseOn extends IComponentOn {
     toggle?: (ctx?: Component) => void;
 }
-
 
 interface ICollapse extends IComponent {
     selectors?: ICollapseSelector
     options?: ICollapseOptions
     on?: ICollapseOn
 }
-
 
 interface Collapse {
     selectors: ICollapseSelector
@@ -42,7 +36,6 @@ interface Collapse {
     scrollHeight: number
     on: ICollapseOn
 }
-
 
 class Collapse extends Component {
     constructor(props: ICollapse = {}) {
@@ -160,6 +153,5 @@ class Collapse extends Component {
         }
     }
 }
-
 
 export default Collapse;

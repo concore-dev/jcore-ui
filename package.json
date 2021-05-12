@@ -6,6 +6,7 @@
     "types": "bin",
     "scripts": {
         "tsc": "tsc --project tsconfig.json",
+        "tsc:dec": "tsc --project tsconfig.json --emitDeclarationOnly --declaration --outFile ./bin/index",
         "compile": "tsc -p . --module system --out bin/index.js",
         "sprite": "gulp sprite --gulpfile ./config/gulpfile.js",
         "jest": "cross-env NODE_ENV=test jest --config ./config/jest.config.js",

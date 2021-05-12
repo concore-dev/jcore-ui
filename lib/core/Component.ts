@@ -1,25 +1,14 @@
-import { IObject, TFunction } from "../interfaces";
+import { IObject } from "../interfaces";
 import EventEmitter, { TEventEmitter } from "../utils/EventEmitter";
-import Tooltip from "../components/Tooltip";
-import Dropdown from "../components/Dropdown";
-import Accordion from "../components/Accordion";
-import Collapse from "../components/Collapse";
-
-
-// export type TComponents = Tooltip | Dropdown | Accordion | Collapse;
-export type TComponentsClass = typeof Tooltip;
-
 
 export interface IComponentSelector {
     element: string
 }
 
-
 export interface IComponentOptions {
     mount?: boolean,
     name?: string;
 }
-
 
 export interface IComponentOn {
     mount?: (ctx?: Component) => void;
@@ -28,7 +17,6 @@ export interface IComponentOn {
     unmount?: (ctx?: Component) => void;
 }
 
-
 export interface IComponent extends IObject {
     selectors?: IComponentSelector;
     $element?: HTMLElement | NodeListOf<HTMLElement> | string;
@@ -36,16 +24,13 @@ export interface IComponent extends IObject {
     on?: IComponentOn;
 }
 
-
 export interface IComponentClass extends IComponent {
     Component: any
 }
 
-
 interface Component {
     handlers?: IObject;
 }
-
 
 class Component {
     $element: HTMLElement;
@@ -133,6 +118,5 @@ class Component {
         this.$element.removeAttribute('data-mount')
     }
 }
-
 
 export default Component

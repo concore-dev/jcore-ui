@@ -11,7 +11,7 @@ const lazyLoad = function(element: HTMLElement | NodeListOf<HTMLElement> | strin
         images = element;
     }
 
-    images.forEach(function(item) {
+    images.forEach(function(item: HTMLElement) {
         let format: string;
 
         if (item.hasAttribute('data-format')) {

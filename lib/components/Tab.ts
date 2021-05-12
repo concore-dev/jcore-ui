@@ -2,7 +2,6 @@ import { IComponent, IComponentOn, IComponentOptions, IComponentSelector } from 
 import Component from "../core/Component";
 import config from '../../config';
 
-
 const selectors = {
     element: `.${config.prefix}-tabs`,
     list: `.${config.prefix}-tabs-list`,
@@ -11,7 +10,6 @@ const selectors = {
     content: `.${config.prefix}-tab-content`
 }
 
-
 interface ITabSelector extends IComponentSelector {
     list: string;
     tab: string;
@@ -19,23 +17,19 @@ interface ITabSelector extends IComponentSelector {
     content: string;
 }
 
-
 interface ITabOptions extends IComponentOptions {
     active?: boolean
 }
 
-
 interface ITabOn extends IComponentOn {
     toggle?: (ctx?: Component) => void;
 }
-
 
 interface ITab extends IComponent {
     selectors?: ITabSelector
     options?: ITabOptions
     on?: ITabOn
 }
-
 
 interface Tab {
     // handlers?: IObject;
@@ -46,7 +40,6 @@ interface Tab {
     selectors: ITabSelector
     on: ITabOn
 }
-
 
 class Tab extends Component {
     constructor(props: ITab = {}) {
@@ -125,6 +118,5 @@ class Tab extends Component {
         this.emitter.emit('unmount', this)
     }
 }
-
 
 export default Tab

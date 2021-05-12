@@ -1,7 +1,6 @@
 // Core
 $prefix: 'j' !default;
 
-
 // Colors
 $black-text: #333333 !default;
 $black: #18181D !default;
@@ -48,7 +47,6 @@ $transition_long: all 0.2s ease-in-out !default;
 $transition_longest: all 0.3s ease-in-out !default;
 $transition_big: all 0.5s ease-in-out !default;
 
-
 // Grid
 $lg: 1440px !default;
 $md: 1024px !default;
@@ -89,7 +87,6 @@ $offsets: (
     'sm': $offset-sm,
     'xs': $offset-xs
 ) !default;
-
 
 // Z-INDEX
 $index-overlay: 999 !default;

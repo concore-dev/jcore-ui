@@ -187,7 +187,7 @@ module.exports = (env, argv) => {
         config.devtool = 'inline-source-map';
         config.devServer = {
             // port: 4200,
-            writeToDisk: true,
+            writeToDisk: false,
             compress: true,
             liveReload: false,
             // hot: true,

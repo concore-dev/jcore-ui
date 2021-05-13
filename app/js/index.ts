@@ -9,7 +9,7 @@ import Select from "../../lib/components/Select";
 import dataHref from "../../lib/utils/dataHref";
 import 'prismjs';
 import dataScroll from "../../lib/utils/dataScroll";
-import "../../lib/core/Dom";
+import "../../lib/core/JDom";
 
 window.Tooltip = Tooltip;
 window.Dropdown = Dropdown;
@@ -42,12 +42,8 @@ try {
     window.Modals = new Modal()
     window.Selects = new Select()
 
-    console.log($('.page'));
-    // console.log($('.page').q);
-    // console.log($('.page').asd());
 
-
-    // $('.qwe')
+    j('.page').addClass('q', 's')
 } catch (e) {
     console.log(e);
 }

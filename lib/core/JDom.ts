@@ -1,16 +1,17 @@
-export type IJDom = JDom;
-
 declare global {
     interface Window {
-        j: any
-        jdom: any
+        // $: JDomCreate;
+        // jdom: any;
     }
-
-    const j: any;
-    const jdom: any;
 }
 
-class JDom {
+export type JDomCreate = (element: string | HTMLElement | NodeList) => JDom;
+
+export function $(element: string | HTMLElement | NodeList): JDom {
+    return new JDom(element)
+};
+
+export class JDom {
     element: Array<HTMLElement>;
 
     constructor(element: any) {
@@ -28,7 +29,11 @@ class JDom {
             return this.element[index];
         }
 
-        return this.element[0]
+        if (this.element[0] !== undefined) {
+            return this.element[0];
+        }
+
+        return null;
     }
 
     find(element: string) {
@@ -49,15 +54,3 @@ class JDom {
         return this;
     }
 }
-
-if (typeof window.j === 'undefined') {
-    window.j = function(element: any) {
-        return new JDom(element)
-    };
-}
-
-if (typeof window.jdom === 'undefined') {
-    window.jdom = JDom
-}
-
-export default JDom

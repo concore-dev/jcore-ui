@@ -16,11 +16,10 @@ import Select from './lib/components/Select';
 import Tab from './lib/components/Tab';
 import Tooltip from './lib/components/Tooltip';
 import Component from './lib/core/Component';
-import { $ } from './lib/core/JDom';
 import createElement from './lib/utils/createElement';
 import EventEmitter from './lib/utils/EventEmitter';
 import waitFor from './lib/utils/waitFor';
-import JDom from './bin/lib/core/JDom';
+import { JDom, $ } from './lib/core/JDom';
 declare const _default: {
     Accordion: typeof Accordion;
     Collapse: typeof Collapse;

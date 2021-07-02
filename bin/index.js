@@ -20,14 +20,13 @@ const Select_1 = __importDefault(require("./lib/components/Select"));
 const Tab_1 = __importDefault(require("./lib/components/Tab"));
 const Tooltip_1 = __importDefault(require("./lib/components/Tooltip"));
 const Component_1 = __importDefault(require("./lib/core/Component"));
-const JDom_1 = require("./lib/core/JDom");
 const createElement_1 = __importDefault(require("./lib/utils/createElement"));
 const dataHref_1 = __importDefault(require("./lib/utils/dataHref"));
 const dataScroll_1 = __importDefault(require("./lib/utils/dataScroll"));
 const event_1 = __importDefault(require("./lib/utils/event"));
 const EventEmitter_1 = __importDefault(require("./lib/utils/EventEmitter"));
 const waitFor_1 = __importDefault(require("./lib/utils/waitFor"));
-const JDom_2 = __importDefault(require("./bin/lib/core/JDom"));
+const JDom_1 = require("./lib/core/JDom");
 module.exports = {
     Accordion: Accordion_1.default,
     Collapse: Collapse_1.default,
@@ -45,5 +44,6 @@ module.exports = {
     dataHref: dataHref_1.default,
     waitFor: waitFor_1.default,
     $: JDom_1.$,
-    JDom: JDom_2.default
+    JDom: JDom_1.JDom
 };
+//# sourceMappingURL=index.js.map

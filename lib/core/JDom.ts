@@ -1,3 +1,5 @@
+import { IFunction, IObject } from '../interfaces/index';
+import createElement from '../utils/createElement';
 declare global {
     interface Window {
         // $: JDomCreate;
@@ -11,12 +13,20 @@ export function $(element: string | HTMLElement | NodeList): JDom {
     return new JDom(element)
 };
 
-export class JDom {
+interface JDom {
     element: Array<HTMLElement>;
+}
+
+class JDom {
+    static fn: JDom = JDom.prototype;
 
     constructor(element: any) {
         if (typeof element === 'string') {
-            this.element = Array.from(document.querySelectorAll(element));
+            if (element.indexOf('<') >= 0 && element.indexOf('>') >= 0) {
+                this.element = [createElement(element)];
+            } else {
+                this.element = Array.from(document.querySelectorAll(element));
+            }
         } else if (element instanceof HTMLElement) {
             this.element = [element];
         } else if (element instanceof NodeList) {
@@ -25,20 +35,16 @@ export class JDom {
     }
 
     get(index?: number) {
-        if (index !== undefined) {
+        if (index) {
             return this.element[index];
         }
 
-        if (this.element[0] !== undefined) {
-            return this.element[0];
-        }
-
-        return null;
+        return undefined;
     }
 
     find(element: string) {
         if (typeof element !== 'string') {
-            return element
+            return element;
         }
 
         this.element = Array.from(document.querySelectorAll(element));
@@ -48,9 +54,47 @@ export class JDom {
 
     addClass(...classes: string[]) {
         this.element.forEach(el => {
-            el.classList.add(...classes)
+            el.classList.add(...classes);
         })
 
         return this;
     }
+
+    attr(attrs: string | { [key: string]: any } | Array<string>, value?: string) {
+        if (!value) {
+            if (typeof attrs === 'string') {
+                return this.element[0].getAttribute(attrs);
+            } else if (Array.isArray(attrs)) {
+                const needAttrs: any = {};
+
+                for (let i = 0; i < attrs.length; i++) {
+                    needAttrs[attrs[i]] = this.element[0].getAttribute(attrs[i]);
+                }
+
+                return needAttrs;
+            } else if (typeof attrs === 'object') {
+                for (const key in attrs) {
+                    this.element.forEach(el => {
+                        el.setAttribute(key, attrs[key]);
+                    })
+                }
+            }
+        } else {
+            if (typeof attrs === 'string') {
+                this.element.forEach(el => {
+                    el.setAttribute(attrs, value);
+                })
+            } else if (Array.isArray(attrs)) {
+                for (let i = 0; i < attrs.length; i++) {
+                    this.element.forEach(el => {
+                        el.setAttribute(attrs[i], value)
+                    })
+                }
+            }
+        }
+
+        return this;
+    }
 }
+
+export { JDom }

@@ -9,7 +9,7 @@ import Select from "../../lib/components/Select";
 import dataHref from "../../lib/utils/dataHref";
 import 'prismjs';
 import dataScroll from "../../lib/utils/dataScroll";
-import { $ } from "../../lib/core/JDom";
+import { $, JDom } from "../../lib/core/JDom";
 
 window.Tooltip = Tooltip;
 window.Dropdown = Dropdown;
@@ -19,6 +19,12 @@ window.Collapse = Collapse;
 window.Progress = Progress;
 window.Modal = Modal;
 window.Select = Select;
+
+declare global {
+    interface JDom {
+        create(): any;
+    }
+}
 
 try {
     const $menu = document.querySelector('.menu');
@@ -41,6 +47,7 @@ try {
     window.Progresses = new Progress()
     window.Modals = new Modal()
     window.Selects = new Select()
+
 } catch (e) {
     console.log(e);
 }

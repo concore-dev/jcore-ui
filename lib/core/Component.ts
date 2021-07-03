@@ -1,5 +1,6 @@
 import { IObject } from "../interfaces";
 import EventEmitter, { TEventEmitter } from "../utils/EventEmitter";
+import { $ } from "./JDom";
 
 export interface IComponentSelector {
     element: string
@@ -45,7 +46,7 @@ class Component {
         /**
          * Если пришел массив HTMLElement,
          * то для каждого вызываем экземпляр компонента
-         * и записываем их в массив
+         * и записываем их в массив components
          */
         if (Array.isArray(props.$element) || props.$element instanceof NodeList) {
             let array = Array.from(props.$element);
@@ -67,17 +68,17 @@ class Component {
         }
 
         /**
-         * Если не передали свойство HTMLElement,
+         * Если не передали HTMLElement,
          * то делаем поиск по селектору элемента и вызываем для него экземпляр компонента
          */
         if (!props.$element) {
             return new props.Component({
                 ...props,
-                $element: document.querySelectorAll(props.selectors.element)
+                $element: $(props.selectors.element).element
             });
         }
 
-        this.$element = props.$element instanceof Element ? props.$element : document.querySelector(props.$element);
+        this.$element = props.$element instanceof Element ? props.$element : $(props.$element).get();
 
         if (!this.$element) {
             // throw Error(`Не найден HTMLElement ${this.constructor.name}`)

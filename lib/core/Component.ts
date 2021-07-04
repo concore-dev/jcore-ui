@@ -50,22 +50,19 @@ class Component {
          */
         if (Array.isArray(props.$element) || props.$element instanceof NodeList) {
             let array = Array.from(props.$element);
-            let newProps = props;
 
             if (array.length) {
                 this.components = array.map(el => {
-                    if (this._mount || el.hasAttribute('data-mount')) return;
+                    if (this._mount || $(el).hasAttr('data-mount')) return;
 
-                    newProps.$element = el;
-                    return new props.Component(newProps);
+                    return new props.Component(Object.assign(props, {
+                        $element: el
+                    }));
                 }).filter(cpm => cpm);
             }
-            // else {
-            //     console.log(Error(`Не найден HTMLElement ${this.constructor.name}`));
-            // }
 
             return this;
-        }
+        };
 
         /**
          * Если не передали HTMLElement,
@@ -76,47 +73,47 @@ class Component {
                 ...props,
                 $element: $(props.selectors.element).element
             });
-        }
+        };
 
         this.$element = props.$element instanceof Element ? props.$element : $(props.$element).get();
 
         if (!this.$element) {
             // throw Error(`Не найден HTMLElement ${this.constructor.name}`)
             console.log(Error(`Не найден HTMLElement ${this.constructor.name}`));
-        }
+        };
 
         this.options = {
             mount: true,
             name: this.$element.dataset.name || props.options && props.options.name || ''
-        }
+        };
 
         this.on = {
             mount: () => {},
             render: () => {},
             destroy: () => {},
             unmount: () => {},
-        }
+        };
 
         this.selectors = props.selectors;
         this.emitter = props.emitter || new EventEmitter();
 
-        this.options = Object.assign(this.options, props.options || {})
-        this.on = Object.assign(this.on, props.on || {})
+        this.options = Object.assign(this.options, props.options || {});
+        this.on = Object.assign(this.on, props.on || {});
     }
 
 
     mount() {
-        this.$element.setAttribute('data-mount', 'true')
+        $(this.$element).attr('data-mount', 'true');
         this._mount = true;
     }
 
     getByName(components: Component[], name: string): Component {
-        return components.filter(component => component.options.name === name)[0]
+        return components.filter(component => component.options.name === name)[0];
     }
 
     unmount() {
         this._mount = false;
-        this.$element.removeAttribute('data-mount')
+        $(this.$element).removeAttr('data-mount');
     }
 }
 

@@ -95,6 +95,26 @@ class JDom {
 
         return this;
     }
+
+    hasAttr(attrs: string) {
+        return this.element[0].hasAttribute(attrs);
+    }
+
+    removeAttr(attrs: string | Array<string>) {
+        if (typeof attrs === 'string') {
+            this.element.forEach(el => {
+                el.removeAttribute(attrs);
+            })
+        } else if (Array.isArray(attrs)) {
+            for (let i = 0; i < attrs.length; i++) {
+                this.element.forEach(el => {
+                    el.removeAttribute(attrs[i])
+                })
+            }
+        }
+
+        return this;
+    }
 }
 
 export { JDom }

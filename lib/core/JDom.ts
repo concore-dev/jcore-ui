@@ -8,11 +8,8 @@ export function $(element: JDomCreateProps): JDom {
     return new JDom(element)
 };
 
-interface JDom {
-    element: Array<any>;
-}
-
 class JDom {
+    element: Array<any>;
     static fn: JDom = JDom.prototype;
 
     constructor(element: any) {

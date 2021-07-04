@@ -13,7 +13,7 @@ import { $, JDom } from "../../lib/core/JDom";
 
 // window.Tooltip = Tooltip;
 window.Dropdown = Dropdown;
-// window.Tab = Tab;
+window.Tab = Tab;
 window.Accordion = Accordion;
 window.Collapse = Collapse;
 window.Progress = Progress;
@@ -42,7 +42,7 @@ try {
     window.Accordions = new Accordion()
     // window.Tooltips = new Tooltip();
     window.Dropdowns = new Dropdown();
-    // window.Tabs = new Tab()
+    window.Tabs = new Tab()
     window.Collapses = new Collapse()
     window.Progresses = new Progress()
     window.Modals = new Modal()

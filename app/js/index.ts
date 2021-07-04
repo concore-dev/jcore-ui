@@ -18,7 +18,7 @@ window.Accordion = Accordion;
 window.Collapse = Collapse;
 window.Progress = Progress;
 window.Modal = Modal;
-// window.Select = Select;
+window.Select = Select;
 
 // declare global {
 //     interface JDom {
@@ -46,7 +46,7 @@ try {
     window.Collapses = new Collapse()
     window.Progresses = new Progress()
     window.Modals = new Modal()
-    // window.Selects = new Select()
+    window.Selects = new Select()
 
 } catch (e) {
     console.log(e);

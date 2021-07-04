@@ -1,6 +1,6 @@
 import createElement from '../utils/createElement';
 
-export type JDomCreateProps = string | HTMLElement | NodeList | JDom;
+export type JDomCreateProps = string | Element | NodeListOf<Element> | JDom;
 
 export type JDomCreate = (element: JDomCreateProps) => JDom;
 
@@ -9,7 +9,7 @@ export function $(element: JDomCreateProps): JDom {
 };
 
 interface JDom {
-    element: Array<HTMLElement>;
+    element: Array<any>;
 }
 
 class JDom {
@@ -31,9 +31,11 @@ class JDom {
         } else if (element instanceof JDom) {
             this.element = [element.get()];
         }
+
+        document.querySelector
     }
 
-    get(index: number = 0) {
+    get<E extends HTMLElement>(index: number = 0): E {
         return this.element[index];
     }
 
@@ -124,11 +126,11 @@ class JDom {
         return this;
     }
 
-    closest<E extends HTMLElement = HTMLElement>(selector: string) {
+    closest(selector: string) {
         return new JDom(this.get().closest(selector));
     }
 
-    each(callbackfn: (value: HTMLElement, index: number, array: HTMLElement[]) => void) {
+    each(callbackfn: <E extends HTMLElement>(value: E, index: number, array: E[]) => void) {
         this.element.forEach(callbackfn);
 
         return this;
@@ -142,7 +144,7 @@ class JDom {
         return this;
     }
 
-    append<E extends HTMLElement = HTMLElement>(element: E) {
+    append<E extends Element>(element: E) {
         this.get().appendChild(element)
 
         return this;
@@ -156,10 +158,36 @@ class JDom {
         return this;
     }
 
-    set innerText(text: string) {
+    set text(text: string) {
         this.each((el) => {
             el.innerText = text;
         })
+    }
+
+    get text() {
+        return this.get().innerText;
+    }
+
+    set html(html: string) {
+        this.each((el) => {
+            el.innerHTML = html;
+        })
+    }
+
+    get html() {
+        return this.get().innerHTML;
+    }
+
+    set value(val: string) {
+        this.each((el) => {
+            if (el instanceof HTMLInputElement) {
+                el.value = val;
+            }
+        })
+    }
+
+    get value() {
+        return this.get<HTMLInputElement>().value;
     }
 
     get dataset() {
@@ -171,7 +199,7 @@ class JDom {
     }
 
     get style() {
-        return this.get().style;
+        return this.get<HTMLElement>().style;
     }
 
     // get toggle() {

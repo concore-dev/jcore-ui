@@ -138,18 +138,34 @@ class JDom {
         this.each((el) => {
             el.toggleAttribute(attr)
         })
+
+        return this;
+    }
+
+    append<E extends HTMLElement = HTMLElement>(element: E) {
+        this.get().appendChild(element)
+
+        return this;
+    }
+
+    remove() {
+        this.each((el) => {
+            el.remove()
+        })
+
+        return this;
     }
 
     get dataset() {
-        return this.element[0].dataset;
+        return this.get().dataset;
     }
 
     get scrollHeight() {
-        return this.element[0].scrollHeight;
+        return this.get().scrollHeight;
     }
 
     get style() {
-        return this.element[0].style;
+        return this.get().style;
     }
 
     // get toggle() {

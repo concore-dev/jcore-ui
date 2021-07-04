@@ -24,7 +24,7 @@ class Dropdown extends Component {
             ...props,
             Component: Dropdown,
             selectors: Object.assign(selectors, props.selectors || {})
-        })
+        });
 
         if (this.options && this.options.mount) {
             this.mount()
@@ -32,55 +32,58 @@ class Dropdown extends Component {
     }
 
     mount() {
-        if (!this.$element || this._mount || this.$element.attr('data-mount')) return;
-        super.mount()
+        if (!this.$element || this._mount || this.$element.attr('data-mount')) {
+            return;
+        };
 
-        this.options = Object.assign({}, this.options)
+        super.mount();
+
+        this.options = Object.assign({}, this.options);
 
         this.handlers = {
             documentClickHandler: this.documentClickHandler.bind(this),
             clickHandler: this.clickHandler.bind(this)
-        }
+        };
 
-        this.addEvents()
+        this.addEvents();
 
-        this.on.mount(this)
-        this.emitter.emit('mount', this)
+        this.on.mount(this);
+        this.emitter.emit('mount', this);
     }
 
     addEvents() {
-        this.$element.on('click', this.handlers.clickHandler)
-        document.addEventListener('click', this.handlers.documentClickHandler)
+        this.$element.on('click', this.handlers.clickHandler);
+        document.addEventListener('click', this.handlers.documentClickHandler);
     }
 
     documentClickHandler(e: Event) {
         if (!e.target.closest(this.selectors.element) && this.$element.attr('data-active')) {
-            this.$element.toggleAttribute('data-active')
-            this.on.destroy(this)
-            this.emitter.emit('destroy', this)
+            this.$element.toggleAttribute('data-active');
+            this.on.destroy(this);
+            this.emitter.emit('destroy', this);
         }
     }
 
     clickHandler() {
-        this.$element.toggleAttribute('data-active')
+        this.$element.toggleAttribute('data-active');
 
         if (this.$element.attr('data-active')) {
-            this.on.render(this)
-            this.emitter.emit('render', this)
+            this.on.render(this);
+            this.emitter.emit('render', this);
         } else {
-            this.on.destroy(this)
-            this.emitter.emit('destroy', this)
+            this.on.destroy(this);
+            this.emitter.emit('destroy', this);
         }
     }
 
     unmount() {
-        super.unmount()
+        super.unmount();
 
-        document.removeEventListener('click', this.handlers.documentClickHandler)
-        this.$element.off('click', this.handlers.clickHandler, null)
+        document.removeEventListener('click', this.handlers.documentClickHandler);
+        this.$element.off('click', this.handlers.clickHandler, null);
 
-        this.on.unmount(this)
-        this.emitter.emit('unmount', this)
+        this.on.unmount(this);
+        this.emitter.emit('unmount', this);
     }
 }
 

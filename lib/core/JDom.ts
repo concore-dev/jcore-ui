@@ -156,6 +156,12 @@ class JDom {
         return this;
     }
 
+    set innerText(text: string) {
+        this.each((el) => {
+            el.innerText = text;
+        })
+    }
+
     get dataset() {
         return this.get().dataset;
     }

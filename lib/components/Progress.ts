@@ -1,5 +1,6 @@
 import Component, { IComponent, IComponentOn, IComponentOptions, IComponentSelector } from "../core/Component";
 import config from '../../config';
+import { JDom } from "../core/JDom";
 
 const selectors = {
     element: `.${config.prefix}-progress`,
@@ -8,13 +9,13 @@ const selectors = {
 }
 
 interface IProgressSelector extends IComponentSelector {
-    percent: string
-    bar: string
+    percent: string;
+    bar: string;
 }
 
 interface ICollapseOptions extends IComponentOptions {
-    percent?: number
-    type?: string,
+    percent?: number;
+    type?: string;
 }
 
 interface ICollapseOn extends IComponentOn {
@@ -22,17 +23,17 @@ interface ICollapseOn extends IComponentOn {
 }
 
 interface ICollapse extends IComponent {
-    selectors?: IProgressSelector
-    options?: ICollapseOptions
-    on?: ICollapseOn
+    selectors?: IProgressSelector;
+    options?: ICollapseOptions;
+    on?: ICollapseOn;
 }
 
 interface Progress {
-    selectors: IProgressSelector
-    $percent: HTMLElement
-    $bar: HTMLElement
+    selectors: IProgressSelector;
+    $percent: JDom;
+    $bar: JDom;
     options: ICollapseOptions;
-    on: ICollapseOn
+    on: ICollapseOn;
 }
 
 class Progress extends Component {
@@ -41,37 +42,44 @@ class Progress extends Component {
             ...props,
             Component: Progress,
             selectors: Object.assign(selectors, props.selectors || {})
-        })
+        });
 
         if (this.options && this.options.mount) {
-            this.mount()
+            this.mount();
         }
     }
 
     mount() {
-        if (!this.$element || this._mount || this.$element.hasAttribute('data-mount')) return;
-        super.mount()
+        if (!this.$element || this._mount || this.$element.attr('data-mount')) {
+            return;
+        };
+
+        super.mount();
 
         this.options = Object.assign({
             percent: this.$element.dataset.percent || 0,
             type: this.$element.dataset.type || 'line',
-        }, this.options)
+        }, this.options);
 
         this.handlers = {
             change: this.change.bind(this)
-        }
+        };
 
-        this.$percent = this.$element.querySelector(this.selectors.percent)
-        this.$bar = this.$element.querySelector(this.selectors.bar)
+        this.on = Object.assign({
+            change: () => {}
+        }, this.on);
 
-        this.addEvents()
+        this.$percent = this.$element.find(this.selectors.percent);
+        this.$bar = this.$element.find(this.selectors.bar);
 
-        this.on.mount(this)
-        this.emitter.emit('mount', this)
+        this.addEvents();
+
+        this.on.mount(this);
+        this.emitter.emit('mount', this);
     }
 
     addEvents() {
-        this.change(this.getPercent(), false)
+        this.change(this.getPercent(), false);
     }
 
     // unmount() {
@@ -91,16 +99,15 @@ class Progress extends Component {
         }
 
         if (this.options.type === 'line') {
-            this.$bar.setAttribute('style', `width:${this.options.percent}%`);
+            this.$bar.attr('style', `width:${this.options.percent}%`);
             this.$percent.innerText = this.options.percent + '%';
-
         } else if (this.options.type === 'ring') {
-
+            // soon...
         }
 
         if (lifecycle) {
-            this.on.change(this)
-            this.emitter.emit('change', this)
+            this.on.change(this);
+            this.emitter.emit('change', this);
         }
     }
 

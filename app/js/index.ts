@@ -16,7 +16,7 @@ window.Dropdown = Dropdown;
 // window.Tab = Tab;
 window.Accordion = Accordion;
 window.Collapse = Collapse;
-// window.Progress = Progress;
+window.Progress = Progress;
 window.Modal = Modal;
 // window.Select = Select;
 
@@ -44,7 +44,7 @@ try {
     window.Dropdowns = new Dropdown();
     // window.Tabs = new Tab()
     window.Collapses = new Collapse()
-    // window.Progresses = new Progress()
+    window.Progresses = new Progress()
     window.Modals = new Modal()
     // window.Selects = new Select()
 

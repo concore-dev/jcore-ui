@@ -1,15 +1,10 @@
-import { IFunction, IObject } from '../interfaces/index';
 import createElement from '../utils/createElement';
-declare global {
-    interface Window {
-        // $: JDomCreate;
-        // jdom: any;
-    }
-}
 
-export type JDomCreate = (element: string | HTMLElement | NodeList) => JDom;
+export type JDomCreateProps = string | HTMLElement | NodeList | JDom;
 
-export function $(element: string | HTMLElement | NodeList): JDom {
+export type JDomCreate = (element: JDomCreateProps) => JDom;
+
+export function $(element: JDomCreateProps): JDom {
     return new JDom(element)
 };
 
@@ -31,15 +26,15 @@ class JDom {
             this.element = [element];
         } else if (element instanceof NodeList) {
             this.element = Array.from(element as NodeListOf<HTMLElement>);
+        } else if (Array.isArray(element)) {
+            this.element = element;
+        } else if (element instanceof JDom) {
+            this.element = [element.get()];
         }
     }
 
-    get(index?: number) {
-        if (index) {
-            return this.element[index];
-        }
-
-        return undefined;
+    get(index: number = 0) {
+        return this.element[index];
     }
 
     find(element: string) {
@@ -47,9 +42,7 @@ class JDom {
             return element;
         }
 
-        this.element = Array.from(document.querySelectorAll(element));
-
-        return new JDom(element);
+        return new JDom(this.get().querySelectorAll(element));
     }
 
     addClass(...classes: string[]) {
@@ -76,7 +69,7 @@ class JDom {
                 for (const key in attrs) {
                     this.element.forEach(el => {
                         el.setAttribute(key, attrs[key]);
-                    })
+                    });
                 }
             }
         } else {
@@ -88,7 +81,7 @@ class JDom {
                 for (let i = 0; i < attrs.length; i++) {
                     this.element.forEach(el => {
                         el.setAttribute(attrs[i], value)
-                    })
+                    });
                 }
             }
         }
@@ -104,16 +97,32 @@ class JDom {
         if (typeof attrs === 'string') {
             this.element.forEach(el => {
                 el.removeAttribute(attrs);
-            })
+            });
         } else if (Array.isArray(attrs)) {
             for (let i = 0; i < attrs.length; i++) {
                 this.element.forEach(el => {
                     el.removeAttribute(attrs[i])
-                })
+                });
             }
         }
 
         return this;
+    }
+
+    on(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions) {
+        this.element.forEach(el => {
+            el.addEventListener(type, listener, options);
+        });
+    }
+
+    removeOn(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions) {
+        this.element.forEach(el => {
+            el.removeEventListener(type, listener, options);
+        });
+    }
+
+    closest<E extends HTMLElement = HTMLElement>(selector: string) {
+        return new JDom(this.get().closest(selector));
     }
 }
 

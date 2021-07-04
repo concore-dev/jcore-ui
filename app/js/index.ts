@@ -20,11 +20,11 @@ window.Progress = Progress;
 window.Modal = Modal;
 window.Select = Select;
 
-declare global {
-    interface JDom {
-        create(): any;
-    }
-}
+// declare global {
+//     interface JDom {
+//         create(): any;
+//     }
+// }
 
 try {
     const $menu = document.querySelector('.menu');

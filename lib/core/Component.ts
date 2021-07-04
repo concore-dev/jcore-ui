@@ -3,11 +3,11 @@ import EventEmitter, { TEventEmitter } from "../utils/EventEmitter";
 import { $ } from "./JDom";
 
 export interface IComponentSelector {
-    element: string
+    element: string;
 }
 
 export interface IComponentOptions {
-    mount?: boolean,
+    mount?: boolean;
     name?: string;
 }
 
@@ -26,22 +26,21 @@ export interface IComponent extends IObject {
 }
 
 export interface IComponentClass extends IComponent {
-    Component: any
+    Component: any;
 }
 
 interface Component {
     handlers?: IObject;
-}
-
-class Component {
     $element: HTMLElement;
     emitter: TEventEmitter;
     components: any[];
     selectors: IComponentSelector;
-    _mount: boolean = false;
+    _mount: boolean;
     options: IComponentOptions;
     on: IComponentOn;
+}
 
+class Component {
     constructor(props: IComponentClass) {
         /**
          * Если пришел массив HTMLElement,
@@ -53,7 +52,9 @@ class Component {
 
             if (array.length) {
                 this.components = array.map(el => {
-                    if (this._mount || $(el).hasAttr('data-mount')) return;
+                    if (this._mount || $(el).hasAttr('data-mount')) {
+                        return;
+                    };
 
                     return new props.Component(Object.assign(props, {
                         $element: el

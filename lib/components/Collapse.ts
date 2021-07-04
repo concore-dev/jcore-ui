@@ -97,7 +97,7 @@ class Collapse extends Component {
     unmount() {
         super.unmount();
 
-        this.$button.on('click',this.handlers.toggle, null, true);
+        this.$button.off('click',this.handlers.toggle, null);
         window.removeEventListener('resize', this.handlers.resize);
 
         this.$button.attr('data-mount', null);

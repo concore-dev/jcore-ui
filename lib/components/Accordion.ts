@@ -115,7 +115,7 @@ class Accordion extends Component {
     unmount() {
         super.unmount();
 
-        this.$tabs.element.forEach(tab => $(tab).on('click', this.handlers.toggle, null, true));
+        this.$tabs.element.forEach(tab => $(tab).off('click', this.handlers.toggle, null));
         window.removeEventListener('resize', this.handlers.resize);
 
         this.on.unmount(this);

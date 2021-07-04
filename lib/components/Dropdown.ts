@@ -32,7 +32,7 @@ class Dropdown extends Component {
     }
 
     mount() {
-        if (!this.$element || this._mount || this.$element.hasAttribute('data-mount')) return;
+        if (!this.$element || this._mount || this.$element.attr('data-mount')) return;
         super.mount()
 
         this.options = Object.assign({}, this.options)
@@ -49,12 +49,12 @@ class Dropdown extends Component {
     }
 
     addEvents() {
-        this.$element.addEventListener('click', this.handlers.clickHandler)
+        this.$element.on('click', this.handlers.clickHandler)
         document.addEventListener('click', this.handlers.documentClickHandler)
     }
 
     documentClickHandler(e: Event) {
-        if (!e.target.closest(this.selectors.element) && this.$element.hasAttribute('data-active')) {
+        if (!e.target.closest(this.selectors.element) && this.$element.attr('data-active')) {
             this.$element.toggleAttribute('data-active')
             this.on.destroy(this)
             this.emitter.emit('destroy', this)
@@ -64,7 +64,7 @@ class Dropdown extends Component {
     clickHandler() {
         this.$element.toggleAttribute('data-active')
 
-        if (this.$element.hasAttribute('data-active')) {
+        if (this.$element.attr('data-active')) {
             this.on.render(this)
             this.emitter.emit('render', this)
         } else {
@@ -77,7 +77,7 @@ class Dropdown extends Component {
         super.unmount()
 
         document.removeEventListener('click', this.handlers.documentClickHandler)
-        this.$element.removeEventListener('click', this.handlers.clickHandler)
+        this.$element.off('click', this.handlers.clickHandler, null)
 
         this.on.unmount(this)
         this.emitter.emit('unmount', this)

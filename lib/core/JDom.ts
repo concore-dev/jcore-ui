@@ -46,7 +46,7 @@ class JDom {
     }
 
     addClass(...classes: string[]) {
-        this.element.forEach(el => {
+        this.each(el => {
             el.classList.add(...classes);
         })
 
@@ -56,12 +56,12 @@ class JDom {
     attr(attrs: string | { [key: string]: any } | Array<string>, value?: string) {
         if (value === null) {
             if (typeof attrs === 'string') {
-                this.element.forEach(el => {
+                this.each(el => {
                     el.removeAttribute(attrs);
                 });
             } else if (Array.isArray(attrs)) {
                 for (let i = 0; i < attrs.length; i++) {
-                    this.element.forEach(el => {
+                    this.each(el => {
                         el.removeAttribute(attrs[i])
                     });
                 }
@@ -80,19 +80,19 @@ class JDom {
                     return needAttrs;
                 } else if (typeof attrs === 'object') {
                     for (const key in attrs) {
-                        this.element.forEach(el => {
+                        this.each(el => {
                             el.setAttribute(key, attrs[key]);
                         });
                     }
                 }
             } else {
                 if (typeof attrs === 'string') {
-                    this.element.forEach(el => {
+                    this.each(el => {
                         el.setAttribute(attrs, value);
                     })
                 } else if (Array.isArray(attrs)) {
                     for (let i = 0; i < attrs.length; i++) {
-                        this.element.forEach(el => {
+                        this.each(el => {
                             el.setAttribute(attrs[i], value)
                         });
                     }
@@ -109,15 +109,19 @@ class JDom {
     }
 
     on(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions) {
-        this.element.forEach(el => {
+        this.each(el => {
             el.addEventListener(type, listener, options);
         });
+
+        return this;
     }
 
     off(type: string, listener: EventListenerOrEventListenerObject, options?: boolean  | EventListenerOptions) {
-        this.element.forEach(el => {
+        this.each(el => {
             el.removeEventListener(type, listener, options);
         });
+
+        return this;
     }
 
     closest<E extends HTMLElement = HTMLElement>(selector: string) {
@@ -126,6 +130,8 @@ class JDom {
 
     each(callbackfn: (value: HTMLElement, index: number, array: HTMLElement[]) => void) {
         this.element.forEach(callbackfn);
+
+        return this;
     }
 
     toggleAttribute(attr: string) {
@@ -145,6 +151,12 @@ class JDom {
     get style() {
         return this.element[0].style;
     }
+
+    // get toggle() {
+    //     return {
+    //         attr: this.toggleAttr.bind(this)
+    //     }
+    // }
 }
 
 export { JDom }

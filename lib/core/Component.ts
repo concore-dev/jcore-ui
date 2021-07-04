@@ -114,7 +114,7 @@ class Component {
 
     unmount() {
         this._mount = false;
-        this.$element.removeAttr('data-mount');
+        this.$element.attr('data-mount', null);
     }
 }
 

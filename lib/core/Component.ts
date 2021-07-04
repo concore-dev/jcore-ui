@@ -1,6 +1,6 @@
 import { IObject } from "../interfaces";
 import EventEmitter, { TEventEmitter } from "../utils/EventEmitter";
-import { $ } from "./JDom";
+import { $, JDom } from "./JDom";
 
 export interface IComponentSelector {
     element: string;
@@ -31,7 +31,7 @@ export interface IComponentClass extends IComponent {
 
 interface Component {
     handlers?: IObject;
-    $element: HTMLElement;
+    $element: JDom;
     emitter: TEventEmitter;
     components: any[];
     selectors: IComponentSelector;
@@ -76,7 +76,7 @@ class Component {
             });
         };
 
-        this.$element = props.$element instanceof Element ? props.$element : $(props.$element).get();
+        this.$element = $(props.$element);
 
         if (!this.$element) {
             // throw Error(`Не найден HTMLElement ${this.constructor.name}`)
@@ -104,7 +104,7 @@ class Component {
 
 
     mount() {
-        $(this.$element).attr('data-mount', 'true');
+        this.$element.attr('data-mount', 'true');
         this._mount = true;
     }
 
@@ -114,7 +114,7 @@ class Component {
 
     unmount() {
         this._mount = false;
-        $(this.$element).removeAttr('data-mount');
+        this.$element.removeAttr('data-mount');
     }
 }
 

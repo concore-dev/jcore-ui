@@ -11,9 +11,9 @@ const selectors = {
 }
 
 interface IAccordionSelector extends IComponentSelector {
-    panel: string;
-    tab: string;
-    content: string;
+    panel?: string;
+    tab?: string;
+    content?: string;
 }
 
 interface IAccordionOptions extends IComponentOptions {
@@ -33,11 +33,8 @@ interface IAccordion extends IComponent {
 }
 
 interface Accordion {
-    // handlers?: IObject;
     options: IAccordionOptions;
-    // $list: HTMLElement
     $tabs: JDom;
-    // $contents: NodeListOf<HTMLElement>
     selectors: IAccordionSelector;
     on: IAccordionOn;
     id: number;
@@ -60,7 +57,7 @@ class Accordion extends Component {
     }
 
     mount() {
-        if (!this.$element || this._mount || $(this.$element).hasAttr('data-mount')) {
+        if (!this.$element || this._mount || this.$element.hasAttr('data-mount')) {
             return;
         };
 
@@ -102,14 +99,14 @@ class Accordion extends Component {
             const content = $(panel).find(this.selectors.content);
             const id = this.setId($tab);
 
-            content.get().style.setProperty('transition', `height ease-in-out ${this.options.duration}ms`);
+            content.style.setProperty('transition', `height ease-in-out ${this.options.duration}ms`);
             this.isShowTabs.push({ tab, id, isShow: false });
 
             if (this.options.active && i === 0) {
                 this.toggle($tab, content);
             }
 
-            $(tab).on('click', this.handlers.toggle);
+            $tab.on('click', this.handlers.toggle);
         })
 
         window.addEventListener('resize', this.handlers.resize);
@@ -118,7 +115,7 @@ class Accordion extends Component {
     unmount() {
         super.unmount();
 
-        this.$tabs.element.forEach(tab => $(tab).removeOn('click', this.handlers.toggle));
+        this.$tabs.element.forEach(tab => $(tab).on('click', this.handlers.toggle, null, true));
         window.removeEventListener('resize', this.handlers.resize);
 
         this.on.unmount(this);
@@ -127,14 +124,14 @@ class Accordion extends Component {
 
     toggle(e: Event | JDom, cont?: JDom) {
         const tab = $((e instanceof HTMLElement ? e : (e as Event).target as unknown as JDom)).closest(this.selectors.tab);
-        const panel = $(tab.get()).closest(this.selectors.panel);
+        const panel = tab.closest(this.selectors.panel);
         const content = cont || panel.find(this.selectors.content);
 
         // Если последний активный таб не равен текущему, сбрасываем состояние
         if (this.$tab?.get() !== tab.get() && !this.options.multiple && this.$tabs.element.length > 1) {
             this.isShow = false;
 
-            // если в аккордеоне много панелей, скрываем все, кроме текущей
+            // если в аккордеоне несколько панелей, скрываем все, кроме текущей
             this.hideAll(tab);
         }
 
@@ -171,45 +168,45 @@ class Accordion extends Component {
     }
 
     show(tab: JDom, content: JDom) {
-        const height = content.get().scrollHeight;
+        const height = content.scrollHeight;
+        this.$tab = tab;
 
         $(this.$element).attr('data-active', '');
         tab.attr('data-active', '');
-        content.attr('showing', '');
+        // content.attr('showing', '');
 
         this.setHeight(`${height}px`, content);
 
         setTimeout(() => {
-            this.showEnd(tab, content);
+            this.showEnd(content);
         }, this.options.duration);
     }
 
-    showEnd(tab: JDom, content: JDom) {
-        content.removeAttr('showing');
-        content.attr('show', '');
+    showEnd(content: JDom) {
+        // content.removeAttr('showing');
+        // content.attr('show', '');
 
         this.emitter.emit('show', this);
         // content.style.setProperty('height', `auto`)
     }
 
     hide(tab: JDom, content: JDom) {
-        content.attr('hiding', '');
-        tab.removeAttr('data-active');
-        $(this.$element).removeAttr('data-active');
+        // content.attr('hiding', '');
+        tab.attr('data-active',);
+        $(this.$element).attr('data-active', null);
 
         this.setHeight(0, content);
 
         setTimeout(() => {
-            this.hideEnd(tab, content);
+            this.hideEnd(content);
         }, this.options.duration);
     }
 
-    hideEnd(tab: JDom, content: JDom) {
-        content.removeAttr('show');
-        content.removeAttr('hiding');
-        // this.$panels.removeAttribute('active')
+    hideEnd(content: JDom) {
+        // content.removeAttr('show');
+        // content.removeAttr('hiding');
 
-        this.emitter.emit('hide', tab, content);
+        this.emitter.emit('hide', this);
     }
 
     hideAll(currentTab: JDom) {
@@ -220,10 +217,10 @@ class Accordion extends Component {
                 const panel = $(tab).closest(this.selectors.panel);
                 const content = panel.find(this.selectors.content);
 
-                content.removeAttr('showing');
-                content.removeAttr('show');
-                content.removeAttr('hiding');
-                $(tab).removeAttr('active');
+                // content.removeAttr('showing');
+                // content.removeAttr('show');
+                // content.removeAttr('hiding');
+                $(tab).attr('data-active', null);
 
                 this.setHeight(0, content);
             });
@@ -234,10 +231,10 @@ class Accordion extends Component {
                 const panel = $(tab).closest(this.selectors.panel);
                 const content = panel.find(this.selectors.content);
 
-                content.removeAttr('showing');
-                content.removeAttr('show');
-                content.removeAttr('hiding');
-                $(tab).removeAttr('active');
+                // content.removeAttr('showing');
+                // content.removeAttr('show');
+                // content.removeAttr('hiding');
+                $(tab).attr('data-active', null);
 
                 this.setHeight(0, content);
             });
@@ -247,10 +244,10 @@ class Accordion extends Component {
     }
 
     setHeight(height: string | number | HTMLElement, content: JDom) {
-        content.get().style.setProperty('height', `${content.get().scrollHeight}px`);
+        content.style.setProperty('height', `${content.scrollHeight}px`);
 
         window.requestAnimationFrame(() => {
-            content.get().style.setProperty('height', `${height}`);
+            content.style.setProperty('height', `${height}`);
         });
     }
 
@@ -270,14 +267,14 @@ class Accordion extends Component {
         this.$tabs.element.forEach((tab, i) => {
             const $tab = $(tab);
 
-            if (!$tab.attr('active')) {
+            if (!$tab.attr('data-active')) {
                 return;
             }
 
             const panel = $tab.closest(this.selectors.panel);
             const content = panel.find(this.selectors.content);
 
-            content.get().style.setProperty('height', `auto`);
+            content.style.setProperty('height', `auto`);
 
             this.setHeight(tab, content);
         });

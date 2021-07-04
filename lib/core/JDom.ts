@@ -54,37 +54,52 @@ class JDom {
     }
 
     attr(attrs: string | { [key: string]: any } | Array<string>, value?: string) {
-        if (!value) {
+        if (value === null) {
             if (typeof attrs === 'string') {
-                return this.element[0].getAttribute(attrs);
+                this.element.forEach(el => {
+                    el.removeAttribute(attrs);
+                });
             } else if (Array.isArray(attrs)) {
-                const needAttrs: any = {};
-
                 for (let i = 0; i < attrs.length; i++) {
-                    needAttrs[attrs[i]] = this.element[0].getAttribute(attrs[i]);
-                }
-
-                return needAttrs;
-            } else if (typeof attrs === 'object') {
-                for (const key in attrs) {
                     this.element.forEach(el => {
-                        el.setAttribute(key, attrs[key]);
+                        el.removeAttribute(attrs[i])
                     });
                 }
             }
         } else {
-            if (typeof attrs === 'string') {
-                this.element.forEach(el => {
-                    el.setAttribute(attrs, value);
-                })
-            } else if (Array.isArray(attrs)) {
-                for (let i = 0; i < attrs.length; i++) {
+            if (value === undefined) {
+                if (typeof attrs === 'string') {
+                    return this.element[0].getAttribute(attrs);
+                } else if (Array.isArray(attrs)) {
+                    const needAttrs: any = {};
+
+                    for (let i = 0; i < attrs.length; i++) {
+                        needAttrs[attrs[i]] = this.element[0].getAttribute(attrs[i]);
+                    }
+
+                    return needAttrs;
+                } else if (typeof attrs === 'object') {
+                    for (const key in attrs) {
+                        this.element.forEach(el => {
+                            el.setAttribute(key, attrs[key]);
+                        });
+                    }
+                }
+            } else {
+                if (typeof attrs === 'string') {
                     this.element.forEach(el => {
-                        el.setAttribute(attrs[i], value)
-                    });
+                        el.setAttribute(attrs, value);
+                    })
+                } else if (Array.isArray(attrs)) {
+                    for (let i = 0; i < attrs.length; i++) {
+                        this.element.forEach(el => {
+                            el.setAttribute(attrs[i], value)
+                        });
+                    }
                 }
             }
         }
+
 
         return this;
     }
@@ -93,29 +108,13 @@ class JDom {
         return this.element[0].hasAttribute(attrs);
     }
 
-    removeAttr(attrs: string | Array<string>) {
-        if (typeof attrs === 'string') {
-            this.element.forEach(el => {
-                el.removeAttribute(attrs);
-            });
-        } else if (Array.isArray(attrs)) {
-            for (let i = 0; i < attrs.length; i++) {
-                this.element.forEach(el => {
-                    el.removeAttribute(attrs[i])
-                });
-            }
-        }
-
-        return this;
-    }
-
     on(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions) {
         this.element.forEach(el => {
             el.addEventListener(type, listener, options);
         });
     }
 
-    removeOn(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions) {
+    off(type: string, listener: EventListenerOrEventListenerObject, options?: boolean  | EventListenerOptions) {
         this.element.forEach(el => {
             el.removeEventListener(type, listener, options);
         });
@@ -123,6 +122,28 @@ class JDom {
 
     closest<E extends HTMLElement = HTMLElement>(selector: string) {
         return new JDom(this.get().closest(selector));
+    }
+
+    each(callbackfn: (value: HTMLElement, index: number, array: HTMLElement[]) => void) {
+        this.element.forEach(callbackfn);
+    }
+
+    toggleAttribute(attr: string) {
+        this.each((el) => {
+            el.toggleAttribute(attr)
+        })
+    }
+
+    get dataset() {
+        return this.element[0].dataset;
+    }
+
+    get scrollHeight() {
+        return this.element[0].scrollHeight;
+    }
+
+    get style() {
+        return this.element[0].style;
     }
 }
 
